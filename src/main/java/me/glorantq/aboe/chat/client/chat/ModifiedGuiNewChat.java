@@ -17,6 +17,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
@@ -96,25 +97,30 @@ public class ModifiedGuiNewChat extends GuiNewChat {
 
     private List<PlayerMention> getMentions(IChatComponent chatComponent) {
         String unformatted = chatComponent.getFormattedText();
-        List<PlayerMention> mentions = new ArrayList<>();
+        List<PlayerMention> mentions = new LinkedList<>();
 
-        int index;
+        int index = -1;
 
         if(injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.PLAYER.ordinal()) {
             String username = Minecraft.getMinecraft().getSession().getUsername();
-            index = unformatted.indexOf("@" + username);
-            while (index > 0) {
-                mentions.add(new PlayerMention(index, MentionType.PLAYER));
+
+            do {
                 index = unformatted.indexOf("@" + username, index + 1);
-            }
+                if(index > 0) {
+                    mentions.add(new PlayerMention(index, MentionType.PLAYER));
+                }
+            } while(index > 0);
         }
 
         if(injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.EVERYONE.ordinal()) {
-            index = unformatted.indexOf("@everyone");
-            while (index > 0) {
-                mentions.add(new PlayerMention(index, MentionType.EVERYONE));
+            index = -1;
+
+            do {
                 index = unformatted.indexOf("@everyone", index + 1);
-            }
+                if(index > 0) {
+                    mentions.add(new PlayerMention(index, MentionType.EVERYONE));
+                }
+            } while(index > 0);
         }
 
         return mentions;
@@ -124,15 +130,21 @@ public class ModifiedGuiNewChat extends GuiNewChat {
     public void printChatMessageWithOptionalDeletion(IChatComponent p_146234_1_, int p_146234_2_) {
         int mention = isMentioned(p_146234_1_);
         if (mention > 0) {
-            String chatText = p_146234_1_.getFormattedText();
+            String chatText;
+            int charsAdded = 0;
 
             for (PlayerMention playerMention : getMentions(p_146234_1_)) {
+                chatText = p_146234_1_.getFormattedText();
+                int adjustedIndex = playerMention.getIndex() + charsAdded;
+
                 String mentionText = "@" + (playerMention.getMentionType() == MentionType.PLAYER ? Minecraft.getMinecraft().getSession().getUsername() : "everyone");
 
-                String before = chatText.substring(0, playerMention.getIndex());
-                String after = chatText.substring(playerMention.getIndex() + mentionText.length(), chatText.length());
+                String before = chatText.substring(0, adjustedIndex);
+                String after = chatText.substring(adjustedIndex + mentionText.length(), chatText.length());
 
                 p_146234_1_ = new ChatComponentText(before + "\u00A79" + mentionText + "\u00A7r" + after);
+
+                charsAdded += 4;
             }
 
             Minecraft.getMinecraft().thePlayer.playSound("note.pling", 1, 1);

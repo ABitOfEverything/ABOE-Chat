@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.gui.GuiPlayerInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,8 +26,16 @@ public class ModifiedGuiChat extends GuiChat {
     @Override
     @SuppressWarnings("unchecked")
     protected void keyTyped(char p_73869_1_, int p_73869_2_) {
-        if(drawPlayerTooltip) {
-            if(bestNameMatch.length() > 0 && p_73869_1_ == '\t') {
+        super.keyTyped(p_73869_1_, p_73869_2_);
+
+        if (p_73869_1_ == '@') {
+            bestNameMatch = "";
+        }
+
+        String chatText = inputField.getText();
+
+        if (drawPlayerTooltip) {
+            if (bestNameMatch.length() > 0 && p_73869_1_ == '\t') {
                 inputField.deleteWords(-1);
                 inputField.writeText("@" + bestNameMatch);
 
@@ -39,61 +47,56 @@ public class ModifiedGuiChat extends GuiChat {
                 return;
             }
 
-            List<EntityPlayer> onlinePlayers = Minecraft.getMinecraft().theWorld.playerEntities;
+            List<GuiPlayerInfo> onlinePlayers = Minecraft.getMinecraft().thePlayer.sendQueue.playerInfoList; // GuiIngame#L441
 
-            String chatText = inputField.getText();
+            System.out.println(chatText);
 
-            if (!Character.isISOControl(p_73869_1_)) {
-                chatText += p_73869_1_;
-            } else if (p_73869_1_ == '\b' && chatText.length() > 0) {
-                chatText = chatText.substring(0, chatText.length() - 1);
-            }
-
-            int cursorPos = inputField.getCursorPosition();
             int wordStart = inputField.getNthWordFromCursor(-1);
 
             int substringStart = wordStart + 1;
-            int substringEnd = Math.min(chatText.length(), cursorPos + 1);
+            int substringEnd = Math.min(chatText.length(), inputField.getCursorPosition());
+
+            System.out.printf("%d %d %d\n", substringStart, substringEnd, inputField.getCursorPosition());
 
             if (substringStart > substringEnd) {
                 drawPlayerTooltip = false;
             } else {
-                currentPlayerName = chatText.substring(substringStart, substringEnd).split(" ")[0].trim();
+                currentPlayerName = chatText.substring(substringStart, substringEnd).trim();
+
+                System.out.println(currentPlayerName);
 
                 bestNameMatch = "";
                 if (currentPlayerName.length() > 0) {
-                    for (EntityPlayer entityPlayer : onlinePlayers) {
-                        if (currentPlayerName.length() > entityPlayer.getDisplayName().length()) {
+                    for (GuiPlayerInfo playerInfo : onlinePlayers) {
+                        if (currentPlayerName.length() > playerInfo.name.length()) {
                             continue;
                         }
 
-                        String playerNameSubstring = entityPlayer.getGameProfile().getName().substring(0, currentPlayerName.length());
+                        String playerNameSubstring = playerInfo.name.substring(0, currentPlayerName.length());
 
                         if (playerNameSubstring.equalsIgnoreCase(currentPlayerName)) {
-                            bestNameMatch = entityPlayer.getGameProfile().getName();
+                            bestNameMatch = playerInfo.name;
                         }
                     }
                 }
             }
         }
-
-        super.keyTyped(p_73869_1_, p_73869_2_);
     }
 
     @Override
     public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
         drawPlayerTooltip =
                 inputField.getText().length() > 0 &&
-                inputField.getText().charAt(inputField.getNthWordFromCursor(-1)) == '@' &&
-                inputField.getText().charAt(inputField.getCursorPosition() - 1) != ' ';
+                        inputField.getText().charAt(inputField.getNthWordFromCursor(-1)) == '@' &&
+                        inputField.getText().charAt(inputField.getCursorPosition() - 1) != ' ';
 
-        if(drawPlayerTooltip) {
+        if (drawPlayerTooltip) {
             int cursorX = inputField.xPosition + fontRendererObj.getStringWidth(inputField.getText().substring(0, inputField.getCursorPosition())) - fontRendererObj.getStringWidth("_");
             cursorX = Math.min(cursorX, inputField.xPosition + inputField.width + fontRendererObj.getStringWidth("_"));
 
             String renderedName;
 
-            if(bestNameMatch.length() > 0) {
+            if (bestNameMatch.length() > 0) {
                 renderedName = "\u00A7f" + bestNameMatch.substring(0, currentPlayerName.length()) + "\u00A78" + bestNameMatch.substring(currentPlayerName.length(), bestNameMatch.length());
             } else {
                 renderedName = bestNameMatch;
