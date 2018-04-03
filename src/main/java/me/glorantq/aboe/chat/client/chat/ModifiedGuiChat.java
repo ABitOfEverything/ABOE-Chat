@@ -1,4 +1,4 @@
-package me.glorantq.aboe.chat.client;
+package me.glorantq.aboe.chat.client.chat;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,7 +27,7 @@ public class ModifiedGuiChat extends GuiChat {
     @SuppressWarnings("unchecked")
     protected void keyTyped(char p_73869_1_, int p_73869_2_) {
         if(drawPlayerTooltip) {
-            if(bestNameMatch.length() > 0 &&p_73869_1_ == '\t') {
+            if(bestNameMatch.length() > 0 && p_73869_1_ == '\t') {
                 inputField.deleteWords(-1);
                 inputField.writeText("@" + bestNameMatch);
 

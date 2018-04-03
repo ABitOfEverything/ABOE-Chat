@@ -1,8 +1,9 @@
-package me.glorantq.aboe.chat.client;
+package me.glorantq.aboe.chat.client.chat;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import lombok.Data;
+import me.glorantq.aboe.chat.ABOEChat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ChatLine;
 import net.minecraft.client.gui.GuiNewChat;
@@ -21,6 +22,7 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 public class ModifiedGuiNewChat extends GuiNewChat {
     private final Logger logger = LogManager.getLogger("ModifiedGuiNewChat");
+    private final ChatGUIInjector injector = ABOEChat.getInstance().getChatGUIInjector();
 
     private Minecraft mc;
     private Field _field_146253_i;
@@ -81,11 +83,11 @@ public class ModifiedGuiNewChat extends GuiNewChat {
         String unformatted = chatComponent.getUnformattedText();
         String username = Minecraft.getMinecraft().getSession().getUsername();
 
-        if (unformatted.contains("@" + username)) {
+        if (unformatted.contains("@" + username) && injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.PLAYER.ordinal()) {
             return 1;
         }
 
-        if (unformatted.contains("@everyone")) {
+        if (unformatted.contains("@everyone") && injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.EVERYONE.ordinal()) {
             return 2;
         }
 
@@ -96,18 +98,23 @@ public class ModifiedGuiNewChat extends GuiNewChat {
         String unformatted = chatComponent.getFormattedText();
         List<PlayerMention> mentions = new ArrayList<>();
 
-        int index = unformatted.indexOf("@everyone");
-        while(index > 0) {
-            mentions.add(new PlayerMention(index, MentionType.EVERYONE));
-            index = unformatted.indexOf("@everyone", index + 1);
+        int index;
+
+        if(injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.PLAYER.ordinal()) {
+            String username = Minecraft.getMinecraft().getSession().getUsername();
+            index = unformatted.indexOf("@" + username);
+            while (index > 0) {
+                mentions.add(new PlayerMention(index, MentionType.PLAYER));
+                index = unformatted.indexOf("@" + username, index + 1);
+            }
         }
 
-        String username = Minecraft.getMinecraft().getSession().getUsername();
-
-        index = unformatted.indexOf("@" + username);
-        while(index > 0) {
-            mentions.add(new PlayerMention(index, MentionType.PLAYER));
-            index = unformatted.indexOf("@" + username, index + 1);
+        if(injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.EVERYONE.ordinal()) {
+            index = unformatted.indexOf("@everyone");
+            while (index > 0) {
+                mentions.add(new PlayerMention(index, MentionType.EVERYONE));
+                index = unformatted.indexOf("@everyone", index + 1);
+            }
         }
 
         return mentions;

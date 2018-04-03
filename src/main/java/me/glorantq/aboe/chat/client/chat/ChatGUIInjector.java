@@ -1,21 +1,34 @@
-package me.glorantq.aboe.chat.client;
+package me.glorantq.aboe.chat.client.chat;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import lombok.Getter;
+import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.client.commands.MentionLevelCommand;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiNewChat;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 
 public class ChatGUIInjector {
+    private static final String CATEGORY_MENTION_SETTIGNS = "Mentions";
+
     private final Logger logger = LogManager.getLogger("ChatGUIInjector");
     private boolean replacedNewGuiChat = false;
+
+    private Configuration configuration = ABOEChat.getInstance().getConfiguration();
+    private ConfigCategory mentionSettingsCategory = configuration.getCategory(CATEGORY_MENTION_SETTIGNS);
+    private @Getter MentionLevel mentionLevel = MentionLevel.EVERYONE;
 
     public ChatGUIInjector() {
         logger.info("ChatGUIInjector loaded!");
@@ -23,6 +36,16 @@ public class ChatGUIInjector {
 
     public void initialise() {
         MinecraftForge.EVENT_BUS.register(this);
+
+        if(!mentionSettingsCategory.containsKey("mention_level")) {
+            changeMentionLevel(MentionLevel.EVERYONE);
+        } else {
+            int mentionLevel0 = Math.min(mentionSettingsCategory.get("mention_level").getInt(), MentionLevel.values().length - 1);
+            mentionLevel = MentionLevel.values()[mentionLevel0];
+        }
+
+        ClientCommandHandler.instance.registerCommand(new MentionLevelCommand());
+
         logger.info("Initialised!");
     }
 
@@ -67,5 +90,15 @@ public class ChatGUIInjector {
             replacedNewGuiChat = true;
             logger.info("Replaced GuiNewChat in GuiIngame!");
         }
+    }
+
+    public void changeMentionLevel(MentionLevel mentionLevel) {
+        this.mentionLevel = mentionLevel;
+        mentionSettingsCategory.put("mention_level", new Property("mention_level", String.valueOf(MentionLevel.EVERYONE.ordinal()), Property.Type.INTEGER));
+        configuration.save();
+    }
+
+    public enum MentionLevel {
+        NONE, PLAYER, EVERYONE
     }
 }

@@ -9,7 +9,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.relauncher.Side;
 import lombok.Getter;
-import me.glorantq.aboe.chat.client.ChatGUIInjector;
+import me.glorantq.aboe.chat.client.chat.ChatGUIInjector;
 import me.glorantq.aboe.chat.server.channels.ChatChannelManager;
 import me.glorantq.aboe.chat.server.commands.ChannelAdminCommand;
 import me.glorantq.aboe.chat.server.commands.ChannelInfoCommand;
