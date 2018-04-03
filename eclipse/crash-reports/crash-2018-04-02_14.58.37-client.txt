@@ -1,0 +1,146 @@
+---- Minecraft Crash Report ----
+// This is a token for 1 free hug. Redeem at your nearest Mojangsta: [~~HUG~~]
+
+Time: 02/04/18 14:58
+Description: Initializing game
+
+java.lang.VerifyError: Bad invokespecial instruction: current class isn't assignable to reference class.
+Exception Details:
+  Location:
+    javasssistModifiedGuiNewChat.drawChat(I)V @1: invokespecial
+  Reason:
+    Error exists in the bytecode
+  Bytecode:
+    0x0000000: 2ab7 0005 b400 06b4 0007 b200 08a5 01f3
+    0x0000010: 2ab6 0009 3d03 3e03 3604 2ab7 000a b900
+    0x0000020: 0b01 0036 052a b700 05b4 0006 b400 0c12
+    0x0000030: 0d6a 120e 6238 0615 059e 01c7 2ab6 000f
+    0x0000040: 9900 0504 3e2a b600 1038 072a b600 1186
+    0x0000050: 1707 6eb8 0012 3608 b800 130d 1214 0bb8
+    0x0000060: 0015 1707 1707 0cb8 0016 0336 0915 092a
+    0x0000070: b700 1760 2ab7 000a b900 0b01 00a2 00ed
+    0x0000080: 1509 1ca2 00e7 2ab7 000a 1509 2ab7 0017
+    0x0000090: 60b9 0018 0200 c000 193a 0c19 0cc6 00c7
+    0x00000a0: 1b19 0cb6 001a 6436 0a15 0a11 00c8 a100
+    0x00000b0: 071d 9900 b215 0a87 1400 1b6f 390d 0f18
+    0x00000c0: 0d67 390d 180d 1400 1d6b 390d 180d 0e98
+    0x00000d0: 9c00 060e 390d 180d 0f97 9e00 060f 390d
+    0x00000e0: 180d 180d 6b39 0d14 001f 180d 6b8e 360b
+    0x00000f0: 1d99 0008 1100 ff36 0b15 0b86 1706 6a8b
+    0x0000100: 360b 8404 0115 0b06 a400 5c03 360f 1509
+    0x0000110: 7410 0968 3610 150f 1510 1009 6415 0f15
+    0x0000120: 0860 0760 1510 150b 056c 1018 78b8 0021
+    0x0000130: 110b e2b8 0023 190c b600 24b9 0025 0100
+    0x0000140: 3a11 2ab7 0005 b400 2619 1115 0f15 1010
+    0x0000150: 0864 1227 150b 1018 7860 b600 2857 110b
+    0x0000160: c0b8 0029 8409 01a7 ff06 1d99 0092 2ab7
+    0x0000170: 0005 b400 26b4 002a 3609 122b 0b0b b800
+    0x0000180: 1515 0515 0968 1505 6036 0c15 0415 0968
+    0x0000190: 1504 6036 0a2a b600 2c15 0a68 1505 6c36
+    0x00001a0: 0d15 0a15 0a68 150c 6c36 0e15 0c15 0a9f
+    0x00001b0: 004e 150d 9e00 0911 00aa a700 0510 6036
+    0x00001c0: 0b2a b700 2d99 0008 122e a700 0512 2f36
+    0x00001d0: 0f03 150d 7405 150d 7415 0e64 150f 150b
+    0x00001e0: 1018 7860 b800 2105 150d 7404 150d 7415
+    0x00001f0: 0e64 1230 150b 1018 7860 b800 21b8 0031
+    0x0000200: b1                                     
+  Stackmap Table:
+    full_frame(@69,{Object[#93],Integer,Integer,Integer,Integer,Integer,Float},{})
+    append_frame(@109,Float,Integer,Integer)
+    append_frame(@181,Integer,Top,Object[#94])
+    append_frame(@214,Double)
+    same_frame(@224)
+    full_frame(@249,{Object[#93],Integer,Integer,Integer,Integer,Integer,Float,Float,Integer,Integer,Integer,Integer,Object[#94],Double},{})
+    full_frame(@356,{Object[#93],Integer,Integer,Integer,Integer,Integer,Float,Float,Integer,Integer},{})
+    same_frame(@362)
+    full_frame(@445,{Object[#93],Integer,Integer,Integer,Integer,Integer,Float,Float,Integer,Integer,Integer,Top,Integer,Integer,Integer},{})
+    same_locals_1_stack_item_frame(@447,Integer)
+    full_frame(@461,{Object[#93],Integer,Integer,Integer,Integer,Integer,Float,Float,Integer,Integer,Integer,Integer,Integer,Integer,Integer},{})
+    same_locals_1_stack_item_frame(@463,Integer)
+    full_frame(@509,{Object[#93],Integer,Integer,Integer,Integer,Integer,Float,Float,Integer,Integer},{})
+    full_frame(@512,{Object[#93],Integer},{})
+
+	at java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:2671)
+	at java.lang.Class.getConstructor0(Class.java:3075)
+	at java.lang.Class.getConstructor(Class.java:1825)
+	at me.glorantq.aboe.chat.client.ChatGUIInjector.onGuiOpen(ChatGUIInjector.java:63)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_6_ChatGUIInjector_onGuiOpen_GuiOpenEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:140)
+	at net.minecraft.client.Minecraft.displayGuiScreen(Minecraft.java:843)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:607)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:942)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:2671)
+	at java.lang.Class.getConstructor0(Class.java:3075)
+	at java.lang.Class.getConstructor(Class.java:1825)
+	at me.glorantq.aboe.chat.client.ChatGUIInjector.onGuiOpen(ChatGUIInjector.java:63)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_6_ChatGUIInjector_onGuiOpen_GuiOpenEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:140)
+	at net.minecraft.client.Minecraft.displayGuiScreen(Minecraft.java:843)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:607)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:942)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_151, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 940372856 bytes (896 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1614 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJA	Forge{10.13.4.1614} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1614-1.7.10.jar) 
+	UCHIJA	aboe-chat{1.6.1} [aboe-chat] (classes) 
+	GL info: ' Vendor: 'ATI Technologies Inc.' Version: '4.5.13507 Compatibility Profile Context 23.20.15033.1003' Renderer: 'AMD Radeon (TM) R9 380 Series'
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: AMD Radeon (TM) R9 380 Series GL version 4.5.13507 Compatibility Profile Context 23.20.15033.1003, ATI Technologies Inc.
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

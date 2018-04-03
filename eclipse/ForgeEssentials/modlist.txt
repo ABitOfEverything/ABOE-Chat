@@ -1,0 +1,9 @@
+# --- ModList ---
+# Generated: 2-3-2018 (Server time)
+# Change the location of this file in main.cfg
+
+Minecraft Coder Pack;9.05;http://mcp.ocean-labs.de/
+Forge Mod Loader;7.10.99.99;https://github.com/MinecraftForge/FML/wiki
+Minecraft Forge;10.13.4.1614;http://MinecraftForge.net/forum/index.php/topic,5.0.html
+ABOE Chat;1.6.1;
+Forge Essentials;1.4.4;https://github.com/ForgeEssentials/ForgeEssentials
