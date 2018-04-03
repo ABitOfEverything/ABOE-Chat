@@ -9,7 +9,6 @@ import com.forgeessentials.chat.ModuleChat;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.Set;
-import java.util.SortedSet;
 
 public class ForgeEssentialsPermissionProvider implements PermissionProvider {
 
@@ -39,19 +38,23 @@ public class ForgeEssentialsPermissionProvider implements PermissionProvider {
 
         String fix = ModuleChat.getPlayerPrefixSuffix(userIdent, isSuffix);
         if(fix != null && !fix.isEmpty()) {
-            System.out.println("player fix " + fix);
             return fix;
         }
 
+        int highestPriorityFix = Integer.MIN_VALUE;
+
         Set<GroupEntry> groupEntries = APIRegistry.perms.getPlayerGroups(userIdent);
-        if(groupEntries.size() == 0) {
-            return "";
-        } else {
-            fix = serverZone.getGroupPermission(((SortedSet<GroupEntry>) groupEntries).first().getGroup(), isSuffix ? FEPermissions.SUFFIX : FEPermissions.PREFIX);
+
+        for(GroupEntry entry : groupEntries) {
+            String groupFix = serverZone.getGroupPermission(entry.getGroup(), isSuffix ? FEPermissions.SUFFIX : FEPermissions.PREFIX);
+            if(groupFix != null && !groupFix.isEmpty() && entry.getPriority() > highestPriorityFix) {
+                fix = groupFix;
+
+                highestPriorityFix = entry.getPriority();
+            }
         }
 
         if(fix == null) {
-            System.out.println("null fix");
             return "";
         }
 
