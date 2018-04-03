@@ -16,9 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @SideOnly(Side.CLIENT)
 public class ModifiedGuiNewChat extends GuiNewChat {
@@ -122,6 +120,8 @@ public class ModifiedGuiNewChat extends GuiNewChat {
                 }
             } while(index > 0);
         }
+
+        Collections.sort(mentions, new PlayerMentionComparator());
 
         return mentions;
     }
@@ -239,6 +239,13 @@ public class ModifiedGuiNewChat extends GuiNewChat {
 
                 GL11.glPopMatrix();
             }
+        }
+    }
+
+    private class PlayerMentionComparator implements Comparator<PlayerMention> {
+        @Override
+        public int compare(PlayerMention o1, PlayerMention o2) {
+            return Integer.compare(o1.index, o2.index);
         }
     }
 
