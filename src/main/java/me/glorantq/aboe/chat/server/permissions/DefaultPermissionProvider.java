@@ -29,4 +29,9 @@ public class DefaultPermissionProvider implements PermissionProvider {
     public void registerPermission(String permission, PermissionLevel permissionLevel) {
 
     }
+
+    @Override
+    public String getDisplayName(EntityPlayer player) {
+        return player.getDisplayName();
+    }
 }

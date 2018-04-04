@@ -11,8 +11,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Property;
-import net.minecraftforge.permission.PermissionLevel;
-import net.minecraftforge.permission.PermissionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.stringtemplate.v4.ST;
@@ -45,24 +43,24 @@ public class ChatChannel {
 
         reloadFormatting();
 
-        chatMod.getPermissionProvider().registerPermission("abochat.channels." + channelId, PermissionProvider.PermissionLevel.OP);
+        chatMod.getPermissionProvider().registerPermission("aboechat.channels." + channelId, PermissionProvider.PermissionLevel.OP);
     }
 
     void messageReceived(EntityPlayerMP player, String message) {
-        ST messageTemplate = new ST(chatFormat.replaceAll("&", "\u00A7"));
+        ST messageTemplate = new ST(formatChatString(chatFormat));
         messageTemplate.add("username", player.getGameProfile().getName());
-        messageTemplate.add("display_name", player.getDisplayName());
+        messageTemplate.add("display_name", formatChatString(chatMod.getPermissionProvider().getDisplayName(player)));
         messageTemplate.add("group", chatMod.getPermissionProvider().getGroup(player));
         messageTemplate.add("channel_name", channelName);
         messageTemplate.add("channel_id", channelId);
         messageTemplate.add("message", message);
-        messageTemplate.add("prefix", chatMod.getPermissionProvider().getPrefix(player).replaceAll("&", "\u00A7"));
-        messageTemplate.add("suffix", chatMod.getPermissionProvider().getSuffix(player).replaceAll("&", "\u00A7"));
+        messageTemplate.add("prefix", formatChatString(chatMod.getPermissionProvider().getPrefix(player)));
+        messageTemplate.add("suffix", formatChatString(chatMod.getPermissionProvider().getSuffix(player)));
 
         String renderedMessage = messageTemplate.render();
 
         if (chatMod.getPermissionProvider().hasPermission(player, "aboechat.color")) {
-            renderedMessage = renderedMessage.replaceAll("&", "\u00A7");
+            renderedMessage = formatChatString(renderedMessage);
         }
 
         renderedMessage = renderedMessage.replaceAll(" +", " ");
@@ -77,11 +75,14 @@ public class ChatChannel {
             }
         }
 
+        ChatComponentText componentText = new ChatComponentText(renderedMessage);
         synchronized (joinedPlayers) {
             for (EntityPlayer otherPlayer : joinedPlayers) {
-                otherPlayer.addChatMessage(new ChatComponentText(renderedMessage));
+                otherPlayer.addChatMessage(componentText);
             }
         }
+
+        logger.info("[CHAT] {}: {}", player.getGameProfile().getName(), message);
     }
 
     public boolean join(EntityPlayer player) {
@@ -111,7 +112,7 @@ public class ChatChannel {
             joinedPlayers.add(player);
         }
 
-        player.addChatMessage(new ChatComponentText("\u00A7aYou are now talking in \"\u00A72" + channelName + "\u00A7a\"!"));
+        player.addChatMessage(new ChatComponentText(formatChatString("&aYou are now talking in \"&2" + channelName + "&a\"!")));
 
         return true;
     }
@@ -135,12 +136,25 @@ public class ChatChannel {
 
         logger.info("Player {} left channel {}", player.getDisplayName(), channelId);
 
-        player.addChatMessage(new ChatComponentText("\u00A7cYou left the \"\u00A74" + channelName + "\u00A7c\" channel!"));
+        player.addChatMessage(new ChatComponentText(formatChatString("&cYou left the \"&4" + channelName + "&c\" channel!")));
     }
 
-    void serverDisconnect(EntityPlayer player) {
+    void deathOrDisconnect(EntityPlayer player) {
         synchronized (joinedPlayers) {
             joinedPlayers.remove(player);
+        }
+    }
+
+    void onPlayerRespawn(EntityPlayer player) {
+        synchronized (joinedPlayers) {
+            if(joinedPlayers.contains(player)) {
+                return;
+            }
+
+            NBTTagCompound entityData = player.getEntityData();
+            entityData.setString(NBT_KEY_CHANNEL_DATA, channelId);
+
+            joinedPlayers.add(player);
         }
     }
 
@@ -177,6 +191,10 @@ public class ChatChannel {
         } while (index > 0);
 
         return mentions;
+    }
+
+    private String formatChatString(String message) {
+        return message.replaceAll("&", "\u00A7");
     }
 
     @Data

@@ -100,7 +100,7 @@ public class ChatChannelManager {
     public void onPlayerDisconnectServer(PlayerEvent.PlayerLoggedOutEvent event) {
         Optional<ChatChannel> playerChannel = getChannelForPlayer(event.player);
         if (playerChannel.isPresent()) {
-            playerChannel.get().serverDisconnect(event.player);
+            playerChannel.get().deathOrDisconnect(event.player);
         }
     }
 
@@ -116,6 +116,21 @@ public class ChatChannelManager {
         }
 
         playerChannel.get().messageReceived(event.player, event.message);
+    }
+
+    @SubscribeEvent
+    public void onEntityPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
+        System.out.println("player clone!");
+        EntityPlayer original = event.original;
+        EntityPlayer newPlayer = event.entityPlayer;
+
+        Optional<ChatChannel> oldChannel = getChannelForPlayer(original);
+        if(oldChannel.isPresent()) {
+            oldChannel.get().deathOrDisconnect(original);
+            oldChannel.get().onPlayerRespawn(newPlayer);
+
+            System.out.println("reconnected!");
+        }
     }
 
     public void reload() {

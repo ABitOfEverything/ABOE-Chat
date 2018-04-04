@@ -13,6 +13,8 @@ public interface PermissionProvider {
 
     void registerPermission(String permission, PermissionLevel permissionLevel);
 
+    String getDisplayName(EntityPlayer player);
+
     enum PermissionLevel {
         TRUE,
 

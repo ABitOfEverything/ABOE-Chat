@@ -7,7 +7,6 @@ import com.forgeessentials.api.permissions.GroupEntry;
 import com.forgeessentials.api.permissions.Zone;
 import com.forgeessentials.chat.ModuleChat;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.permission.PermissionLevel;
 import net.minecraftforge.permission.PermissionManager;
 
 import java.util.Set;
@@ -65,6 +64,12 @@ public class ForgeEssentialsPermissionProvider implements PermissionProvider {
 
     @Override
     public void registerPermission(String permission, PermissionLevel permissionLevel) {
+        System.out.printf("registering: %s\n", permission);
         PermissionManager.registerPermission(permission, net.minecraftforge.permission.PermissionLevel.fromInteger(permissionLevel.ordinal()));
+    }
+
+    @Override
+    public String getDisplayName(EntityPlayer player) {
+        return ModuleChat.getPlayerNickname(player);
     }
 }

@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 
 public abstract class ABOECommand extends CommandBase {
-    public ABOECommand() {
+    ABOECommand() {
         ABOEChat.getInstance().getPermissionProvider().registerPermission(getPermission(), PermissionProvider.PermissionLevel.OP);
     }
 
@@ -23,6 +23,11 @@ public abstract class ABOECommand extends CommandBase {
         }
 
         return ABOEChat.getInstance().getPermissionProvider().hasPermission((EntityPlayer) p_71519_1_, getPermission());
+    }
+
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 0;
     }
 
     private String getPermission() {
