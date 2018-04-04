@@ -23,6 +23,10 @@ public class ModifiedGuiChat extends GuiChat {
         super();
     }
 
+    ModifiedGuiChat(String defaultText) {
+        super(defaultText);
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     protected void keyTyped(char p_73869_1_, int p_73869_2_) {

@@ -26,7 +26,7 @@ public abstract class ABOECommand extends CommandBase {
         return ABOEChat.getInstance().getPermissionProvider().hasPermission((EntityPlayer) p_71519_1_, getPermission());
     }
 
-    public String getPermission() {
+    private String getPermission() {
         return "aboechat.commands." + getCommandName();
     }
 }

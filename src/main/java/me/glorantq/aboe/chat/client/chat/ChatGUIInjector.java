@@ -53,9 +53,20 @@ public class ChatGUIInjector {
     @SuppressWarnings("unchecked")
     public void onGuiOpen(GuiOpenEvent event) {
         if (event.gui instanceof GuiChat && !(event.gui instanceof ModifiedGuiChat)) {
+            String defaultText;
+            try {
+                Field defaultInputFieldText = GuiChat.class.getDeclaredField("defaultInputFieldText");
+                defaultInputFieldText.setAccessible(true);
+
+                defaultText = defaultInputFieldText.get(event.gui).toString();
+            } catch (Exception e) {
+                logger.error("Failed to copy old GuiChat!", e);
+                defaultText = "";
+            }
+
             Minecraft minecraft = Minecraft.getMinecraft();
             event.setCanceled(true);
-            minecraft.displayGuiScreen(new ModifiedGuiChat());
+            minecraft.displayGuiScreen(new ModifiedGuiChat(defaultText));
 
             logger.info("Opened ModifiedGuiChat!");
         }

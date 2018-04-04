@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import lombok.Data;
 import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.client.chat.ModifiedGuiNewChat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,8 +30,10 @@ public class ChatChannel {
     private final ChatChannelManager chatChannelManager = chatMod.getChatChannelManager();
     private final Logger logger;
 
-    private final @Getter String channelId;
-    private final @Getter String channelName;
+    private final @Getter
+    String channelId;
+    private final @Getter
+    String channelName;
 
     private final List<EntityPlayer> joinedPlayers = new ArrayList<>();
 
@@ -58,15 +61,15 @@ public class ChatChannel {
 
         String renderedMessage = messageTemplate.render();
 
-        if(chatMod.getPermissionProvider().hasPermission(player, "aboechat.color")) {
+        if (chatMod.getPermissionProvider().hasPermission(player, "aboechat.color")) {
             renderedMessage = renderedMessage.replaceAll("&", "\u00A7");
         }
 
         renderedMessage = renderedMessage.replaceAll(" +", " ");
 
-        if(renderedMessage.contains("@everyone") && !chatMod.getPermissionProvider().hasPermission(player, "aboechat.mention.everyone")) {
+        if (renderedMessage.contains("@everyone") && !chatMod.getPermissionProvider().hasPermission(player, "aboechat.mention.everyone")) {
             List<PlayerMention> mentions = getMentions(renderedMessage);
-            for(int i = 0; i < mentions.size(); i++) {
+            for (int i = 0; i < mentions.size(); i++) {
                 String before = renderedMessage.substring(0, mentions.get(i).index + i + 1);
                 String after = renderedMessage.substring(mentions.get(i).index + i + 1, renderedMessage.length());
 
@@ -75,14 +78,14 @@ public class ChatChannel {
         }
 
         synchronized (joinedPlayers) {
-            for(EntityPlayer otherPlayer : joinedPlayers) {
+            for (EntityPlayer otherPlayer : joinedPlayers) {
                 otherPlayer.addChatMessage(new ChatComponentText(renderedMessage));
             }
         }
     }
 
     public boolean join(EntityPlayer player) {
-        if(!canJoin(player)) {
+        if (!canJoin(player)) {
             return false;
         }
 
@@ -91,11 +94,11 @@ public class ChatChannel {
 
     public boolean forceJoin(EntityPlayer player) {
         NBTTagCompound entityData = player.getEntityData();
-        if(entityData.hasKey(NBT_KEY_CHANNEL_DATA)) {
+        if (entityData.hasKey(NBT_KEY_CHANNEL_DATA)) {
             String currentChannel = entityData.getString(NBT_KEY_CHANNEL_DATA);
             Optional<ChatChannel> channel = chatChannelManager.getChannel(currentChannel);
 
-            if(channel.isPresent()) {
+            if (channel.isPresent()) {
                 channel.get().leave(player);
             }
         }
@@ -114,13 +117,13 @@ public class ChatChannel {
     }
 
     public void leave(EntityPlayer player) {
-        if(!joinedPlayers.contains(player)) {
+        if (!joinedPlayers.contains(player)) {
             logger.warn("Player {} wasn't in the channel they're leaving!", player.getDisplayName());
             return;
         }
 
         NBTTagCompound entityData = player.getEntityData();
-        if(!entityData.hasKey(NBT_KEY_CHANNEL_DATA)) {
+        if (!entityData.hasKey(NBT_KEY_CHANNEL_DATA)) {
             logger.error("Player is leaving the channel, but they don't have an NBT tag!");
         } else {
             entityData.removeTag(NBT_KEY_CHANNEL_DATA);
@@ -144,7 +147,7 @@ public class ChatChannel {
     static void reloadFormatting() {
         ABOEChat.getInstance().getConfiguration().load();
         ConfigCategory chatCategory = ABOEChat.getInstance().getConfiguration().getCategory(CATEGORY_CHAT_SETTINGS);
-        if(!chatCategory.containsKey("format")) {
+        if (!chatCategory.containsKey("format")) {
             chatFormat = "<prefix> &r<display_name>&r > <message>";
             chatCategory.put("format", new Property("format", chatFormat, Property.Type.STRING));
             ABOEChat.getInstance().getConfiguration().save();
@@ -164,11 +167,14 @@ public class ChatChannel {
     private List<PlayerMention> getMentions(String unformatted) {
         List<PlayerMention> mentions = new ArrayList<>();
 
-        int index = unformatted.indexOf("@everyone");
-        while(index > 0) {
-            mentions.add(new PlayerMention(index));
+        int index = -1;
+
+        do {
             index = unformatted.indexOf("@everyone", index + 1);
-        }
+            if (index > 0) {
+                mentions.add(new PlayerMention(index));
+            }
+        } while (index > 0);
 
         return mentions;
     }
