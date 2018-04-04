@@ -67,8 +67,6 @@ public class ABOEChat {
         }
 
         if(chatChannelManager != null) {
-            chatChannelManager.initialise();
-
             if(Loader.isModLoaded("ForgeEssentials")) {
                 permissionProvider = new ForgeEssentialsPermissionProvider();
                 logger.info("Using ForgeEssentials for permissions!");
@@ -76,6 +74,8 @@ public class ABOEChat {
                 permissionProvider = new DefaultPermissionProvider();
                 logger.info("Using the default permission provider!");
             }
+
+            chatChannelManager.initialise();
 
             permissionProvider.registerPermission("aboechat.color", PermissionProvider.PermissionLevel.OP);
             permissionProvider.registerPermission("aboechat.mention.everyone", PermissionProvider.PermissionLevel.OP);

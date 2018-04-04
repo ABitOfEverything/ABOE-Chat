@@ -34,8 +34,7 @@ public class ChatChannelManager {
         channels = new HashMap<>();
     }
 
-    private final @Getter
-    Map<String, ChatChannel> channels;
+    private final @Getter Map<String, ChatChannel> channels;
 
     public void initialise() {
         FMLCommonHandler.instance().bus().register(this);
