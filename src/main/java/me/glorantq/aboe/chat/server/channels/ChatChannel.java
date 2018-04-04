@@ -4,7 +4,7 @@ import com.google.common.base.Optional;
 import lombok.Data;
 import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
-import me.glorantq.aboe.chat.client.chat.ModifiedGuiNewChat;
+import me.glorantq.aboe.chat.server.permissions.PermissionProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
@@ -45,7 +45,7 @@ public class ChatChannel {
 
         reloadFormatting();
 
-        PermissionManager.registerPermission("aboechat.channels." + channelId, PermissionLevel.OP);
+        chatMod.getPermissionProvider().registerPermission("abochat.channels." + channelId, PermissionProvider.PermissionLevel.OP);
     }
 
     void messageReceived(EntityPlayerMP player, String message) {

@@ -147,7 +147,7 @@ public class ChatChannelManager {
         synchronized (channels) {
             chatChannel = channels.remove(id);
 
-            if(chatChannel != null && chatChannel instanceof DefaultChatChannel) {
+            if(chatChannel instanceof DefaultChatChannel) {
                 successful = false;
                 channels.put("general", chatChannel);
             } else {

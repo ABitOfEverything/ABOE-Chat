@@ -77,8 +77,8 @@ public class ABOEChat {
                 logger.info("Using the default permission provider!");
             }
 
-            PermissionManager.registerPermission("aboechat.color", PermissionLevel.OP);
-            PermissionManager.registerPermission("aboechat.mention.everyone", PermissionLevel.OP);
+            permissionProvider.registerPermission("aboechat.color", PermissionProvider.PermissionLevel.OP);
+            permissionProvider.registerPermission("aboechat.mention.everyone", PermissionProvider.PermissionLevel.OP);
         }
     }
 

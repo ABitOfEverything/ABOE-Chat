@@ -24,4 +24,9 @@ public class DefaultPermissionProvider implements PermissionProvider {
     public String getSuffix(EntityPlayer player) {
         return "";
     }
+
+    @Override
+    public void registerPermission(String permission, PermissionLevel permissionLevel) {
+
+    }
 }
