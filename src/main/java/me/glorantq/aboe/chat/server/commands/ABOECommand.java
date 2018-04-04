@@ -1,16 +1,15 @@
 package me.glorantq.aboe.chat.server.commands;
 
 import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.server.permissions.PermissionProvider;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.permission.PermissionLevel;
-import net.minecraftforge.permission.PermissionManager;
 
 public abstract class ABOECommand extends CommandBase {
     public ABOECommand() {
-        PermissionManager.registerCommandPermission(this, getPermission(), PermissionLevel.OP);
+        ABOEChat.getInstance().getPermissionProvider().registerPermission(getPermission(), PermissionProvider.PermissionLevel.OP);
     }
 
     void sendMessage(ICommandSender sender, String message) {

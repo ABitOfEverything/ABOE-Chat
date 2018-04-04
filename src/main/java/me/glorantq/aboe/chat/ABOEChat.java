@@ -20,8 +20,6 @@ import me.glorantq.aboe.chat.server.permissions.PermissionProvider;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.permission.PermissionLevel;
-import net.minecraftforge.permission.PermissionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
