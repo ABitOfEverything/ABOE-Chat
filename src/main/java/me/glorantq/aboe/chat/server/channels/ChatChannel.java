@@ -63,7 +63,7 @@ public class ChatChannel {
             renderedMessage = formatChatString(renderedMessage);
         }
 
-        renderedMessage = renderedMessage.replaceAll(" +", " ");
+        renderedMessage = renderedMessage.replaceAll(" +", " ").trim();
 
         if (renderedMessage.contains("@everyone") && !chatMod.getPermissionProvider().hasPermission(player, "aboechat.mention.everyone")) {
             List<PlayerMention> mentions = getMentions(renderedMessage);

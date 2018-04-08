@@ -5,10 +5,7 @@ import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
 import me.glorantq.aboe.chat.client.commands.MentionLevelCommand;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.GuiIngame;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiNewChat;
+import net.minecraft.client.gui.*;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,7 +25,8 @@ public class ChatGUIInjector {
 
     private Configuration configuration = ABOEChat.getInstance().getConfiguration();
     private ConfigCategory mentionSettingsCategory = configuration.getCategory(CATEGORY_MENTION_SETTIGNS);
-    private @Getter MentionLevel mentionLevel = MentionLevel.EVERYONE;
+    private @Getter
+    MentionLevel mentionLevel = MentionLevel.EVERYONE;
 
     public ChatGUIInjector() {
         logger.info("ChatGUIInjector loaded!");
@@ -37,7 +35,7 @@ public class ChatGUIInjector {
     public void initialise() {
         MinecraftForge.EVENT_BUS.register(this);
 
-        if(!mentionSettingsCategory.containsKey("mention_level")) {
+        if (!mentionSettingsCategory.containsKey("mention_level")) {
             changeMentionLevel(MentionLevel.EVERYONE);
         } else {
             int mentionLevel0 = Math.min(mentionSettingsCategory.get("mention_level").getInt(), MentionLevel.values().length - 1);
@@ -55,10 +53,18 @@ public class ChatGUIInjector {
         if (event.gui instanceof GuiChat && !(event.gui instanceof ModifiedGuiChat)) {
             String defaultText;
             try {
-                Field defaultInputFieldText = GuiChat.class.getDeclaredField("defaultInputFieldText");
-                defaultInputFieldText.setAccessible(true);
+                Field textField = null;
+                Field[] fields = GuiChat.class.getDeclaredFields();
 
-                defaultText = defaultInputFieldText.get(event.gui).toString();
+                for(Field field : fields) {
+                    if(field.getType() == String.class && !field.getName().equalsIgnoreCase("field_146410_g")) {
+                        textField = field;
+                        break;
+                    }
+                }
+
+                textField.setAccessible(true);
+                defaultText = textField.get(event.gui).toString();
             } catch (Exception e) {
                 logger.error("Failed to copy old GuiChat!", e);
                 defaultText = "";
@@ -71,21 +77,21 @@ public class ChatGUIInjector {
             logger.info("Opened ModifiedGuiChat!");
         }
 
-        if(event.gui instanceof GuiMainMenu && !replacedNewGuiChat) {
+        if (event.gui instanceof GuiMainMenu && !replacedNewGuiChat) {
             try {
                 Class<GuiIngame> guiIngameClass = GuiIngame.class;
 
                 Field[] fields = guiIngameClass.getDeclaredFields();
                 Field chatGuiField = null;
 
-                for(Field field : fields) {
-                    if(field.getType() == GuiNewChat.class) {
+                for (Field field : fields) {
+                    if (field.getType() == GuiNewChat.class) {
                         chatGuiField = field;
                         break;
                     }
                 }
 
-                if(chatGuiField == null) {
+                if (chatGuiField == null) {
                     logger.error("Failed to find GuiNewChat field!");
                     return;
                 }
