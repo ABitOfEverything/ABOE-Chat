@@ -51,8 +51,8 @@ dependencies {
     embed "com.googlecode.json-simple:json-simple:$json_version"
     embed "org.antlr:ST4:$st4_version"
 
-    compile fileTree(dir: 'libs', include: ['*.jar']) // Use in release
-    //compile group: "com.forgeessentials", name: "forgeessentials", version: "1.4.4-SNAPSHOT", classifier: "dev", changing: true // Use when debugging
+    //compile fileTree(dir: 'libs', include: ['*.jar']) // Use in release
+    compile group: "com.forgeessentials", name: "forgeessentials", version: "1.4.4-SNAPSHOT", classifier: "dev", changing: true // Use when debugging
 }
 
 jar {

@@ -22,16 +22,16 @@ public class ChatChannel {
     private static final String CATEGORY_CHAT_SETTINGS = "Chat";
     static final String NBT_KEY_CHANNEL_DATA = "current_chat_channel";
 
-    private static String chatFormat;
+    private static String chatFormat = "&8<channel> &r\\<<display_name>\\> <message>";
+    private static String joinNotificationFormat = "&2<display_name> &ahas joined the channel!";
+    private static String leaveNotificationFormat = "&4<display_name> &chas left the channel!";
 
     private final ABOEChat chatMod = ABOEChat.getInstance();
     private final ChatChannelManager chatChannelManager = chatMod.getChatChannelManager();
     private final Logger logger;
 
-    private final @Getter
-    String channelId;
-    private final @Getter
-    String channelName;
+    private final @Getter String channelId;
+    private final @Getter String channelName;
 
     private final List<EntityPlayer> joinedPlayers = new ArrayList<>();
 
@@ -47,15 +47,8 @@ public class ChatChannel {
     }
 
     void messageReceived(EntityPlayerMP player, String message) {
-        ST messageTemplate = new ST(formatChatString(chatFormat));
-        messageTemplate.add("username", player.getGameProfile().getName());
-        messageTemplate.add("display_name", formatChatString(chatMod.getPermissionProvider().getDisplayName(player)));
-        messageTemplate.add("group", chatMod.getPermissionProvider().getGroup(player));
-        messageTemplate.add("channel_name", channelName);
-        messageTemplate.add("channel_id", channelId);
+        ST messageTemplate = bindDefaultParameters(player, new ST(formatChatString(chatFormat)));
         messageTemplate.add("message", message);
-        messageTemplate.add("prefix", formatChatString(chatMod.getPermissionProvider().getPrefix(player)));
-        messageTemplate.add("suffix", formatChatString(chatMod.getPermissionProvider().getSuffix(player)));
 
         String renderedMessage = messageTemplate.render();
 
@@ -99,7 +92,7 @@ public class ChatChannel {
             String currentChannel = entityData.getString(NBT_KEY_CHANNEL_DATA);
             Optional<ChatChannel> channel = chatChannelManager.getChannel(currentChannel);
 
-            if (channel.isPresent()) {
+            if (channel.isPresent() && !channel.get().getChannelId().equalsIgnoreCase(channelId)) {
                 channel.get().leave(player);
             }
         }
@@ -108,7 +101,14 @@ public class ChatChannel {
 
         logger.info("Player {} joined channel {}", player.getDisplayName(), channelId);
 
+        ST joinTemplate = bindDefaultParameters(player, new ST(joinNotificationFormat));
+        String renderedMessage = renderInternalMessage(joinTemplate);
+
         synchronized (joinedPlayers) {
+            for(EntityPlayer onlinePlayer : joinedPlayers) {
+                onlinePlayer.addChatMessage(new ChatComponentText(renderedMessage));
+            }
+
             joinedPlayers.add(player);
         }
 
@@ -130,8 +130,15 @@ public class ChatChannel {
             entityData.removeTag(NBT_KEY_CHANNEL_DATA);
         }
 
+        ST leaveTemplate = bindDefaultParameters(player, new ST(leaveNotificationFormat));
+        String renderedMessage = renderInternalMessage(leaveTemplate);
+
         synchronized (joinedPlayers) {
             joinedPlayers.remove(player);
+
+            for(EntityPlayer onlinePlayer : joinedPlayers) {
+                onlinePlayer.addChatMessage(new ChatComponentText(renderedMessage));
+            }
         }
 
         logger.info("Player {} left channel {}", player.getDisplayName(), channelId);
@@ -139,15 +146,28 @@ public class ChatChannel {
         player.addChatMessage(new ChatComponentText(formatChatString("&cYou left the \"&4" + channelName + "&c\" channel!")));
     }
 
-    void deathOrDisconnect(EntityPlayer player) {
+    void deathOrDisconnect(EntityPlayer player, boolean disconnect) {
         synchronized (joinedPlayers) {
             joinedPlayers.remove(player);
+
+            if(disconnect) {
+                ST leaveTemplate = bindDefaultParameters(player, new ST(leaveNotificationFormat));
+                String renderedMessage = renderInternalMessage(leaveTemplate);
+
+                synchronized (joinedPlayers) {
+                    joinedPlayers.remove(player);
+
+                    for(EntityPlayer onlinePlayer : joinedPlayers) {
+                        onlinePlayer.addChatMessage(new ChatComponentText(renderedMessage));
+                    }
+                }
+            }
         }
     }
 
     void onPlayerRespawn(EntityPlayer player) {
         synchronized (joinedPlayers) {
-            if(joinedPlayers.contains(player)) {
+            if (joinedPlayers.contains(player)) {
                 return;
             }
 
@@ -159,15 +179,54 @@ public class ChatChannel {
     }
 
     static void reloadFormatting() {
+        chatFormat = getKeyOrSetDefault("format", chatFormat, Property.Type.STRING);
+        joinNotificationFormat = getKeyOrSetDefault("joinNotification", joinNotificationFormat, Property.Type.STRING);
+        leaveNotificationFormat = getKeyOrSetDefault("leaveNotification", leaveNotificationFormat, Property.Type.STRING);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> T getKeyOrSetDefault(String key, T defaultValue, Property.Type propertyType) {
         ABOEChat.getInstance().getConfiguration().load();
         ConfigCategory chatCategory = ABOEChat.getInstance().getConfiguration().getCategory(CATEGORY_CHAT_SETTINGS);
-        if (!chatCategory.containsKey("format")) {
-            chatFormat = "<prefix> &r<display_name>&r > <message>";
-            chatCategory.put("format", new Property("format", chatFormat, Property.Type.STRING));
+
+        if (!chatCategory.containsKey(key)) {
+            chatCategory.put(key, new Property(key, defaultValue.toString(), propertyType));
             ABOEChat.getInstance().getConfiguration().save();
-        } else {
-            chatFormat = chatCategory.get("format").getString();
+
+            return defaultValue;
         }
+
+        Property property = chatCategory.get(key);
+        switch (propertyType) {
+            case DOUBLE:
+                return (T) (Double) property.getDouble();
+            case STRING:
+                return (T) property.getString();
+            case BOOLEAN:
+                return (T) (Boolean) property.getBoolean();
+            case INTEGER:
+                return (T) (Integer) property.getInt();
+            default:
+                return defaultValue;
+        }
+    }
+
+    private ST bindDefaultParameters(EntityPlayer player, ST template) {
+        template.add("username", player.getGameProfile().getName());
+        template.add("display_name", formatChatString(chatMod.getPermissionProvider().getDisplayName(player)));
+        template.add("group", chatMod.getPermissionProvider().getGroup(player));
+        template.add("channel_name", channelName);
+        template.add("channel_id", channelId);
+        template.add("prefix", formatChatString(chatMod.getPermissionProvider().getPrefix(player)));
+        template.add("suffix", formatChatString(chatMod.getPermissionProvider().getSuffix(player)));
+
+        return template;
+    }
+
+    private String renderInternalMessage(ST template) {
+        String message = template.render();
+        message = formatChatString(message);
+        return message.replaceAll(" +", " ").trim();
     }
 
     public List<EntityPlayer> getOnlinePlayers() {

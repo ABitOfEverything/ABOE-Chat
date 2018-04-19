@@ -64,7 +64,6 @@ public class ForgeEssentialsPermissionProvider implements PermissionProvider {
 
     @Override
     public void registerPermission(String permission, PermissionLevel permissionLevel) {
-        System.out.printf("registering: %s\n", permission);
         PermissionManager.registerPermission(permission, net.minecraftforge.permission.PermissionLevel.fromInteger(permissionLevel.ordinal()));
     }
 

@@ -100,7 +100,7 @@ public class ChatChannelManager {
     public void onPlayerDisconnectServer(PlayerEvent.PlayerLoggedOutEvent event) {
         Optional<ChatChannel> playerChannel = getChannelForPlayer(event.player);
         if (playerChannel.isPresent()) {
-            playerChannel.get().deathOrDisconnect(event.player);
+            playerChannel.get().deathOrDisconnect(event.player, true);
         }
     }
 
@@ -126,7 +126,7 @@ public class ChatChannelManager {
 
         Optional<ChatChannel> oldChannel = getChannelForPlayer(original);
         if(oldChannel.isPresent()) {
-            oldChannel.get().deathOrDisconnect(original);
+            oldChannel.get().deathOrDisconnect(original, false);
             oldChannel.get().onPlayerRespawn(newPlayer);
 
             System.out.println("reconnected!");
