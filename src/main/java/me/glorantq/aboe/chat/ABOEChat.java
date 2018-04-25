@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = "aboe-chat", name = "ABOE Chat", version = ABOEChat.MOD_VERSION, canBeDeactivated = true, acceptableRemoteVersions = "*")
 public class ABOEChat {
-    static final String MOD_VERSION = "1.6.1";
+    static final String MOD_VERSION = "1.7.0";
 
     private static ABOEChat INSTANCE;
     public static ABOEChat getInstance() {
