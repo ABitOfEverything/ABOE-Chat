@@ -51,23 +51,17 @@ public class ModifiedGuiChat extends GuiChat {
                 return;
             }
 
-            List<GuiPlayerInfo> onlinePlayers = Minecraft.getMinecraft().thePlayer.sendQueue.playerInfoList; // GuiIngame#L441
-
-            System.out.println(chatText);
+            List<GuiPlayerInfo> onlinePlayers = Minecraft.getMinecraft().thePlayer.sendQueue.playerInfoList;
 
             int wordStart = inputField.getNthWordFromCursor(-1);
 
             int substringStart = wordStart + 1;
             int substringEnd = Math.min(chatText.length(), inputField.getCursorPosition());
 
-            System.out.printf("%d %d %d\n", substringStart, substringEnd, inputField.getCursorPosition());
-
             if (substringStart > substringEnd) {
                 drawPlayerTooltip = false;
             } else {
                 currentPlayerName = chatText.substring(substringStart, substringEnd).trim();
-
-                System.out.println(currentPlayerName);
 
                 bestNameMatch = "";
                 if (currentPlayerName.length() > 0) {

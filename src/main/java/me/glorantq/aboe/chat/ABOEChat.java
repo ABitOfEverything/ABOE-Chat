@@ -10,6 +10,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.relauncher.Side;
 import lombok.Getter;
 import me.glorantq.aboe.chat.client.chat.ChatGUIInjector;
+import me.glorantq.aboe.chat.client.commands.emotes.EmoteHandler;
 import me.glorantq.aboe.chat.server.channels.ChatChannelManager;
 import me.glorantq.aboe.chat.server.commands.ChannelAdminCommand;
 import me.glorantq.aboe.chat.server.commands.ChannelInfoCommand;
@@ -35,6 +36,7 @@ public class ABOEChat {
     private final Logger logger = LogManager.getLogger("ABOE-Chat");
 
     private @Getter ChatGUIInjector chatGUIInjector = null;
+    private @Getter EmoteHandler emoteHandler = null;
     private @Getter ChatChannelManager chatChannelManager = null;
     private @Getter PermissionProvider permissionProvider;
 
@@ -50,6 +52,7 @@ public class ABOEChat {
         if(FMLCommonHandler.instance().getSide() == Side.CLIENT) {
             logger.info("Started on a client, instantiating ChatGUIInjector...");
             chatGUIInjector = new ChatGUIInjector();
+            emoteHandler = new EmoteHandler();
         }
 
         if(FMLCommonHandler.instance().getSide() == Side.SERVER) {

@@ -9,15 +9,23 @@ import net.minecraft.util.ChatComponentText;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class EmoteCommand extends ABOEClientCommand {
+public class EmoteCommand extends ABOEClientCommand {
+    private final String emoteName;
+    private final String emote;
+
+    public EmoteCommand(String emoteName, String emote) {
+        this.emoteName = emoteName;
+        this.emote = emote;
+    }
+
     @Override
     public String getCommandName() {
-        return getEmoteName();
+        return emoteName;
     }
 
     @Override
     public String getCommandUsage(ICommandSender p_71518_1_) {
-        return "/" + getEmoteName();
+        return "/" + emoteName;
     }
 
     @Override
@@ -32,14 +40,11 @@ public abstract class EmoteCommand extends ABOEClientCommand {
             return;
         }
 
-        Minecraft.getMinecraft().thePlayer.sendChatMessage(getEmote());
+        Minecraft.getMinecraft().thePlayer.sendChatMessage(emote);
     }
 
     @Override
     public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
         return new ArrayList();
     }
-
-    public abstract String getEmoteName();
-    public abstract String getEmote();
 }

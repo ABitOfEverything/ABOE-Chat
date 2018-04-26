@@ -4,9 +4,11 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
 import me.glorantq.aboe.chat.client.commands.MentionLevelCommand;
-import me.glorantq.aboe.chat.client.commands.emotes.TableFlipEmote;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.*;
+import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.gui.GuiIngame;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiNewChat;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -44,7 +46,6 @@ public class ChatGUIInjector {
         }
 
         ClientCommandHandler.instance.registerCommand(new MentionLevelCommand());
-        ClientCommandHandler.instance.registerCommand(new TableFlipEmote());
 
         logger.info("Initialised!");
     }
