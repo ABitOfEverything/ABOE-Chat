@@ -94,13 +94,13 @@ public class ModifiedGuiNewChat extends GuiNewChat {
     }
 
     private List<PlayerMention> getMentions(IChatComponent chatComponent) {
-        String unformatted = chatComponent.getFormattedText();
+        String unformatted = chatComponent.getFormattedText().toLowerCase();
         List<PlayerMention> mentions = new LinkedList<>();
 
         int index = -1;
 
         if(injector.getMentionLevel().ordinal() >= ChatGUIInjector.MentionLevel.PLAYER.ordinal()) {
-            String username = Minecraft.getMinecraft().getSession().getUsername();
+            String username = Minecraft.getMinecraft().getSession().getUsername().toLowerCase();
 
             do {
                 index = unformatted.indexOf("@" + username, index + 1);

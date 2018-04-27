@@ -4,13 +4,13 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.relauncher.Side;
 import lombok.Getter;
 import me.glorantq.aboe.chat.client.chat.ChatGUIInjector;
 import me.glorantq.aboe.chat.client.commands.emotes.EmoteHandler;
+import me.glorantq.aboe.chat.server.api.RestAPI;
 import me.glorantq.aboe.chat.server.channels.ChatChannelManager;
 import me.glorantq.aboe.chat.server.commands.ChannelAdminCommand;
 import me.glorantq.aboe.chat.server.commands.ChannelInfoCommand;
@@ -38,7 +38,8 @@ public class ABOEChat {
     private @Getter ChatGUIInjector chatGUIInjector = null;
     private @Getter EmoteHandler emoteHandler = null;
     private @Getter ChatChannelManager chatChannelManager = null;
-    private @Getter PermissionProvider permissionProvider;
+    private @Getter PermissionProvider permissionProvider = null;
+    private @Getter RestAPI restAPI = null;
 
     private @Getter Configuration configuration;
 
@@ -58,6 +59,7 @@ public class ABOEChat {
         if(FMLCommonHandler.instance().getSide() == Side.SERVER) {
             logger.info("Started on a server, instantiating ChatChannelManager...");
             chatChannelManager = new ChatChannelManager();
+            restAPI = new RestAPI();
         }
     }
 
@@ -94,10 +96,5 @@ public class ABOEChat {
         commandManager.registerCommand(new ChannelInfoCommand());
         commandManager.registerCommand(new ChannelAdminCommand());
         commandManager.registerCommand(new ReloadCommand());
-    }
-
-    @Mod.EventHandler
-    public void onModPostInit(FMLPostInitializationEvent event) {
-
     }
 }
