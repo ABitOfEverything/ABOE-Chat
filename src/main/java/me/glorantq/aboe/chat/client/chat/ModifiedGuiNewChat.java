@@ -28,7 +28,7 @@ public class ModifiedGuiNewChat extends GuiNewChat {
     private Field _field_146250_j;
     private Field _field_146251_k;
 
-    ModifiedGuiNewChat(Minecraft p_i1022_1_) {
+    public ModifiedGuiNewChat(Minecraft p_i1022_1_) {
         super(p_i1022_1_);
 
         this.mc = p_i1022_1_;
@@ -211,7 +211,7 @@ public class ModifiedGuiNewChat extends GuiNewChat {
                             if (opacity > 3) {
                                 byte b0 = 0;
                                 int j2 = -j1 * 9;
-                                drawRect(b0, j2 - 9, b0 + i1 + 4, j2, (isMentioned(chatline.func_151461_a()) > 0 ? 0xF9A825 : 0x000000) + (opacity / 2 << 24));
+                                drawRect(b0, j2 - 9, b0 + i1 + 4, j2, (isMentioned(chatline.func_151461_a()) > 0 ? 0xF9A825 : 0x000000) + (opacity / 2 << 24)); // @glorantq
                                 GL11.glEnable(GL11.GL_BLEND); // FORGE: BugFix MC-36812 Chat Opacity Broken in 1.7.x
                                 String s = chatline.func_151461_a().getFormattedText().replaceAll("\ufeff", "");
                                 mc.fontRenderer.drawStringWithShadow(s, b0, j2 - 8, 0xFFFFFF + (opacity << 24));
