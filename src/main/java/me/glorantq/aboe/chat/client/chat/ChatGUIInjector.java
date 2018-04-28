@@ -3,7 +3,7 @@ package me.glorantq.aboe.chat.client.chat;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
-import me.glorantq.aboe.chat.client.backport.ModifiedGUIIngame;
+import me.glorantq.aboe.chat.client.backport.ModifiedGUIngameForge;
 import me.glorantq.aboe.chat.client.commands.MentionLevelCommand;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
@@ -82,7 +82,7 @@ public class ChatGUIInjector {
         }
 
         if (event.gui instanceof GuiMainMenu && !replacedNewGuiChat) {
-            Minecraft.getMinecraft().ingameGUI = new ModifiedGUIIngame(Minecraft.getMinecraft());
+            Minecraft.getMinecraft().ingameGUI = new ModifiedGUIngameForge(Minecraft.getMinecraft());
 
             try {
                 Class<GuiIngame> guiIngameClass = GuiIngame.class;
