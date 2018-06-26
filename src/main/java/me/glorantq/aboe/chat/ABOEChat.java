@@ -71,7 +71,7 @@ public class ABOEChat {
         if(FMLCommonHandler.instance().getSide() == Side.SERVER) {
             logger.info("Started on a server, instantiating ChatChannelManager...");
             chatChannelManager = new ChatChannelManager();
-            restAPI = new RestAPI();
+            // restAPI = new RestAPI();
         }
 
         simpleNetworkWrapper.registerMessage(ClientChannelManager.PacketChannelListHandler.class, PacketChannelList.class, 0, Side.CLIENT);

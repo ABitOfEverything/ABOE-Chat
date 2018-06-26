@@ -20,12 +20,14 @@ import org.stringtemplate.v4.ST;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ChatChannel {
     private static final String CATEGORY_CHAT_SETTINGS = "Chat";
     static final String NBT_KEY_CHANNEL_DATA = "current_chat_channel";
 
-    private static String chatFormat = "&8<channel> &r\\<<display_name>\\> <message>";
+    private static String chatFormat = "&8<channel> &r<<display_name>\\> <message>";
     private static String joinNotificationFormat = "&2<display_name> &ahas joined the channel!";
     private static String leaveNotificationFormat = "&4<display_name> &chas left the channel!";
 
@@ -38,11 +40,14 @@ public class ChatChannel {
 
     private final List<EntityPlayer> joinedPlayers = new ArrayList<>();
 
+    private final Pattern colourCodeCleanPattern;
+
     ChatChannel(String id, String name) {
         this.channelId = id;
         this.channelName = name;
 
         this.logger = LogManager.getLogger("Channel-" + channelId);
+        this.colourCodeCleanPattern = Pattern.compile("(?<code1>(?>\u00a7[0-9a-fk-or])+) +(?<code2>(?>\u00a7[0-9a-fk-or])+) *");
 
         reloadFormatting();
 
@@ -60,6 +65,16 @@ public class ChatChannel {
         }
 
         renderedMessage = renderedMessage.replaceAll(" +", " ").trim();
+        Matcher matcher;
+
+        while((matcher = colourCodeCleanPattern.matcher(renderedMessage)).find()) {
+            String code1 = matcher.group("code1");
+            String code2 = matcher.group("code2");
+
+            String full = matcher.group();
+
+            renderedMessage = renderedMessage.replaceAll(full, code1 + code2);
+        }
 
         if (renderedMessage.contains("@everyone") && !chatMod.getPermissionProvider().hasPermission(player, "aboechat.mention.everyone")) {
             List<PlayerMention> mentions = getMentions(renderedMessage, "everyone");

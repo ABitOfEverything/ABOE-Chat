@@ -41,7 +41,8 @@ ext {
 }
 
 repositories {
-
+    maven { url "http://repo.spongepowered.org/maven" }
+    maven { url "http://maven.sk89q.com/repo/"}
 }
 
 configurations {
@@ -55,7 +56,7 @@ dependencies {
     embed "org.antlr:ST4:$st4_version"
     embed "com.sparkjava:spark-core:$spark_version"
     embed "com.cedarsoftware:json-io:$jsonio_version"
-    embed "org.slf4j:slf4j-api:$slf4j_version"
+    // Sembed "org.slf4j:slf4j-api:$slf4j_version"
 
     //compile fileTree(dir: 'libs', include: ['*.jar']) // Use in release
     compile group: "com.forgeessentials", name: "forgeessentials", version: "1.4.4-SNAPSHOT", classifier: "dev", changing: true // Use when debugging
