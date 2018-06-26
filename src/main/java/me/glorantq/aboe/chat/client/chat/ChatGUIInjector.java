@@ -29,8 +29,9 @@ public class ChatGUIInjector {
 
     private Configuration configuration = ABOEChat.getInstance().getConfiguration();
     private ConfigCategory mentionSettingsCategory = configuration.getCategory(CATEGORY_MENTION_SETTIGNS);
-    private @Getter
-    MentionLevel mentionLevel = MentionLevel.EVERYONE;
+    private @Getter MentionLevel mentionLevel = MentionLevel.EVERYONE;
+
+    private @Getter ModifiedGuiNewChat modifiedGuiNewChat = null;
 
     public ChatGUIInjector() {
         logger.info("ChatGUIInjector loaded!");
@@ -104,7 +105,8 @@ public class ChatGUIInjector {
 
                 chatGuiField.setAccessible(true);
 
-                chatGuiField.set(Minecraft.getMinecraft().ingameGUI, new ModifiedGuiNewChat(Minecraft.getMinecraft()));
+                this.modifiedGuiNewChat = new ModifiedGuiNewChat(Minecraft.getMinecraft());
+                chatGuiField.set(Minecraft.getMinecraft().ingameGUI, this.modifiedGuiNewChat);
             } catch (Exception e) {
                 logger.error("Failed to replace persistentChatGui in GuiIngame!", e);
                 return;

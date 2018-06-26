@@ -4,6 +4,9 @@ import com.google.common.base.Optional;
 import lombok.Data;
 import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.common.PacketChannelChanged;
+import me.glorantq.aboe.chat.common.PacketChannelList;
+import me.glorantq.aboe.chat.common.PacketUserMentioned;
 import me.glorantq.aboe.chat.server.permissions.PermissionProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -59,12 +62,29 @@ public class ChatChannel {
         renderedMessage = renderedMessage.replaceAll(" +", " ").trim();
 
         if (renderedMessage.contains("@everyone") && !chatMod.getPermissionProvider().hasPermission(player, "aboechat.mention.everyone")) {
-            List<PlayerMention> mentions = getMentions(renderedMessage);
+            List<PlayerMention> mentions = getMentions(renderedMessage, "everyone");
             for (int i = 0; i < mentions.size(); i++) {
                 String before = renderedMessage.substring(0, mentions.get(i).index + i + 1);
                 String after = renderedMessage.substring(mentions.get(i).index + i + 1, renderedMessage.length());
 
                 renderedMessage = before + "\ufeff" + after;
+            }
+        } else if(renderedMessage.contains("@everyone")) {
+            synchronized (joinedPlayers) {
+                for(EntityPlayer entityPlayer : joinedPlayers) {
+                    PacketUserMentioned packetUserMentioned = new PacketUserMentioned(player.getGameProfile().getName(), message, true);
+                    chatMod.getSimpleNetworkWrapper().sendTo(packetUserMentioned, (EntityPlayerMP) entityPlayer);
+                }
+            }
+        }
+
+        synchronized (joinedPlayers) {
+            for (EntityPlayer entityPlayer : joinedPlayers) {
+                List<PlayerMention> mentions = getMentions(renderedMessage, entityPlayer.getGameProfile().getName());
+                if(mentions.size() > 0) {
+                    PacketUserMentioned packetUserMentioned = new PacketUserMentioned(player.getGameProfile().getName(), message, false);
+                    chatMod.getSimpleNetworkWrapper().sendTo(packetUserMentioned, (EntityPlayerMP) entityPlayer);
+                }
             }
         }
 
@@ -110,6 +130,13 @@ public class ChatChannel {
             }
 
             joinedPlayers.add(player);
+            PacketChannelChanged channelChanged = new PacketChannelChanged(channelId);
+            chatMod.getSimpleNetworkWrapper().sendTo(channelChanged, (EntityPlayerMP) player);
+
+            for(EntityPlayer player0 : joinedPlayers) {
+                PacketChannelList channelList = new PacketChannelList(chatChannelManager.getClientChannels((EntityPlayerMP) player0));
+                chatMod.getSimpleNetworkWrapper().sendTo(channelList, (EntityPlayerMP) player0);
+            }
         }
 
         player.addChatMessage(new ChatComponentText(formatChatString("&aYou are now talking in \"&2" + channelName + "&a\"!")));
@@ -138,7 +165,15 @@ public class ChatChannel {
 
             for(EntityPlayer onlinePlayer : joinedPlayers) {
                 onlinePlayer.addChatMessage(new ChatComponentText(renderedMessage));
+
+                PacketChannelList channelList = new PacketChannelList(chatChannelManager.getClientChannels((EntityPlayerMP) onlinePlayer));
+                chatMod.getSimpleNetworkWrapper().sendTo(channelList, (EntityPlayerMP) onlinePlayer);
             }
+
+            PacketChannelChanged channelChanged = new PacketChannelChanged("None");
+            PacketChannelList channelList = new PacketChannelList(chatChannelManager.getClientChannels((EntityPlayerMP) player));
+            chatMod.getSimpleNetworkWrapper().sendTo(channelChanged, (EntityPlayerMP) player);
+            chatMod.getSimpleNetworkWrapper().sendTo(channelList, (EntityPlayerMP) player);
         }
 
         logger.info("Player {} left channel {}", player.getDisplayName(), channelId);
@@ -237,13 +272,13 @@ public class ChatChannel {
         return chatMod.getPermissionProvider().hasPermission(entityPlayer, "aboechat.channels." + channelId);
     }
 
-    private List<PlayerMention> getMentions(String unformatted) {
+    private List<PlayerMention> getMentions(String unformatted, String playerName) {
         List<PlayerMention> mentions = new ArrayList<>();
 
         int index = -1;
 
         do {
-            index = unformatted.indexOf("@everyone", index + 1);
+            index = unformatted.indexOf("@" + playerName, index + 1);
             if (index > 0) {
                 mentions.add(new PlayerMention(index));
             }

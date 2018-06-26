@@ -4,9 +4,16 @@ import com.google.common.base.Optional;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import lombok.Getter;
 import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.client.channels.ClientChatChannel;
+import me.glorantq.aboe.chat.common.PacketChangeChannel;
+import me.glorantq.aboe.chat.common.PacketChangeChannelResponse;
+import me.glorantq.aboe.chat.common.PacketChannelList;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.MinecraftForge;
@@ -76,6 +83,9 @@ public class ChatChannelManager {
 
     @SubscribeEvent
     public void onPlayerJoinServer(PlayerEvent.PlayerLoggedInEvent event) {
+        PacketChannelList channelList = new PacketChannelList(getClientChannels((EntityPlayerMP) event.player));
+        ABOEChat.getInstance().getSimpleNetworkWrapper().sendTo(channelList, (EntityPlayerMP) event.player);
+
         NBTTagCompound entityData = event.player.getEntityData();
 
         if (entityData.hasKey(ChatChannel.NBT_KEY_CHANNEL_DATA)) {
@@ -213,5 +223,38 @@ public class ChatChannelManager {
 
     public ChatChannel getDefaultChannel() {
         return defaultChannel;
+    }
+
+    public static class PacketChangeChannelHandler implements IMessageHandler<PacketChangeChannel, PacketChangeChannelResponse> {
+        private final ChatChannelManager channelManager = ABOEChat.getInstance().getChatChannelManager();
+
+        @Override
+        public PacketChangeChannelResponse onMessage(PacketChangeChannel message, MessageContext ctx) {
+            Optional<ChatChannel> channelOptional = channelManager.getChannel(message.getNewChannel());
+            if(!channelOptional.isPresent()) {
+                return new PacketChangeChannelResponse(false, "Invalid channel", channelManager.getClientChannels(ctx.getServerHandler().playerEntity));
+            }
+
+            ChatChannel chatChannel = channelOptional.get();
+
+            boolean joined = chatChannel.join(ctx.getServerHandler().playerEntity);
+            if(!joined) {
+                return new PacketChangeChannelResponse(false, "Failed to join", channelManager.getClientChannels(ctx.getServerHandler().playerEntity));
+            }
+
+            return new PacketChangeChannelResponse(true, "Changed", channelManager.getClientChannels(ctx.getServerHandler().playerEntity));
+        }
+    }
+
+    List<ClientChatChannel> getClientChannels(EntityPlayerMP sender) {
+        List<ClientChatChannel> chatChannels = new ArrayList<>();
+        synchronized (channels) {
+            for(Map.Entry<String, ChatChannel> entry : channels.entrySet()) {
+                ChatChannel channel = entry.getValue();
+                chatChannels.add(new ClientChatChannel(channel.getChannelId(), channel.getOnlinePlayers().size(), channel.canJoin(sender)));
+            }
+        }
+
+        return chatChannels;
     }
 }

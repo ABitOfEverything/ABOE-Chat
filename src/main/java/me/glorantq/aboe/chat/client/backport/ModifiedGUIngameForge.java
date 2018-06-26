@@ -1,5 +1,7 @@
 package me.glorantq.aboe.chat.client.backport;
 
+import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.client.channels.ClientChatChannel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiPlayerInfo;
 import net.minecraft.client.network.NetHandlerPlayClient;
@@ -18,6 +20,22 @@ public class ModifiedGUIngameForge extends GuiIngameForge {
     @Override
     protected void renderPlayerList(int width, int height) {
         ScoreObjective scoreobjective = this.mc.theWorld.getScoreboard().func_96539_a(0);
+
+        List<ClientChatChannel> chatChannels = ABOEChat.getInstance().getClientChannelManager().getAvailableChannels();
+        int largestSize = -1;
+        for(ClientChatChannel channel : chatChannels) {
+            int width0 = mc.fontRenderer.getStringWidth(channel.getName() + " (" + channel.getConnectedUsers() + ")");
+            if(width0 > largestSize) {
+                largestSize = width0;
+            }
+        }
+        drawRect(0, 0, largestSize + 10, 10 + mc.fontRenderer.FONT_HEIGHT * (2 + chatChannels.size()), 0xAA000000);
+        int index = 2;
+        drawString(mc.fontRenderer, "#" + ABOEChat.getInstance().getClientChannelManager().getCurrentChannel(), 5, 5, 0x00FFFF);
+        for(ClientChatChannel channel : chatChannels) {
+            drawString(mc.fontRenderer, channel.getName() + " (" + channel.getConnectedUsers() + ")", 5, 5 + index * mc.fontRenderer.FONT_HEIGHT, (channel.isCanConnect() ? 0x00FF00 : 0xFF0000));
+            index++;
+        }
 
         if (this.mc.gameSettings.keyBindPlayerList.getIsKeyPressed() && (!this.mc.isIntegratedServerRunning() || this.mc.thePlayer.sendQueue.playerInfoList.size() > 1 || scoreobjective != null)) {
             this.mc.mcProfiler.startSection("playerList");

@@ -6,10 +6,16 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import lombok.Getter;
+import me.glorantq.aboe.chat.client.channels.ClientChannelManager;
+import me.glorantq.aboe.chat.client.channels.ClientChatChannel;
 import me.glorantq.aboe.chat.client.chat.ChatGUIInjector;
+import me.glorantq.aboe.chat.client.chat.ModifiedGuiNewChat;
 import me.glorantq.aboe.chat.client.commands.emotes.EmoteHandler;
+import me.glorantq.aboe.chat.common.*;
 import me.glorantq.aboe.chat.server.api.RestAPI;
 import me.glorantq.aboe.chat.server.channels.ChatChannelManager;
 import me.glorantq.aboe.chat.server.commands.ChannelAdminCommand;
@@ -38,8 +44,11 @@ public class ABOEChat {
     private @Getter ChatGUIInjector chatGUIInjector = null;
     private @Getter EmoteHandler emoteHandler = null;
     private @Getter ChatChannelManager chatChannelManager = null;
+    private @Getter ClientChannelManager clientChannelManager = null;
     private @Getter PermissionProvider permissionProvider = null;
     private @Getter RestAPI restAPI = null;
+
+    private @Getter SimpleNetworkWrapper simpleNetworkWrapper = null;
 
     private @Getter Configuration configuration;
 
@@ -50,10 +59,13 @@ public class ABOEChat {
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configuration.load();
 
+        simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("ABOE-Chat");
+
         if(FMLCommonHandler.instance().getSide() == Side.CLIENT) {
             logger.info("Started on a client, instantiating ChatGUIInjector...");
             chatGUIInjector = new ChatGUIInjector();
             emoteHandler = new EmoteHandler();
+            clientChannelManager = new ClientChannelManager();
         }
 
         if(FMLCommonHandler.instance().getSide() == Side.SERVER) {
@@ -61,6 +73,12 @@ public class ABOEChat {
             chatChannelManager = new ChatChannelManager();
             restAPI = new RestAPI();
         }
+
+        simpleNetworkWrapper.registerMessage(ClientChannelManager.PacketChannelListHandler.class, PacketChannelList.class, 0, Side.CLIENT);
+        simpleNetworkWrapper.registerMessage(ClientChannelManager.PacketChangeChannelResponseHandler.class, PacketChangeChannelResponse.class, 1, Side.CLIENT);
+        simpleNetworkWrapper.registerMessage(ClientChannelManager.PacketChannelChangedHandler.class, PacketChannelChanged.class, 2, Side.CLIENT);
+        simpleNetworkWrapper.registerMessage(ChatChannelManager.PacketChangeChannelHandler.class, PacketChangeChannel.class, 3, Side.SERVER);
+        simpleNetworkWrapper.registerMessage(ModifiedGuiNewChat.PacketUserMentionedHandler.class, PacketUserMentioned.class, 4, Side.CLIENT);
     }
 
     @Mod.EventHandler

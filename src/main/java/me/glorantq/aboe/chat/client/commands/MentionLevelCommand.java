@@ -30,6 +30,7 @@ public class MentionLevelCommand extends ABOEClientCommand {
         if (args.length < 1) {
             ChatGUIInjector.MentionLevel mentionLevel = ABOEChat.getInstance().getChatGUIInjector().getMentionLevel();
             sendMessage(sender, "&aYour mentions settings are set to \"&2" + mentionLevel.name() + "&a\"!");
+
             return;
         }
 

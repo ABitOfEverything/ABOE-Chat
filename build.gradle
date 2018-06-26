@@ -22,13 +22,13 @@ version = "1.7.2"
 group = "me.glorantq"
 archivesBaseName = "aboe-chat"
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse"
 }
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 ext {
     lombok_version = "1.16.20"
@@ -37,6 +37,7 @@ ext {
     st4_version = "4.0.8"
     spark_version = "2.7.2"
     jsonio_version = "4.10.0"
+    slf4j_version = "1.8.0-beta2"
 }
 
 repositories {
@@ -54,9 +55,10 @@ dependencies {
     embed "org.antlr:ST4:$st4_version"
     embed "com.sparkjava:spark-core:$spark_version"
     embed "com.cedarsoftware:json-io:$jsonio_version"
+    embed "org.slf4j:slf4j-api:$slf4j_version"
 
-    compile fileTree(dir: 'libs', include: ['*.jar']) // Use in release
-    //compile group: "com.forgeessentials", name: "forgeessentials", version: "1.4.4-SNAPSHOT", classifier: "dev", changing: true // Use when debugging
+    //compile fileTree(dir: 'libs', include: ['*.jar']) // Use in release
+    compile group: "com.forgeessentials", name: "forgeessentials", version: "1.4.4-SNAPSHOT", classifier: "dev", changing: true // Use when debugging
 }
 
 jar {

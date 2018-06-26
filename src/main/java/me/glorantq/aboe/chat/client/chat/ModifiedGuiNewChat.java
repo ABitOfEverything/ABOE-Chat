@@ -1,9 +1,13 @@
 package me.glorantq.aboe.chat.client.chat;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import lombok.Data;
 import me.glorantq.aboe.chat.ABOEChat;
+import me.glorantq.aboe.chat.common.PacketUserMentioned;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ChatLine;
 import net.minecraft.client.gui.GuiNewChat;
@@ -15,6 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 
+import javax.swing.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -257,5 +262,33 @@ public class ModifiedGuiNewChat extends GuiNewChat {
 
     private enum MentionType {
         EVERYONE, PLAYER
+    }
+
+    private void onPlayerMentioned(final String mentioningPlayer, final String message, boolean isEveryoneMention) {
+        if(injector.getMentionLevel() != ChatGUIInjector.MentionLevel.EVERYONE && isEveryoneMention) {
+            return;
+        }
+
+        if(injector.getMentionLevel() == ChatGUIInjector.MentionLevel.NONE) {
+            return;
+        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "Mention by @" + mentioningPlayer + ": " + message, "New Mention", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }).start();
+
+        System.out.println(message);
+    }
+
+    public static class PacketUserMentionedHandler implements IMessageHandler<PacketUserMentioned, IMessage> {
+        @Override
+        public IMessage onMessage(PacketUserMentioned message, MessageContext ctx) {
+            ABOEChat.getInstance().getChatGUIInjector().getModifiedGuiNewChat().onPlayerMentioned(message.getMentioningUser(), message.getMessage(), message.isEveryoneMention());
+
+            return null;
+        }
     }
 }

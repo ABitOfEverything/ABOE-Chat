@@ -47,7 +47,7 @@ public class ChannelInfoCommand extends ABOECommand {
                 return;
             }
 
-            String infoString = String.format("&aYou are currently talking in \"&2%s&a\" with &2%d &aother users!", playerChannel.get().getChannelName(), playerChannel.get().getOnlinePlayers().size());
+            String infoString = String.format("&aYou are currently talking in \"&2%s&a\" with &2%d &aother users!", playerChannel.get().getChannelName(), playerChannel.get().getOnlinePlayers().size() - 1);
             sendMessage(player, infoString);
             return;
         }
