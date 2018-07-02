@@ -1,0 +1,20 @@
+{
+  "ident": "(87ddd03f-c282-3297-9821-6edc7430635f|glorantq)",
+  "lastTeleportOrigin": {
+    "dim": 0,
+    "pitch": 41.100033,
+    "yaw": 151.8003,
+    "xd": 1.826229256683597,
+    "yd": 70.0,
+    "zd": 244.4120683254771
+  },
+  "lastTeleportTime": 1522787064841,
+  "selDim": 0,
+  "inventoryGroups": {},
+  "activeInventoryGroup": "default",
+  "timePlayed": 2560648,
+  "firstLogin": "Apr 2, 2018 9:23:37 PM",
+  "lastLogin": "Apr 4, 2018 7:49:37 AM",
+  "lastLogout": "Apr 4, 2018 7:50:44 AM",
+  "namedTimeout": {}
+}

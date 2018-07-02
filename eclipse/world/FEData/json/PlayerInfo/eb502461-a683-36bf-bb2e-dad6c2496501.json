@@ -1,0 +1,27 @@
+{
+  "ident": "(eb502461-a683-36bf-bb2e-dad6c2496501|Player309)",
+  "lastTeleportOrigin": {
+    "dim": 0,
+    "pitch": 54.75004,
+    "yaw": 66.149994,
+    "xd": -0.3844380662584932,
+    "yd": 67.0,
+    "zd": 196.5232067952242
+  },
+  "lastDeathLocation": {
+    "dim": 0,
+    "pitch": 54.75004,
+    "yaw": 66.149994,
+    "xd": -0.3844380662584932,
+    "yd": 67.0,
+    "zd": 196.5232067952242
+  },
+  "lastTeleportTime": 0,
+  "selDim": 0,
+  "inventoryGroups": {},
+  "activeInventoryGroup": "default",
+  "timePlayed": 0,
+  "firstLogin": "Apr 4, 2018 5:50:53 PM",
+  "lastLogin": "Apr 4, 2018 5:50:54 PM",
+  "namedTimeout": {}
+}

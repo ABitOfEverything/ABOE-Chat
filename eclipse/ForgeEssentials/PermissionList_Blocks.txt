@@ -1,0 +1,865 @@
+#// -------- PERMISSIONS LIST BLOCKS ------- \\#
+#// --------------- 02.07 00:21 ------------ \\#
+#// ----------- Total amount: 2146 --------- \\#
+#// ---------------------------------------- \\#
+fe.protection.break.*                                              # (default: true) Allow breaking blocks
+fe.protection.break.minecraft.acacia_stairs.*                      # (default: true) BREAK Acacia Wood Stairs
+fe.protection.break.minecraft.activator_rail.*                     # (default: true) BREAK Activator Rail
+fe.protection.break.minecraft.air.*                                # (default: true) BREAK tile.air.name
+fe.protection.break.minecraft.anvil.*                              # (default: true) BREAK Anvil
+fe.protection.break.minecraft.beacon.*                             # (default: true) BREAK Beacon
+fe.protection.break.minecraft.bed.*                                # (default: true) BREAK Bed
+fe.protection.break.minecraft.bedrock.*                            # (default: true) BREAK Bedrock
+fe.protection.break.minecraft.birch_stairs.*                       # (default: true) BREAK Birch Wood Stairs
+fe.protection.break.minecraft.bookshelf.*                          # (default: true) BREAK Bookshelf
+fe.protection.break.minecraft.brewing_stand.*                      # (default: true) BREAK tile.brewingStand.name
+fe.protection.break.minecraft.brick_block.*                        # (default: true) BREAK Bricks
+fe.protection.break.minecraft.brick_stairs.*                       # (default: true) BREAK Brick Stairs
+fe.protection.break.minecraft.brown_mushroom.*                     # (default: true) BREAK Mushroom
+fe.protection.break.minecraft.brown_mushroom_block.*               # (default: true) BREAK Mushroom
+fe.protection.break.minecraft.cactus.*                             # (default: true) BREAK Cactus
+fe.protection.break.minecraft.cake.*                               # (default: true) BREAK Cake
+fe.protection.break.minecraft.carpet.*                             # (default: true) BREAK tile.woolCarpet.name
+fe.protection.break.minecraft.carrots.*                            # (default: true) BREAK Carrots
+fe.protection.break.minecraft.cauldron.*                           # (default: true) BREAK Cauldron
+fe.protection.break.minecraft.chest.*                              # (default: true) BREAK Chest
+fe.protection.break.minecraft.clay.*                               # (default: true) BREAK Clay
+fe.protection.break.minecraft.coal_block.*                         # (default: true) BREAK Block of Coal
+fe.protection.break.minecraft.coal_ore.*                           # (default: true) BREAK Coal Ore
+fe.protection.break.minecraft.cobblestone.*                        # (default: true) BREAK Cobblestone
+fe.protection.break.minecraft.cobblestone_wall.*                   # (default: true) BREAK tile.cobbleWall.name
+fe.protection.break.minecraft.cocoa.*                              # (default: true) BREAK Cocoa
+fe.protection.break.minecraft.command_block.*                      # (default: true) BREAK Command Block
+fe.protection.break.minecraft.crafting_table.*                     # (default: true) BREAK Crafting Table
+fe.protection.break.minecraft.dark_oak_stairs.*                    # (default: true) BREAK Dark Oak Wood Stairs
+fe.protection.break.minecraft.daylight_detector.*                  # (default: true) BREAK Daylight Sensor
+fe.protection.break.minecraft.deadbush.*                           # (default: true) BREAK Dead Bush
+fe.protection.break.minecraft.detector_rail.*                      # (default: true) BREAK Detector Rail
+fe.protection.break.minecraft.diamond_block.*                      # (default: true) BREAK Block of Diamond
+fe.protection.break.minecraft.diamond_ore.*                        # (default: true) BREAK Diamond Ore
+fe.protection.break.minecraft.dirt.*                               # (default: true) BREAK tile.dirt.name
+fe.protection.break.minecraft.dispenser.*                          # (default: true) BREAK Dispenser
+fe.protection.break.minecraft.double_plant.*                       # (default: true) BREAK tile.doublePlant.name
+fe.protection.break.minecraft.double_stone_slab.*                  # (default: true) BREAK tile.stoneSlab.name
+fe.protection.break.minecraft.double_wooden_slab.*                 # (default: true) BREAK tile.woodSlab.name
+fe.protection.break.minecraft.dragon_egg.*                         # (default: true) BREAK Dragon Egg
+fe.protection.break.minecraft.dropper.*                            # (default: true) BREAK Dropper
+fe.protection.break.minecraft.emerald_block.*                      # (default: true) BREAK Block of Emerald
+fe.protection.break.minecraft.emerald_ore.*                        # (default: true) BREAK Emerald Ore
+fe.protection.break.minecraft.enchanting_table.*                   # (default: true) BREAK Enchantment Table
+fe.protection.break.minecraft.end_portal.*                         # (default: true) BREAK tile.null.name
+fe.protection.break.minecraft.end_portal_frame.*                   # (default: true) BREAK End Portal
+fe.protection.break.minecraft.end_stone.*                          # (default: true) BREAK End Stone
+fe.protection.break.minecraft.ender_chest.*                        # (default: true) BREAK Ender Chest
+fe.protection.break.minecraft.farmland.*                           # (default: true) BREAK Farmland
+fe.protection.break.minecraft.fence.*                              # (default: true) BREAK Fence
+fe.protection.break.minecraft.fence_gate.*                         # (default: true) BREAK Fence Gate
+fe.protection.break.minecraft.fire.*                               # (default: true) BREAK Fire
+fe.protection.break.minecraft.flower_pot.*                         # (default: true) BREAK tile.flowerPot.name
+fe.protection.break.minecraft.flowing_lava.*                       # (default: true) BREAK Lava
+fe.protection.break.minecraft.flowing_water.*                      # (default: true) BREAK Water
+fe.protection.break.minecraft.furnace.*                            # (default: true) BREAK Furnace
+fe.protection.break.minecraft.glass.*                              # (default: true) BREAK Glass
+fe.protection.break.minecraft.glass_pane.*                         # (default: true) BREAK Glass Pane
+fe.protection.break.minecraft.glowstone.*                          # (default: true) BREAK Glowstone
+fe.protection.break.minecraft.gold_block.*                         # (default: true) BREAK Block of Gold
+fe.protection.break.minecraft.gold_ore.*                           # (default: true) BREAK Gold Ore
+fe.protection.break.minecraft.golden_rail.*                        # (default: true) BREAK Powered Rail
+fe.protection.break.minecraft.grass.*                              # (default: true) BREAK Grass Block
+fe.protection.break.minecraft.gravel.*                             # (default: true) BREAK Gravel
+fe.protection.break.minecraft.hardened_clay.*                      # (default: true) BREAK Hardened Clay
+fe.protection.break.minecraft.hay_block.*                          # (default: true) BREAK Hay Bale
+fe.protection.break.minecraft.heavy_weighted_pressure_plate.*      # (default: true) BREAK Weighted Pressure Plate (Heavy)
+fe.protection.break.minecraft.hopper.*                             # (default: true) BREAK Hopper
+fe.protection.break.minecraft.ice.*                                # (default: true) BREAK Ice
+fe.protection.break.minecraft.iron_bars.*                          # (default: true) BREAK Iron Bars
+fe.protection.break.minecraft.iron_block.*                         # (default: true) BREAK Block of Iron
+fe.protection.break.minecraft.iron_door.*                          # (default: true) BREAK Iron Door
+fe.protection.break.minecraft.iron_ore.*                           # (default: true) BREAK Iron Ore
+fe.protection.break.minecraft.jukebox.*                            # (default: true) BREAK Jukebox
+fe.protection.break.minecraft.jungle_stairs.*                      # (default: true) BREAK Jungle Wood Stairs
+fe.protection.break.minecraft.ladder.*                             # (default: true) BREAK Ladder
+fe.protection.break.minecraft.lapis_block.*                        # (default: true) BREAK Lapis Lazuli Block
+fe.protection.break.minecraft.lapis_ore.*                          # (default: true) BREAK Lapis Lazuli Ore
+fe.protection.break.minecraft.lava.*                               # (default: true) BREAK Lava
+fe.protection.break.minecraft.leaves.*                             # (default: true) BREAK Leaves
+fe.protection.break.minecraft.leaves2.*                            # (default: true) BREAK Leaves
+fe.protection.break.minecraft.lever.*                              # (default: true) BREAK Lever
+fe.protection.break.minecraft.light_weighted_pressure_plate.*      # (default: true) BREAK Weighted Pressure Plate (Light)
+fe.protection.break.minecraft.lit_furnace.*                        # (default: true) BREAK Furnace
+fe.protection.break.minecraft.lit_pumpkin.*                        # (default: true) BREAK Jack o'Lantern
+fe.protection.break.minecraft.lit_redstone_lamp.*                  # (default: true) BREAK Redstone Lamp
+fe.protection.break.minecraft.lit_redstone_ore.*                   # (default: true) BREAK Redstone Ore
+fe.protection.break.minecraft.log.*                                # (default: true) BREAK Wood
+fe.protection.break.minecraft.log2.*                               # (default: true) BREAK Wood
+fe.protection.break.minecraft.melon_block.*                        # (default: true) BREAK Melon
+fe.protection.break.minecraft.melon_stem.*                         # (default: true) BREAK tile.pumpkinStem.name
+fe.protection.break.minecraft.mob_spawner.*                        # (default: true) BREAK Monster Spawner
+fe.protection.break.minecraft.monster_egg.*                        # (default: true) BREAK tile.monsterStoneEgg.name
+fe.protection.break.minecraft.mossy_cobblestone.*                  # (default: true) BREAK Moss Stone
+fe.protection.break.minecraft.mycelium.*                           # (default: true) BREAK Mycelium
+fe.protection.break.minecraft.nether_brick.*                       # (default: true) BREAK Nether Brick
+fe.protection.break.minecraft.nether_brick_fence.*                 # (default: true) BREAK Nether Brick Fence
+fe.protection.break.minecraft.nether_brick_stairs.*                # (default: true) BREAK Nether Brick Stairs
+fe.protection.break.minecraft.nether_wart.*                        # (default: true) BREAK Nether Wart
+fe.protection.break.minecraft.netherrack.*                         # (default: true) BREAK Netherrack
+fe.protection.break.minecraft.noteblock.*                          # (default: true) BREAK Note Block
+fe.protection.break.minecraft.oak_stairs.*                         # (default: true) BREAK Oak Wood Stairs
+fe.protection.break.minecraft.obsidian.*                           # (default: true) BREAK Obsidian
+fe.protection.break.minecraft.packed_ice.*                         # (default: true) BREAK Packed Ice
+fe.protection.break.minecraft.piston.*                             # (default: true) BREAK Piston
+fe.protection.break.minecraft.piston_extension.*                   # (default: true) BREAK tile.null.name
+fe.protection.break.minecraft.piston_head.*                        # (default: true) BREAK tile.null.name
+fe.protection.break.minecraft.planks.*                             # (default: true) BREAK Wooden Planks
+fe.protection.break.minecraft.portal.*                             # (default: true) BREAK Portal
+fe.protection.break.minecraft.potatoes.*                           # (default: true) BREAK Potatoes
+fe.protection.break.minecraft.powered_comparator.*                 # (default: true) BREAK tile.comparator.name
+fe.protection.break.minecraft.powered_repeater.*                   # (default: true) BREAK tile.diode.name
+fe.protection.break.minecraft.pumpkin.*                            # (default: true) BREAK Pumpkin
+fe.protection.break.minecraft.pumpkin_stem.*                       # (default: true) BREAK tile.pumpkinStem.name
+fe.protection.break.minecraft.quartz_block.*                       # (default: true) BREAK tile.quartzBlock.name
+fe.protection.break.minecraft.quartz_ore.*                         # (default: true) BREAK Nether Quartz Ore
+fe.protection.break.minecraft.quartz_stairs.*                      # (default: true) BREAK Quartz Stairs
+fe.protection.break.minecraft.rail.*                               # (default: true) BREAK Rail
+fe.protection.break.minecraft.red_flower.*                         # (default: true) BREAK tile.flower2.name
+fe.protection.break.minecraft.red_mushroom.*                       # (default: true) BREAK Mushroom
+fe.protection.break.minecraft.red_mushroom_block.*                 # (default: true) BREAK Mushroom
+fe.protection.break.minecraft.redstone_block.*                     # (default: true) BREAK Block of Redstone
+fe.protection.break.minecraft.redstone_lamp.*                      # (default: true) BREAK Redstone Lamp
+fe.protection.break.minecraft.redstone_ore.*                       # (default: true) BREAK Redstone Ore
+fe.protection.break.minecraft.redstone_torch.*                     # (default: true) BREAK Redstone Torch
+fe.protection.break.minecraft.redstone_wire.*                      # (default: true) BREAK Redstone Dust
+fe.protection.break.minecraft.reeds.*                              # (default: true) BREAK Sugar cane
+fe.protection.break.minecraft.sand.*                               # (default: true) BREAK tile.sand.name
+fe.protection.break.minecraft.sandstone.*                          # (default: true) BREAK Sandstone
+fe.protection.break.minecraft.sandstone_stairs.*                   # (default: true) BREAK Sandstone Stairs
+fe.protection.break.minecraft.sapling.*                            # (default: true) BREAK tile.sapling.name
+fe.protection.break.minecraft.skull.*                              # (default: true) BREAK tile.skull.name
+fe.protection.break.minecraft.snow.*                               # (default: true) BREAK Snow
+fe.protection.break.minecraft.snow_layer.*                         # (default: true) BREAK Snow
+fe.protection.break.minecraft.soul_sand.*                          # (default: true) BREAK Soul Sand
+fe.protection.break.minecraft.sponge.*                             # (default: true) BREAK Sponge
+fe.protection.break.minecraft.spruce_stairs.*                      # (default: true) BREAK Spruce Wood Stairs
+fe.protection.break.minecraft.stained_glass.*                      # (default: true) BREAK Stained Glass
+fe.protection.break.minecraft.stained_glass_pane.*                 # (default: true) BREAK Stained Glass Pane
+fe.protection.break.minecraft.stained_hardened_clay.*              # (default: true) BREAK tile.clayHardenedStained.name
+fe.protection.break.minecraft.standing_sign.*                      # (default: true) BREAK Sign
+fe.protection.break.minecraft.sticky_piston.*                      # (default: true) BREAK Sticky Piston
+fe.protection.break.minecraft.stone.*                              # (default: true) BREAK Stone
+fe.protection.break.minecraft.stone_brick_stairs.*                 # (default: true) BREAK Stone Brick Stairs
+fe.protection.break.minecraft.stone_button.*                       # (default: true) BREAK Button
+fe.protection.break.minecraft.stone_pressure_plate.*               # (default: true) BREAK Pressure Plate
+fe.protection.break.minecraft.stone_slab.*                         # (default: true) BREAK tile.stoneSlab.name
+fe.protection.break.minecraft.stone_stairs.*                       # (default: true) BREAK Stone Stairs
+fe.protection.break.minecraft.stonebrick.*                         # (default: true) BREAK Stone Bricks
+fe.protection.break.minecraft.tallgrass.*                          # (default: true) BREAK Grass
+fe.protection.break.minecraft.tnt.*                                # (default: true) BREAK TNT
+fe.protection.break.minecraft.torch.*                              # (default: true) BREAK Torch
+fe.protection.break.minecraft.trapdoor.*                           # (default: true) BREAK Trapdoor
+fe.protection.break.minecraft.trapped_chest.*                      # (default: true) BREAK Trapped Chest
+fe.protection.break.minecraft.tripwire.*                           # (default: true) BREAK Tripwire
+fe.protection.break.minecraft.tripwire_hook.*                      # (default: true) BREAK Tripwire Hook
+fe.protection.break.minecraft.unlit_redstone_torch.*               # (default: true) BREAK Redstone Torch
+fe.protection.break.minecraft.unpowered_comparator.*               # (default: true) BREAK tile.comparator.name
+fe.protection.break.minecraft.unpowered_repeater.*                 # (default: true) BREAK tile.diode.name
+fe.protection.break.minecraft.vine.*                               # (default: true) BREAK Vines
+fe.protection.break.minecraft.wall_sign.*                          # (default: true) BREAK Sign
+fe.protection.break.minecraft.water.*                              # (default: true) BREAK Water
+fe.protection.break.minecraft.waterlily.*                          # (default: true) BREAK Lily Pad
+fe.protection.break.minecraft.web.*                                # (default: true) BREAK Cobweb
+fe.protection.break.minecraft.wheat.*                              # (default: true) BREAK Crops
+fe.protection.break.minecraft.wooden_button.*                      # (default: true) BREAK Button
+fe.protection.break.minecraft.wooden_door.*                        # (default: true) BREAK Wooden Door
+fe.protection.break.minecraft.wooden_pressure_plate.*              # (default: true) BREAK Pressure Plate
+fe.protection.break.minecraft.wooden_slab.*                        # (default: true) BREAK tile.woodSlab.name
+fe.protection.break.minecraft.wool.*                               # (default: true) BREAK Wool
+fe.protection.break.minecraft.yellow_flower.*                      # (default: true) BREAK tile.flower1.name
+fe.protection.explode.*                                            # (default: true) (global) Allows blocks to explode
+fe.protection.explode.minecraft.acacia_stairs.*                    # (default: true) EXPLODE Acacia Wood Stairs
+fe.protection.explode.minecraft.activator_rail.*                   # (default: true) EXPLODE Activator Rail
+fe.protection.explode.minecraft.air.*                              # (default: true) EXPLODE tile.air.name
+fe.protection.explode.minecraft.anvil.*                            # (default: true) EXPLODE Anvil
+fe.protection.explode.minecraft.beacon.*                           # (default: true) EXPLODE Beacon
+fe.protection.explode.minecraft.bed.*                              # (default: true) EXPLODE Bed
+fe.protection.explode.minecraft.bedrock.*                          # (default: true) EXPLODE Bedrock
+fe.protection.explode.minecraft.birch_stairs.*                     # (default: true) EXPLODE Birch Wood Stairs
+fe.protection.explode.minecraft.bookshelf.*                        # (default: true) EXPLODE Bookshelf
+fe.protection.explode.minecraft.brewing_stand.*                    # (default: true) EXPLODE tile.brewingStand.name
+fe.protection.explode.minecraft.brick_block.*                      # (default: true) EXPLODE Bricks
+fe.protection.explode.minecraft.brick_stairs.*                     # (default: true) EXPLODE Brick Stairs
+fe.protection.explode.minecraft.brown_mushroom.*                   # (default: true) EXPLODE Mushroom
+fe.protection.explode.minecraft.brown_mushroom_block.*             # (default: true) EXPLODE Mushroom
+fe.protection.explode.minecraft.cactus.*                           # (default: true) EXPLODE Cactus
+fe.protection.explode.minecraft.cake.*                             # (default: true) EXPLODE Cake
+fe.protection.explode.minecraft.carpet.*                           # (default: true) EXPLODE tile.woolCarpet.name
+fe.protection.explode.minecraft.carrots.*                          # (default: true) EXPLODE Carrots
+fe.protection.explode.minecraft.cauldron.*                         # (default: true) EXPLODE Cauldron
+fe.protection.explode.minecraft.chest.*                            # (default: true) EXPLODE Chest
+fe.protection.explode.minecraft.clay.*                             # (default: true) EXPLODE Clay
+fe.protection.explode.minecraft.coal_block.*                       # (default: true) EXPLODE Block of Coal
+fe.protection.explode.minecraft.coal_ore.*                         # (default: true) EXPLODE Coal Ore
+fe.protection.explode.minecraft.cobblestone.*                      # (default: true) EXPLODE Cobblestone
+fe.protection.explode.minecraft.cobblestone_wall.*                 # (default: true) EXPLODE tile.cobbleWall.name
+fe.protection.explode.minecraft.cocoa.*                            # (default: true) EXPLODE Cocoa
+fe.protection.explode.minecraft.command_block.*                    # (default: true) EXPLODE Command Block
+fe.protection.explode.minecraft.crafting_table.*                   # (default: true) EXPLODE Crafting Table
+fe.protection.explode.minecraft.dark_oak_stairs.*                  # (default: true) EXPLODE Dark Oak Wood Stairs
+fe.protection.explode.minecraft.daylight_detector.*                # (default: true) EXPLODE Daylight Sensor
+fe.protection.explode.minecraft.deadbush.*                         # (default: true) EXPLODE Dead Bush
+fe.protection.explode.minecraft.detector_rail.*                    # (default: true) EXPLODE Detector Rail
+fe.protection.explode.minecraft.diamond_block.*                    # (default: true) EXPLODE Block of Diamond
+fe.protection.explode.minecraft.diamond_ore.*                      # (default: true) EXPLODE Diamond Ore
+fe.protection.explode.minecraft.dirt.*                             # (default: true) EXPLODE tile.dirt.name
+fe.protection.explode.minecraft.dispenser.*                        # (default: true) EXPLODE Dispenser
+fe.protection.explode.minecraft.double_plant.*                     # (default: true) EXPLODE tile.doublePlant.name
+fe.protection.explode.minecraft.double_stone_slab.*                # (default: true) EXPLODE tile.stoneSlab.name
+fe.protection.explode.minecraft.double_wooden_slab.*               # (default: true) EXPLODE tile.woodSlab.name
+fe.protection.explode.minecraft.dragon_egg.*                       # (default: true) EXPLODE Dragon Egg
+fe.protection.explode.minecraft.dropper.*                          # (default: true) EXPLODE Dropper
+fe.protection.explode.minecraft.emerald_block.*                    # (default: true) EXPLODE Block of Emerald
+fe.protection.explode.minecraft.emerald_ore.*                      # (default: true) EXPLODE Emerald Ore
+fe.protection.explode.minecraft.enchanting_table.*                 # (default: true) EXPLODE Enchantment Table
+fe.protection.explode.minecraft.end_portal.*                       # (default: true) EXPLODE tile.null.name
+fe.protection.explode.minecraft.end_portal_frame.*                 # (default: true) EXPLODE End Portal
+fe.protection.explode.minecraft.end_stone.*                        # (default: true) EXPLODE End Stone
+fe.protection.explode.minecraft.ender_chest.*                      # (default: true) EXPLODE Ender Chest
+fe.protection.explode.minecraft.farmland.*                         # (default: true) EXPLODE Farmland
+fe.protection.explode.minecraft.fence.*                            # (default: true) EXPLODE Fence
+fe.protection.explode.minecraft.fence_gate.*                       # (default: true) EXPLODE Fence Gate
+fe.protection.explode.minecraft.fire.*                             # (default: true) EXPLODE Fire
+fe.protection.explode.minecraft.flower_pot.*                       # (default: true) EXPLODE tile.flowerPot.name
+fe.protection.explode.minecraft.flowing_lava.*                     # (default: true) EXPLODE Lava
+fe.protection.explode.minecraft.flowing_water.*                    # (default: true) EXPLODE Water
+fe.protection.explode.minecraft.furnace.*                          # (default: true) EXPLODE Furnace
+fe.protection.explode.minecraft.glass.*                            # (default: true) EXPLODE Glass
+fe.protection.explode.minecraft.glass_pane.*                       # (default: true) EXPLODE Glass Pane
+fe.protection.explode.minecraft.glowstone.*                        # (default: true) EXPLODE Glowstone
+fe.protection.explode.minecraft.gold_block.*                       # (default: true) EXPLODE Block of Gold
+fe.protection.explode.minecraft.gold_ore.*                         # (default: true) EXPLODE Gold Ore
+fe.protection.explode.minecraft.golden_rail.*                      # (default: true) EXPLODE Powered Rail
+fe.protection.explode.minecraft.grass.*                            # (default: true) EXPLODE Grass Block
+fe.protection.explode.minecraft.gravel.*                           # (default: true) EXPLODE Gravel
+fe.protection.explode.minecraft.hardened_clay.*                    # (default: true) EXPLODE Hardened Clay
+fe.protection.explode.minecraft.hay_block.*                        # (default: true) EXPLODE Hay Bale
+fe.protection.explode.minecraft.heavy_weighted_pressure_plate.*    # (default: true) EXPLODE Weighted Pressure Plate (Heavy)
+fe.protection.explode.minecraft.hopper.*                           # (default: true) EXPLODE Hopper
+fe.protection.explode.minecraft.ice.*                              # (default: true) EXPLODE Ice
+fe.protection.explode.minecraft.iron_bars.*                        # (default: true) EXPLODE Iron Bars
+fe.protection.explode.minecraft.iron_block.*                       # (default: true) EXPLODE Block of Iron
+fe.protection.explode.minecraft.iron_door.*                        # (default: true) EXPLODE Iron Door
+fe.protection.explode.minecraft.iron_ore.*                         # (default: true) EXPLODE Iron Ore
+fe.protection.explode.minecraft.jukebox.*                          # (default: true) EXPLODE Jukebox
+fe.protection.explode.minecraft.jungle_stairs.*                    # (default: true) EXPLODE Jungle Wood Stairs
+fe.protection.explode.minecraft.ladder.*                           # (default: true) EXPLODE Ladder
+fe.protection.explode.minecraft.lapis_block.*                      # (default: true) EXPLODE Lapis Lazuli Block
+fe.protection.explode.minecraft.lapis_ore.*                        # (default: true) EXPLODE Lapis Lazuli Ore
+fe.protection.explode.minecraft.lava.*                             # (default: true) EXPLODE Lava
+fe.protection.explode.minecraft.leaves.*                           # (default: true) EXPLODE Leaves
+fe.protection.explode.minecraft.leaves2.*                          # (default: true) EXPLODE Leaves
+fe.protection.explode.minecraft.lever.*                            # (default: true) EXPLODE Lever
+fe.protection.explode.minecraft.light_weighted_pressure_plate.*    # (default: true) EXPLODE Weighted Pressure Plate (Light)
+fe.protection.explode.minecraft.lit_furnace.*                      # (default: true) EXPLODE Furnace
+fe.protection.explode.minecraft.lit_pumpkin.*                      # (default: true) EXPLODE Jack o'Lantern
+fe.protection.explode.minecraft.lit_redstone_lamp.*                # (default: true) EXPLODE Redstone Lamp
+fe.protection.explode.minecraft.lit_redstone_ore.*                 # (default: true) EXPLODE Redstone Ore
+fe.protection.explode.minecraft.log.*                              # (default: true) EXPLODE Wood
+fe.protection.explode.minecraft.log2.*                             # (default: true) EXPLODE Wood
+fe.protection.explode.minecraft.melon_block.*                      # (default: true) EXPLODE Melon
+fe.protection.explode.minecraft.melon_stem.*                       # (default: true) EXPLODE tile.pumpkinStem.name
+fe.protection.explode.minecraft.mob_spawner.*                      # (default: true) EXPLODE Monster Spawner
+fe.protection.explode.minecraft.monster_egg.*                      # (default: true) EXPLODE tile.monsterStoneEgg.name
+fe.protection.explode.minecraft.mossy_cobblestone.*                # (default: true) EXPLODE Moss Stone
+fe.protection.explode.minecraft.mycelium.*                         # (default: true) EXPLODE Mycelium
+fe.protection.explode.minecraft.nether_brick.*                     # (default: true) EXPLODE Nether Brick
+fe.protection.explode.minecraft.nether_brick_fence.*               # (default: true) EXPLODE Nether Brick Fence
+fe.protection.explode.minecraft.nether_brick_stairs.*              # (default: true) EXPLODE Nether Brick Stairs
+fe.protection.explode.minecraft.nether_wart.*                      # (default: true) EXPLODE Nether Wart
+fe.protection.explode.minecraft.netherrack.*                       # (default: true) EXPLODE Netherrack
+fe.protection.explode.minecraft.noteblock.*                        # (default: true) EXPLODE Note Block
+fe.protection.explode.minecraft.oak_stairs.*                       # (default: true) EXPLODE Oak Wood Stairs
+fe.protection.explode.minecraft.obsidian.*                         # (default: true) EXPLODE Obsidian
+fe.protection.explode.minecraft.packed_ice.*                       # (default: true) EXPLODE Packed Ice
+fe.protection.explode.minecraft.piston.*                           # (default: true) EXPLODE Piston
+fe.protection.explode.minecraft.piston_extension.*                 # (default: true) EXPLODE tile.null.name
+fe.protection.explode.minecraft.piston_head.*                      # (default: true) EXPLODE tile.null.name
+fe.protection.explode.minecraft.planks.*                           # (default: true) EXPLODE Wooden Planks
+fe.protection.explode.minecraft.portal.*                           # (default: true) EXPLODE Portal
+fe.protection.explode.minecraft.potatoes.*                         # (default: true) EXPLODE Potatoes
+fe.protection.explode.minecraft.powered_comparator.*               # (default: true) EXPLODE tile.comparator.name
+fe.protection.explode.minecraft.powered_repeater.*                 # (default: true) EXPLODE tile.diode.name
+fe.protection.explode.minecraft.pumpkin.*                          # (default: true) EXPLODE Pumpkin
+fe.protection.explode.minecraft.pumpkin_stem.*                     # (default: true) EXPLODE tile.pumpkinStem.name
+fe.protection.explode.minecraft.quartz_block.*                     # (default: true) EXPLODE tile.quartzBlock.name
+fe.protection.explode.minecraft.quartz_ore.*                       # (default: true) EXPLODE Nether Quartz Ore
+fe.protection.explode.minecraft.quartz_stairs.*                    # (default: true) EXPLODE Quartz Stairs
+fe.protection.explode.minecraft.rail.*                             # (default: true) EXPLODE Rail
+fe.protection.explode.minecraft.red_flower.*                       # (default: true) EXPLODE tile.flower2.name
+fe.protection.explode.minecraft.red_mushroom.*                     # (default: true) EXPLODE Mushroom
+fe.protection.explode.minecraft.red_mushroom_block.*               # (default: true) EXPLODE Mushroom
+fe.protection.explode.minecraft.redstone_block.*                   # (default: true) EXPLODE Block of Redstone
+fe.protection.explode.minecraft.redstone_lamp.*                    # (default: true) EXPLODE Redstone Lamp
+fe.protection.explode.minecraft.redstone_ore.*                     # (default: true) EXPLODE Redstone Ore
+fe.protection.explode.minecraft.redstone_torch.*                   # (default: true) EXPLODE Redstone Torch
+fe.protection.explode.minecraft.redstone_wire.*                    # (default: true) EXPLODE Redstone Dust
+fe.protection.explode.minecraft.reeds.*                            # (default: true) EXPLODE Sugar cane
+fe.protection.explode.minecraft.sand.*                             # (default: true) EXPLODE tile.sand.name
+fe.protection.explode.minecraft.sandstone.*                        # (default: true) EXPLODE Sandstone
+fe.protection.explode.minecraft.sandstone_stairs.*                 # (default: true) EXPLODE Sandstone Stairs
+fe.protection.explode.minecraft.sapling.*                          # (default: true) EXPLODE tile.sapling.name
+fe.protection.explode.minecraft.skull.*                            # (default: true) EXPLODE tile.skull.name
+fe.protection.explode.minecraft.snow.*                             # (default: true) EXPLODE Snow
+fe.protection.explode.minecraft.snow_layer.*                       # (default: true) EXPLODE Snow
+fe.protection.explode.minecraft.soul_sand.*                        # (default: true) EXPLODE Soul Sand
+fe.protection.explode.minecraft.sponge.*                           # (default: true) EXPLODE Sponge
+fe.protection.explode.minecraft.spruce_stairs.*                    # (default: true) EXPLODE Spruce Wood Stairs
+fe.protection.explode.minecraft.stained_glass.*                    # (default: true) EXPLODE Stained Glass
+fe.protection.explode.minecraft.stained_glass_pane.*               # (default: true) EXPLODE Stained Glass Pane
+fe.protection.explode.minecraft.stained_hardened_clay.*            # (default: true) EXPLODE tile.clayHardenedStained.name
+fe.protection.explode.minecraft.standing_sign.*                    # (default: true) EXPLODE Sign
+fe.protection.explode.minecraft.sticky_piston.*                    # (default: true) EXPLODE Sticky Piston
+fe.protection.explode.minecraft.stone.*                            # (default: true) EXPLODE Stone
+fe.protection.explode.minecraft.stone_brick_stairs.*               # (default: true) EXPLODE Stone Brick Stairs
+fe.protection.explode.minecraft.stone_button.*                     # (default: true) EXPLODE Button
+fe.protection.explode.minecraft.stone_pressure_plate.*             # (default: true) EXPLODE Pressure Plate
+fe.protection.explode.minecraft.stone_slab.*                       # (default: true) EXPLODE tile.stoneSlab.name
+fe.protection.explode.minecraft.stone_stairs.*                     # (default: true) EXPLODE Stone Stairs
+fe.protection.explode.minecraft.stonebrick.*                       # (default: true) EXPLODE Stone Bricks
+fe.protection.explode.minecraft.tallgrass.*                        # (default: true) EXPLODE Grass
+fe.protection.explode.minecraft.tnt.*                              # (default: true) EXPLODE TNT
+fe.protection.explode.minecraft.torch.*                            # (default: true) EXPLODE Torch
+fe.protection.explode.minecraft.trapdoor.*                         # (default: true) EXPLODE Trapdoor
+fe.protection.explode.minecraft.trapped_chest.*                    # (default: true) EXPLODE Trapped Chest
+fe.protection.explode.minecraft.tripwire.*                         # (default: true) EXPLODE Tripwire
+fe.protection.explode.minecraft.tripwire_hook.*                    # (default: true) EXPLODE Tripwire Hook
+fe.protection.explode.minecraft.unlit_redstone_torch.*             # (default: true) EXPLODE Redstone Torch
+fe.protection.explode.minecraft.unpowered_comparator.*             # (default: true) EXPLODE tile.comparator.name
+fe.protection.explode.minecraft.unpowered_repeater.*               # (default: true) EXPLODE tile.diode.name
+fe.protection.explode.minecraft.vine.*                             # (default: true) EXPLODE Vines
+fe.protection.explode.minecraft.wall_sign.*                        # (default: true) EXPLODE Sign
+fe.protection.explode.minecraft.water.*                            # (default: true) EXPLODE Water
+fe.protection.explode.minecraft.waterlily.*                        # (default: true) EXPLODE Lily Pad
+fe.protection.explode.minecraft.web.*                              # (default: true) EXPLODE Cobweb
+fe.protection.explode.minecraft.wheat.*                            # (default: true) EXPLODE Crops
+fe.protection.explode.minecraft.wooden_button.*                    # (default: true) EXPLODE Button
+fe.protection.explode.minecraft.wooden_door.*                      # (default: true) EXPLODE Wooden Door
+fe.protection.explode.minecraft.wooden_pressure_plate.*            # (default: true) EXPLODE Pressure Plate
+fe.protection.explode.minecraft.wooden_slab.*                      # (default: true) EXPLODE tile.woodSlab.name
+fe.protection.explode.minecraft.wool.*                             # (default: true) EXPLODE Wool
+fe.protection.explode.minecraft.yellow_flower.*                    # (default: true) EXPLODE tile.flower1.name
+fe.protection.interact.*                                           # (default: true) Allow interacting with blocks (button, chest, workbench)
+fe.protection.interact.entity                                      # (default: true) Allow interacting with entities (villagers, dogs, horses)
+fe.protection.interact.minecraft.acacia_stairs.*                   # (default: true) INTERACT Acacia Wood Stairs
+fe.protection.interact.minecraft.activator_rail.*                  # (default: true) INTERACT Activator Rail
+fe.protection.interact.minecraft.air.*                             # (default: true) INTERACT tile.air.name
+fe.protection.interact.minecraft.anvil.*                           # (default: true) INTERACT Anvil
+fe.protection.interact.minecraft.beacon.*                          # (default: true) INTERACT Beacon
+fe.protection.interact.minecraft.bed.*                             # (default: true) INTERACT Bed
+fe.protection.interact.minecraft.bedrock.*                         # (default: true) INTERACT Bedrock
+fe.protection.interact.minecraft.birch_stairs.*                    # (default: true) INTERACT Birch Wood Stairs
+fe.protection.interact.minecraft.bookshelf.*                       # (default: true) INTERACT Bookshelf
+fe.protection.interact.minecraft.brewing_stand.*                   # (default: true) INTERACT tile.brewingStand.name
+fe.protection.interact.minecraft.brick_block.*                     # (default: true) INTERACT Bricks
+fe.protection.interact.minecraft.brick_stairs.*                    # (default: true) INTERACT Brick Stairs
+fe.protection.interact.minecraft.brown_mushroom.*                  # (default: true) INTERACT Mushroom
+fe.protection.interact.minecraft.brown_mushroom_block.*            # (default: true) INTERACT Mushroom
+fe.protection.interact.minecraft.cactus.*                          # (default: true) INTERACT Cactus
+fe.protection.interact.minecraft.cake.*                            # (default: true) INTERACT Cake
+fe.protection.interact.minecraft.carpet.*                          # (default: true) INTERACT tile.woolCarpet.name
+fe.protection.interact.minecraft.carrots.*                         # (default: true) INTERACT Carrots
+fe.protection.interact.minecraft.cauldron.*                        # (default: true) INTERACT Cauldron
+fe.protection.interact.minecraft.chest.*                           # (default: true) INTERACT Chest
+fe.protection.interact.minecraft.clay.*                            # (default: true) INTERACT Clay
+fe.protection.interact.minecraft.coal_block.*                      # (default: true) INTERACT Block of Coal
+fe.protection.interact.minecraft.coal_ore.*                        # (default: true) INTERACT Coal Ore
+fe.protection.interact.minecraft.cobblestone.*                     # (default: true) INTERACT Cobblestone
+fe.protection.interact.minecraft.cobblestone_wall.*                # (default: true) INTERACT tile.cobbleWall.name
+fe.protection.interact.minecraft.cocoa.*                           # (default: true) INTERACT Cocoa
+fe.protection.interact.minecraft.command_block.*                   # (default: true) INTERACT Command Block
+fe.protection.interact.minecraft.crafting_table.*                  # (default: true) INTERACT Crafting Table
+fe.protection.interact.minecraft.dark_oak_stairs.*                 # (default: true) INTERACT Dark Oak Wood Stairs
+fe.protection.interact.minecraft.daylight_detector.*               # (default: true) INTERACT Daylight Sensor
+fe.protection.interact.minecraft.deadbush.*                        # (default: true) INTERACT Dead Bush
+fe.protection.interact.minecraft.detector_rail.*                   # (default: true) INTERACT Detector Rail
+fe.protection.interact.minecraft.diamond_block.*                   # (default: true) INTERACT Block of Diamond
+fe.protection.interact.minecraft.diamond_ore.*                     # (default: true) INTERACT Diamond Ore
+fe.protection.interact.minecraft.dirt.*                            # (default: true) INTERACT tile.dirt.name
+fe.protection.interact.minecraft.dispenser.*                       # (default: true) INTERACT Dispenser
+fe.protection.interact.minecraft.double_plant.*                    # (default: true) INTERACT tile.doublePlant.name
+fe.protection.interact.minecraft.double_stone_slab.*               # (default: true) INTERACT tile.stoneSlab.name
+fe.protection.interact.minecraft.double_wooden_slab.*              # (default: true) INTERACT tile.woodSlab.name
+fe.protection.interact.minecraft.dragon_egg.*                      # (default: true) INTERACT Dragon Egg
+fe.protection.interact.minecraft.dropper.*                         # (default: true) INTERACT Dropper
+fe.protection.interact.minecraft.emerald_block.*                   # (default: true) INTERACT Block of Emerald
+fe.protection.interact.minecraft.emerald_ore.*                     # (default: true) INTERACT Emerald Ore
+fe.protection.interact.minecraft.enchanting_table.*                # (default: true) INTERACT Enchantment Table
+fe.protection.interact.minecraft.end_portal.*                      # (default: true) INTERACT tile.null.name
+fe.protection.interact.minecraft.end_portal_frame.*                # (default: true) INTERACT End Portal
+fe.protection.interact.minecraft.end_stone.*                       # (default: true) INTERACT End Stone
+fe.protection.interact.minecraft.ender_chest.*                     # (default: true) INTERACT Ender Chest
+fe.protection.interact.minecraft.farmland.*                        # (default: true) INTERACT Farmland
+fe.protection.interact.minecraft.fence.*                           # (default: true) INTERACT Fence
+fe.protection.interact.minecraft.fence_gate.*                      # (default: true) INTERACT Fence Gate
+fe.protection.interact.minecraft.fire.*                            # (default: true) INTERACT Fire
+fe.protection.interact.minecraft.flower_pot.*                      # (default: true) INTERACT tile.flowerPot.name
+fe.protection.interact.minecraft.flowing_lava.*                    # (default: true) INTERACT Lava
+fe.protection.interact.minecraft.flowing_water.*                   # (default: true) INTERACT Water
+fe.protection.interact.minecraft.furnace.*                         # (default: true) INTERACT Furnace
+fe.protection.interact.minecraft.glass.*                           # (default: true) INTERACT Glass
+fe.protection.interact.minecraft.glass_pane.*                      # (default: true) INTERACT Glass Pane
+fe.protection.interact.minecraft.glowstone.*                       # (default: true) INTERACT Glowstone
+fe.protection.interact.minecraft.gold_block.*                      # (default: true) INTERACT Block of Gold
+fe.protection.interact.minecraft.gold_ore.*                        # (default: true) INTERACT Gold Ore
+fe.protection.interact.minecraft.golden_rail.*                     # (default: true) INTERACT Powered Rail
+fe.protection.interact.minecraft.grass.*                           # (default: true) INTERACT Grass Block
+fe.protection.interact.minecraft.gravel.*                          # (default: true) INTERACT Gravel
+fe.protection.interact.minecraft.hardened_clay.*                   # (default: true) INTERACT Hardened Clay
+fe.protection.interact.minecraft.hay_block.*                       # (default: true) INTERACT Hay Bale
+fe.protection.interact.minecraft.heavy_weighted_pressure_plate.*   # (default: true) INTERACT Weighted Pressure Plate (Heavy)
+fe.protection.interact.minecraft.hopper.*                          # (default: true) INTERACT Hopper
+fe.protection.interact.minecraft.ice.*                             # (default: true) INTERACT Ice
+fe.protection.interact.minecraft.iron_bars.*                       # (default: true) INTERACT Iron Bars
+fe.protection.interact.minecraft.iron_block.*                      # (default: true) INTERACT Block of Iron
+fe.protection.interact.minecraft.iron_door.*                       # (default: true) INTERACT Iron Door
+fe.protection.interact.minecraft.iron_ore.*                        # (default: true) INTERACT Iron Ore
+fe.protection.interact.minecraft.jukebox.*                         # (default: true) INTERACT Jukebox
+fe.protection.interact.minecraft.jungle_stairs.*                   # (default: true) INTERACT Jungle Wood Stairs
+fe.protection.interact.minecraft.ladder.*                          # (default: true) INTERACT Ladder
+fe.protection.interact.minecraft.lapis_block.*                     # (default: true) INTERACT Lapis Lazuli Block
+fe.protection.interact.minecraft.lapis_ore.*                       # (default: true) INTERACT Lapis Lazuli Ore
+fe.protection.interact.minecraft.lava.*                            # (default: true) INTERACT Lava
+fe.protection.interact.minecraft.leaves.*                          # (default: true) INTERACT Leaves
+fe.protection.interact.minecraft.leaves2.*                         # (default: true) INTERACT Leaves
+fe.protection.interact.minecraft.lever.*                           # (default: true) INTERACT Lever
+fe.protection.interact.minecraft.light_weighted_pressure_plate.*   # (default: true) INTERACT Weighted Pressure Plate (Light)
+fe.protection.interact.minecraft.lit_furnace.*                     # (default: true) INTERACT Furnace
+fe.protection.interact.minecraft.lit_pumpkin.*                     # (default: true) INTERACT Jack o'Lantern
+fe.protection.interact.minecraft.lit_redstone_lamp.*               # (default: true) INTERACT Redstone Lamp
+fe.protection.interact.minecraft.lit_redstone_ore.*                # (default: true) INTERACT Redstone Ore
+fe.protection.interact.minecraft.log.*                             # (default: true) INTERACT Wood
+fe.protection.interact.minecraft.log2.*                            # (default: true) INTERACT Wood
+fe.protection.interact.minecraft.melon_block.*                     # (default: true) INTERACT Melon
+fe.protection.interact.minecraft.melon_stem.*                      # (default: true) INTERACT tile.pumpkinStem.name
+fe.protection.interact.minecraft.mob_spawner.*                     # (default: true) INTERACT Monster Spawner
+fe.protection.interact.minecraft.monster_egg.*                     # (default: true) INTERACT tile.monsterStoneEgg.name
+fe.protection.interact.minecraft.mossy_cobblestone.*               # (default: true) INTERACT Moss Stone
+fe.protection.interact.minecraft.mycelium.*                        # (default: true) INTERACT Mycelium
+fe.protection.interact.minecraft.nether_brick.*                    # (default: true) INTERACT Nether Brick
+fe.protection.interact.minecraft.nether_brick_fence.*              # (default: true) INTERACT Nether Brick Fence
+fe.protection.interact.minecraft.nether_brick_stairs.*             # (default: true) INTERACT Nether Brick Stairs
+fe.protection.interact.minecraft.nether_wart.*                     # (default: true) INTERACT Nether Wart
+fe.protection.interact.minecraft.netherrack.*                      # (default: true) INTERACT Netherrack
+fe.protection.interact.minecraft.noteblock.*                       # (default: true) INTERACT Note Block
+fe.protection.interact.minecraft.oak_stairs.*                      # (default: true) INTERACT Oak Wood Stairs
+fe.protection.interact.minecraft.obsidian.*                        # (default: true) INTERACT Obsidian
+fe.protection.interact.minecraft.packed_ice.*                      # (default: true) INTERACT Packed Ice
+fe.protection.interact.minecraft.piston.*                          # (default: true) INTERACT Piston
+fe.protection.interact.minecraft.piston_extension.*                # (default: true) INTERACT tile.null.name
+fe.protection.interact.minecraft.piston_head.*                     # (default: true) INTERACT tile.null.name
+fe.protection.interact.minecraft.planks.*                          # (default: true) INTERACT Wooden Planks
+fe.protection.interact.minecraft.portal.*                          # (default: true) INTERACT Portal
+fe.protection.interact.minecraft.potatoes.*                        # (default: true) INTERACT Potatoes
+fe.protection.interact.minecraft.powered_comparator.*              # (default: true) INTERACT tile.comparator.name
+fe.protection.interact.minecraft.powered_repeater.*                # (default: true) INTERACT tile.diode.name
+fe.protection.interact.minecraft.pumpkin.*                         # (default: true) INTERACT Pumpkin
+fe.protection.interact.minecraft.pumpkin_stem.*                    # (default: true) INTERACT tile.pumpkinStem.name
+fe.protection.interact.minecraft.quartz_block.*                    # (default: true) INTERACT tile.quartzBlock.name
+fe.protection.interact.minecraft.quartz_ore.*                      # (default: true) INTERACT Nether Quartz Ore
+fe.protection.interact.minecraft.quartz_stairs.*                   # (default: true) INTERACT Quartz Stairs
+fe.protection.interact.minecraft.rail.*                            # (default: true) INTERACT Rail
+fe.protection.interact.minecraft.red_flower.*                      # (default: true) INTERACT tile.flower2.name
+fe.protection.interact.minecraft.red_mushroom.*                    # (default: true) INTERACT Mushroom
+fe.protection.interact.minecraft.red_mushroom_block.*              # (default: true) INTERACT Mushroom
+fe.protection.interact.minecraft.redstone_block.*                  # (default: true) INTERACT Block of Redstone
+fe.protection.interact.minecraft.redstone_lamp.*                   # (default: true) INTERACT Redstone Lamp
+fe.protection.interact.minecraft.redstone_ore.*                    # (default: true) INTERACT Redstone Ore
+fe.protection.interact.minecraft.redstone_torch.*                  # (default: true) INTERACT Redstone Torch
+fe.protection.interact.minecraft.redstone_wire.*                   # (default: true) INTERACT Redstone Dust
+fe.protection.interact.minecraft.reeds.*                           # (default: true) INTERACT Sugar cane
+fe.protection.interact.minecraft.sand.*                            # (default: true) INTERACT tile.sand.name
+fe.protection.interact.minecraft.sandstone.*                       # (default: true) INTERACT Sandstone
+fe.protection.interact.minecraft.sandstone_stairs.*                # (default: true) INTERACT Sandstone Stairs
+fe.protection.interact.minecraft.sapling.*                         # (default: true) INTERACT tile.sapling.name
+fe.protection.interact.minecraft.skull.*                           # (default: true) INTERACT tile.skull.name
+fe.protection.interact.minecraft.snow.*                            # (default: true) INTERACT Snow
+fe.protection.interact.minecraft.snow_layer.*                      # (default: true) INTERACT Snow
+fe.protection.interact.minecraft.soul_sand.*                       # (default: true) INTERACT Soul Sand
+fe.protection.interact.minecraft.sponge.*                          # (default: true) INTERACT Sponge
+fe.protection.interact.minecraft.spruce_stairs.*                   # (default: true) INTERACT Spruce Wood Stairs
+fe.protection.interact.minecraft.stained_glass.*                   # (default: true) INTERACT Stained Glass
+fe.protection.interact.minecraft.stained_glass_pane.*              # (default: true) INTERACT Stained Glass Pane
+fe.protection.interact.minecraft.stained_hardened_clay.*           # (default: true) INTERACT tile.clayHardenedStained.name
+fe.protection.interact.minecraft.standing_sign.*                   # (default: true) INTERACT Sign
+fe.protection.interact.minecraft.sticky_piston.*                   # (default: true) INTERACT Sticky Piston
+fe.protection.interact.minecraft.stone.*                           # (default: true) INTERACT Stone
+fe.protection.interact.minecraft.stone_brick_stairs.*              # (default: true) INTERACT Stone Brick Stairs
+fe.protection.interact.minecraft.stone_button.*                    # (default: true) INTERACT Button
+fe.protection.interact.minecraft.stone_pressure_plate.*            # (default: true) INTERACT Pressure Plate
+fe.protection.interact.minecraft.stone_slab.*                      # (default: true) INTERACT tile.stoneSlab.name
+fe.protection.interact.minecraft.stone_stairs.*                    # (default: true) INTERACT Stone Stairs
+fe.protection.interact.minecraft.stonebrick.*                      # (default: true) INTERACT Stone Bricks
+fe.protection.interact.minecraft.tallgrass.*                       # (default: true) INTERACT Grass
+fe.protection.interact.minecraft.tnt.*                             # (default: true) INTERACT TNT
+fe.protection.interact.minecraft.torch.*                           # (default: true) INTERACT Torch
+fe.protection.interact.minecraft.trapdoor.*                        # (default: true) INTERACT Trapdoor
+fe.protection.interact.minecraft.trapped_chest.*                   # (default: true) INTERACT Trapped Chest
+fe.protection.interact.minecraft.tripwire.*                        # (default: true) INTERACT Tripwire
+fe.protection.interact.minecraft.tripwire_hook.*                   # (default: true) INTERACT Tripwire Hook
+fe.protection.interact.minecraft.unlit_redstone_torch.*            # (default: true) INTERACT Redstone Torch
+fe.protection.interact.minecraft.unpowered_comparator.*            # (default: true) INTERACT tile.comparator.name
+fe.protection.interact.minecraft.unpowered_repeater.*              # (default: true) INTERACT tile.diode.name
+fe.protection.interact.minecraft.vine.*                            # (default: true) INTERACT Vines
+fe.protection.interact.minecraft.wall_sign.*                       # (default: true) INTERACT Sign
+fe.protection.interact.minecraft.water.*                           # (default: true) INTERACT Water
+fe.protection.interact.minecraft.waterlily.*                       # (default: true) INTERACT Lily Pad
+fe.protection.interact.minecraft.web.*                             # (default: true) INTERACT Cobweb
+fe.protection.interact.minecraft.wheat.*                           # (default: true) INTERACT Crops
+fe.protection.interact.minecraft.wooden_button.*                   # (default: true) INTERACT Button
+fe.protection.interact.minecraft.wooden_door.*                     # (default: true) INTERACT Wooden Door
+fe.protection.interact.minecraft.wooden_pressure_plate.*           # (default: true) INTERACT Pressure Plate
+fe.protection.interact.minecraft.wooden_slab.*                     # (default: true) INTERACT tile.woodSlab.name
+fe.protection.interact.minecraft.wool.*                            # (default: true) INTERACT Wool
+fe.protection.interact.minecraft.yellow_flower.*                   # (default: true) INTERACT tile.flower1.name
+fe.protection.place.*                                              # (default: true) Allow placing blocks
+fe.protection.place.minecraft.acacia_stairs.*                      # (default: true) PLACE Acacia Wood Stairs
+fe.protection.place.minecraft.activator_rail.*                     # (default: true) PLACE Activator Rail
+fe.protection.place.minecraft.air.*                                # (default: true) PLACE tile.air.name
+fe.protection.place.minecraft.anvil.*                              # (default: true) PLACE Anvil
+fe.protection.place.minecraft.beacon.*                             # (default: true) PLACE Beacon
+fe.protection.place.minecraft.bed.*                                # (default: true) PLACE Bed
+fe.protection.place.minecraft.bedrock.*                            # (default: true) PLACE Bedrock
+fe.protection.place.minecraft.birch_stairs.*                       # (default: true) PLACE Birch Wood Stairs
+fe.protection.place.minecraft.bookshelf.*                          # (default: true) PLACE Bookshelf
+fe.protection.place.minecraft.brewing_stand.*                      # (default: true) PLACE tile.brewingStand.name
+fe.protection.place.minecraft.brick_block.*                        # (default: true) PLACE Bricks
+fe.protection.place.minecraft.brick_stairs.*                       # (default: true) PLACE Brick Stairs
+fe.protection.place.minecraft.brown_mushroom.*                     # (default: true) PLACE Mushroom
+fe.protection.place.minecraft.brown_mushroom_block.*               # (default: true) PLACE Mushroom
+fe.protection.place.minecraft.cactus.*                             # (default: true) PLACE Cactus
+fe.protection.place.minecraft.cake.*                               # (default: true) PLACE Cake
+fe.protection.place.minecraft.carpet.*                             # (default: true) PLACE tile.woolCarpet.name
+fe.protection.place.minecraft.carrots.*                            # (default: true) PLACE Carrots
+fe.protection.place.minecraft.cauldron.*                           # (default: true) PLACE Cauldron
+fe.protection.place.minecraft.chest.*                              # (default: true) PLACE Chest
+fe.protection.place.minecraft.clay.*                               # (default: true) PLACE Clay
+fe.protection.place.minecraft.coal_block.*                         # (default: true) PLACE Block of Coal
+fe.protection.place.minecraft.coal_ore.*                           # (default: true) PLACE Coal Ore
+fe.protection.place.minecraft.cobblestone.*                        # (default: true) PLACE Cobblestone
+fe.protection.place.minecraft.cobblestone_wall.*                   # (default: true) PLACE tile.cobbleWall.name
+fe.protection.place.minecraft.cocoa.*                              # (default: true) PLACE Cocoa
+fe.protection.place.minecraft.command_block.*                      # (default: true) PLACE Command Block
+fe.protection.place.minecraft.crafting_table.*                     # (default: true) PLACE Crafting Table
+fe.protection.place.minecraft.dark_oak_stairs.*                    # (default: true) PLACE Dark Oak Wood Stairs
+fe.protection.place.minecraft.daylight_detector.*                  # (default: true) PLACE Daylight Sensor
+fe.protection.place.minecraft.deadbush.*                           # (default: true) PLACE Dead Bush
+fe.protection.place.minecraft.detector_rail.*                      # (default: true) PLACE Detector Rail
+fe.protection.place.minecraft.diamond_block.*                      # (default: true) PLACE Block of Diamond
+fe.protection.place.minecraft.diamond_ore.*                        # (default: true) PLACE Diamond Ore
+fe.protection.place.minecraft.dirt.*                               # (default: true) PLACE tile.dirt.name
+fe.protection.place.minecraft.dispenser.*                          # (default: true) PLACE Dispenser
+fe.protection.place.minecraft.double_plant.*                       # (default: true) PLACE tile.doublePlant.name
+fe.protection.place.minecraft.double_stone_slab.*                  # (default: true) PLACE tile.stoneSlab.name
+fe.protection.place.minecraft.double_wooden_slab.*                 # (default: true) PLACE tile.woodSlab.name
+fe.protection.place.minecraft.dragon_egg.*                         # (default: true) PLACE Dragon Egg
+fe.protection.place.minecraft.dropper.*                            # (default: true) PLACE Dropper
+fe.protection.place.minecraft.emerald_block.*                      # (default: true) PLACE Block of Emerald
+fe.protection.place.minecraft.emerald_ore.*                        # (default: true) PLACE Emerald Ore
+fe.protection.place.minecraft.enchanting_table.*                   # (default: true) PLACE Enchantment Table
+fe.protection.place.minecraft.end_portal.*                         # (default: true) PLACE tile.null.name
+fe.protection.place.minecraft.end_portal_frame.*                   # (default: true) PLACE End Portal
+fe.protection.place.minecraft.end_stone.*                          # (default: true) PLACE End Stone
+fe.protection.place.minecraft.ender_chest.*                        # (default: true) PLACE Ender Chest
+fe.protection.place.minecraft.farmland.*                           # (default: true) PLACE Farmland
+fe.protection.place.minecraft.fence.*                              # (default: true) PLACE Fence
+fe.protection.place.minecraft.fence_gate.*                         # (default: true) PLACE Fence Gate
+fe.protection.place.minecraft.fire.*                               # (default: true) PLACE Fire
+fe.protection.place.minecraft.flower_pot.*                         # (default: true) PLACE tile.flowerPot.name
+fe.protection.place.minecraft.flowing_lava.*                       # (default: true) PLACE Lava
+fe.protection.place.minecraft.flowing_water.*                      # (default: true) PLACE Water
+fe.protection.place.minecraft.furnace.*                            # (default: true) PLACE Furnace
+fe.protection.place.minecraft.glass.*                              # (default: true) PLACE Glass
+fe.protection.place.minecraft.glass_pane.*                         # (default: true) PLACE Glass Pane
+fe.protection.place.minecraft.glowstone.*                          # (default: true) PLACE Glowstone
+fe.protection.place.minecraft.gold_block.*                         # (default: true) PLACE Block of Gold
+fe.protection.place.minecraft.gold_ore.*                           # (default: true) PLACE Gold Ore
+fe.protection.place.minecraft.golden_rail.*                        # (default: true) PLACE Powered Rail
+fe.protection.place.minecraft.grass.*                              # (default: true) PLACE Grass Block
+fe.protection.place.minecraft.gravel.*                             # (default: true) PLACE Gravel
+fe.protection.place.minecraft.hardened_clay.*                      # (default: true) PLACE Hardened Clay
+fe.protection.place.minecraft.hay_block.*                          # (default: true) PLACE Hay Bale
+fe.protection.place.minecraft.heavy_weighted_pressure_plate.*      # (default: true) PLACE Weighted Pressure Plate (Heavy)
+fe.protection.place.minecraft.hopper.*                             # (default: true) PLACE Hopper
+fe.protection.place.minecraft.ice.*                                # (default: true) PLACE Ice
+fe.protection.place.minecraft.iron_bars.*                          # (default: true) PLACE Iron Bars
+fe.protection.place.minecraft.iron_block.*                         # (default: true) PLACE Block of Iron
+fe.protection.place.minecraft.iron_door.*                          # (default: true) PLACE Iron Door
+fe.protection.place.minecraft.iron_ore.*                           # (default: true) PLACE Iron Ore
+fe.protection.place.minecraft.jukebox.*                            # (default: true) PLACE Jukebox
+fe.protection.place.minecraft.jungle_stairs.*                      # (default: true) PLACE Jungle Wood Stairs
+fe.protection.place.minecraft.ladder.*                             # (default: true) PLACE Ladder
+fe.protection.place.minecraft.lapis_block.*                        # (default: true) PLACE Lapis Lazuli Block
+fe.protection.place.minecraft.lapis_ore.*                          # (default: true) PLACE Lapis Lazuli Ore
+fe.protection.place.minecraft.lava.*                               # (default: true) PLACE Lava
+fe.protection.place.minecraft.leaves.*                             # (default: true) PLACE Leaves
+fe.protection.place.minecraft.leaves2.*                            # (default: true) PLACE Leaves
+fe.protection.place.minecraft.lever.*                              # (default: true) PLACE Lever
+fe.protection.place.minecraft.light_weighted_pressure_plate.*      # (default: true) PLACE Weighted Pressure Plate (Light)
+fe.protection.place.minecraft.lit_furnace.*                        # (default: true) PLACE Furnace
+fe.protection.place.minecraft.lit_pumpkin.*                        # (default: true) PLACE Jack o'Lantern
+fe.protection.place.minecraft.lit_redstone_lamp.*                  # (default: true) PLACE Redstone Lamp
+fe.protection.place.minecraft.lit_redstone_ore.*                   # (default: true) PLACE Redstone Ore
+fe.protection.place.minecraft.log.*                                # (default: true) PLACE Wood
+fe.protection.place.minecraft.log2.*                               # (default: true) PLACE Wood
+fe.protection.place.minecraft.melon_block.*                        # (default: true) PLACE Melon
+fe.protection.place.minecraft.melon_stem.*                         # (default: true) PLACE tile.pumpkinStem.name
+fe.protection.place.minecraft.mob_spawner.*                        # (default: true) PLACE Monster Spawner
+fe.protection.place.minecraft.monster_egg.*                        # (default: true) PLACE tile.monsterStoneEgg.name
+fe.protection.place.minecraft.mossy_cobblestone.*                  # (default: true) PLACE Moss Stone
+fe.protection.place.minecraft.mycelium.*                           # (default: true) PLACE Mycelium
+fe.protection.place.minecraft.nether_brick.*                       # (default: true) PLACE Nether Brick
+fe.protection.place.minecraft.nether_brick_fence.*                 # (default: true) PLACE Nether Brick Fence
+fe.protection.place.minecraft.nether_brick_stairs.*                # (default: true) PLACE Nether Brick Stairs
+fe.protection.place.minecraft.nether_wart.*                        # (default: true) PLACE Nether Wart
+fe.protection.place.minecraft.netherrack.*                         # (default: true) PLACE Netherrack
+fe.protection.place.minecraft.noteblock.*                          # (default: true) PLACE Note Block
+fe.protection.place.minecraft.oak_stairs.*                         # (default: true) PLACE Oak Wood Stairs
+fe.protection.place.minecraft.obsidian.*                           # (default: true) PLACE Obsidian
+fe.protection.place.minecraft.packed_ice.*                         # (default: true) PLACE Packed Ice
+fe.protection.place.minecraft.piston.*                             # (default: true) PLACE Piston
+fe.protection.place.minecraft.piston_extension.*                   # (default: true) PLACE tile.null.name
+fe.protection.place.minecraft.piston_head.*                        # (default: true) PLACE tile.null.name
+fe.protection.place.minecraft.planks.*                             # (default: true) PLACE Wooden Planks
+fe.protection.place.minecraft.portal.*                             # (default: true) PLACE Portal
+fe.protection.place.minecraft.potatoes.*                           # (default: true) PLACE Potatoes
+fe.protection.place.minecraft.powered_comparator.*                 # (default: true) PLACE tile.comparator.name
+fe.protection.place.minecraft.powered_repeater.*                   # (default: true) PLACE tile.diode.name
+fe.protection.place.minecraft.pumpkin.*                            # (default: true) PLACE Pumpkin
+fe.protection.place.minecraft.pumpkin_stem.*                       # (default: true) PLACE tile.pumpkinStem.name
+fe.protection.place.minecraft.quartz_block.*                       # (default: true) PLACE tile.quartzBlock.name
+fe.protection.place.minecraft.quartz_ore.*                         # (default: true) PLACE Nether Quartz Ore
+fe.protection.place.minecraft.quartz_stairs.*                      # (default: true) PLACE Quartz Stairs
+fe.protection.place.minecraft.rail.*                               # (default: true) PLACE Rail
+fe.protection.place.minecraft.red_flower.*                         # (default: true) PLACE tile.flower2.name
+fe.protection.place.minecraft.red_mushroom.*                       # (default: true) PLACE Mushroom
+fe.protection.place.minecraft.red_mushroom_block.*                 # (default: true) PLACE Mushroom
+fe.protection.place.minecraft.redstone_block.*                     # (default: true) PLACE Block of Redstone
+fe.protection.place.minecraft.redstone_lamp.*                      # (default: true) PLACE Redstone Lamp
+fe.protection.place.minecraft.redstone_ore.*                       # (default: true) PLACE Redstone Ore
+fe.protection.place.minecraft.redstone_torch.*                     # (default: true) PLACE Redstone Torch
+fe.protection.place.minecraft.redstone_wire.*                      # (default: true) PLACE Redstone Dust
+fe.protection.place.minecraft.reeds.*                              # (default: true) PLACE Sugar cane
+fe.protection.place.minecraft.sand.*                               # (default: true) PLACE tile.sand.name
+fe.protection.place.minecraft.sandstone.*                          # (default: true) PLACE Sandstone
+fe.protection.place.minecraft.sandstone_stairs.*                   # (default: true) PLACE Sandstone Stairs
+fe.protection.place.minecraft.sapling.*                            # (default: true) PLACE tile.sapling.name
+fe.protection.place.minecraft.skull.*                              # (default: true) PLACE tile.skull.name
+fe.protection.place.minecraft.snow.*                               # (default: true) PLACE Snow
+fe.protection.place.minecraft.snow_layer.*                         # (default: true) PLACE Snow
+fe.protection.place.minecraft.soul_sand.*                          # (default: true) PLACE Soul Sand
+fe.protection.place.minecraft.sponge.*                             # (default: true) PLACE Sponge
+fe.protection.place.minecraft.spruce_stairs.*                      # (default: true) PLACE Spruce Wood Stairs
+fe.protection.place.minecraft.stained_glass.*                      # (default: true) PLACE Stained Glass
+fe.protection.place.minecraft.stained_glass_pane.*                 # (default: true) PLACE Stained Glass Pane
+fe.protection.place.minecraft.stained_hardened_clay.*              # (default: true) PLACE tile.clayHardenedStained.name
+fe.protection.place.minecraft.standing_sign.*                      # (default: true) PLACE Sign
+fe.protection.place.minecraft.sticky_piston.*                      # (default: true) PLACE Sticky Piston
+fe.protection.place.minecraft.stone.*                              # (default: true) PLACE Stone
+fe.protection.place.minecraft.stone_brick_stairs.*                 # (default: true) PLACE Stone Brick Stairs
+fe.protection.place.minecraft.stone_button.*                       # (default: true) PLACE Button
+fe.protection.place.minecraft.stone_pressure_plate.*               # (default: true) PLACE Pressure Plate
+fe.protection.place.minecraft.stone_slab.*                         # (default: true) PLACE tile.stoneSlab.name
+fe.protection.place.minecraft.stone_stairs.*                       # (default: true) PLACE Stone Stairs
+fe.protection.place.minecraft.stonebrick.*                         # (default: true) PLACE Stone Bricks
+fe.protection.place.minecraft.tallgrass.*                          # (default: true) PLACE Grass
+fe.protection.place.minecraft.tnt.*                                # (default: true) PLACE TNT
+fe.protection.place.minecraft.torch.*                              # (default: true) PLACE Torch
+fe.protection.place.minecraft.trapdoor.*                           # (default: true) PLACE Trapdoor
+fe.protection.place.minecraft.trapped_chest.*                      # (default: true) PLACE Trapped Chest
+fe.protection.place.minecraft.tripwire.*                           # (default: true) PLACE Tripwire
+fe.protection.place.minecraft.tripwire_hook.*                      # (default: true) PLACE Tripwire Hook
+fe.protection.place.minecraft.unlit_redstone_torch.*               # (default: true) PLACE Redstone Torch
+fe.protection.place.minecraft.unpowered_comparator.*               # (default: true) PLACE tile.comparator.name
+fe.protection.place.minecraft.unpowered_repeater.*                 # (default: true) PLACE tile.diode.name
+fe.protection.place.minecraft.vine.*                               # (default: true) PLACE Vines
+fe.protection.place.minecraft.wall_sign.*                          # (default: true) PLACE Sign
+fe.protection.place.minecraft.water.*                              # (default: true) PLACE Water
+fe.protection.place.minecraft.waterlily.*                          # (default: true) PLACE Lily Pad
+fe.protection.place.minecraft.web.*                                # (default: true) PLACE Cobweb
+fe.protection.place.minecraft.wheat.*                              # (default: true) PLACE Crops
+fe.protection.place.minecraft.wooden_button.*                      # (default: true) PLACE Button
+fe.protection.place.minecraft.wooden_door.*                        # (default: true) PLACE Wooden Door
+fe.protection.place.minecraft.wooden_pressure_plate.*              # (default: true) PLACE Pressure Plate
+fe.protection.place.minecraft.wooden_slab.*                        # (default: true) PLACE tile.woodSlab.name
+fe.protection.place.minecraft.wool.*                               # (default: true) PLACE Wool
+fe.protection.place.minecraft.yellow_flower.*                      # (default: true) PLACE tile.flower1.name
+fe.protection.trample.*                                            # (default: true) Allow trampling on blocks
+fe.protection.trample.minecraft.acacia_stairs.*                    # (default: true) PLACE Acacia Wood Stairs
+fe.protection.trample.minecraft.activator_rail.*                   # (default: true) PLACE Activator Rail
+fe.protection.trample.minecraft.air.*                              # (default: true) PLACE tile.air.name
+fe.protection.trample.minecraft.anvil.*                            # (default: true) PLACE Anvil
+fe.protection.trample.minecraft.beacon.*                           # (default: true) PLACE Beacon
+fe.protection.trample.minecraft.bed.*                              # (default: true) PLACE Bed
+fe.protection.trample.minecraft.bedrock.*                          # (default: true) PLACE Bedrock
+fe.protection.trample.minecraft.birch_stairs.*                     # (default: true) PLACE Birch Wood Stairs
+fe.protection.trample.minecraft.bookshelf.*                        # (default: true) PLACE Bookshelf
+fe.protection.trample.minecraft.brewing_stand.*                    # (default: true) PLACE tile.brewingStand.name
+fe.protection.trample.minecraft.brick_block.*                      # (default: true) PLACE Bricks
+fe.protection.trample.minecraft.brick_stairs.*                     # (default: true) PLACE Brick Stairs
+fe.protection.trample.minecraft.brown_mushroom.*                   # (default: true) PLACE Mushroom
+fe.protection.trample.minecraft.brown_mushroom_block.*             # (default: true) PLACE Mushroom
+fe.protection.trample.minecraft.cactus.*                           # (default: true) PLACE Cactus
+fe.protection.trample.minecraft.cake.*                             # (default: true) PLACE Cake
+fe.protection.trample.minecraft.carpet.*                           # (default: true) PLACE tile.woolCarpet.name
+fe.protection.trample.minecraft.carrots.*                          # (default: true) PLACE Carrots
+fe.protection.trample.minecraft.cauldron.*                         # (default: true) PLACE Cauldron
+fe.protection.trample.minecraft.chest.*                            # (default: true) PLACE Chest
+fe.protection.trample.minecraft.clay.*                             # (default: true) PLACE Clay
+fe.protection.trample.minecraft.coal_block.*                       # (default: true) PLACE Block of Coal
+fe.protection.trample.minecraft.coal_ore.*                         # (default: true) PLACE Coal Ore
+fe.protection.trample.minecraft.cobblestone.*                      # (default: true) PLACE Cobblestone
+fe.protection.trample.minecraft.cobblestone_wall.*                 # (default: true) PLACE tile.cobbleWall.name
+fe.protection.trample.minecraft.cocoa.*                            # (default: true) PLACE Cocoa
+fe.protection.trample.minecraft.command_block.*                    # (default: true) PLACE Command Block
+fe.protection.trample.minecraft.crafting_table.*                   # (default: true) PLACE Crafting Table
+fe.protection.trample.minecraft.dark_oak_stairs.*                  # (default: true) PLACE Dark Oak Wood Stairs
+fe.protection.trample.minecraft.daylight_detector.*                # (default: true) PLACE Daylight Sensor
+fe.protection.trample.minecraft.deadbush.*                         # (default: true) PLACE Dead Bush
+fe.protection.trample.minecraft.detector_rail.*                    # (default: true) PLACE Detector Rail
+fe.protection.trample.minecraft.diamond_block.*                    # (default: true) PLACE Block of Diamond
+fe.protection.trample.minecraft.diamond_ore.*                      # (default: true) PLACE Diamond Ore
+fe.protection.trample.minecraft.dirt.*                             # (default: true) PLACE tile.dirt.name
+fe.protection.trample.minecraft.dispenser.*                        # (default: true) PLACE Dispenser
+fe.protection.trample.minecraft.double_plant.*                     # (default: true) PLACE tile.doublePlant.name
+fe.protection.trample.minecraft.double_stone_slab.*                # (default: true) PLACE tile.stoneSlab.name
+fe.protection.trample.minecraft.double_wooden_slab.*               # (default: true) PLACE tile.woodSlab.name
+fe.protection.trample.minecraft.dragon_egg.*                       # (default: true) PLACE Dragon Egg
+fe.protection.trample.minecraft.dropper.*                          # (default: true) PLACE Dropper
+fe.protection.trample.minecraft.emerald_block.*                    # (default: true) PLACE Block of Emerald
+fe.protection.trample.minecraft.emerald_ore.*                      # (default: true) PLACE Emerald Ore
+fe.protection.trample.minecraft.enchanting_table.*                 # (default: true) PLACE Enchantment Table
+fe.protection.trample.minecraft.end_portal.*                       # (default: true) PLACE tile.null.name
+fe.protection.trample.minecraft.end_portal_frame.*                 # (default: true) PLACE End Portal
+fe.protection.trample.minecraft.end_stone.*                        # (default: true) PLACE End Stone
+fe.protection.trample.minecraft.ender_chest.*                      # (default: true) PLACE Ender Chest
+fe.protection.trample.minecraft.farmland.*                         # (default: true) PLACE Farmland
+fe.protection.trample.minecraft.fence.*                            # (default: true) PLACE Fence
+fe.protection.trample.minecraft.fence_gate.*                       # (default: true) PLACE Fence Gate
+fe.protection.trample.minecraft.fire.*                             # (default: true) PLACE Fire
+fe.protection.trample.minecraft.flower_pot.*                       # (default: true) PLACE tile.flowerPot.name
+fe.protection.trample.minecraft.flowing_lava.*                     # (default: true) PLACE Lava
+fe.protection.trample.minecraft.flowing_water.*                    # (default: true) PLACE Water
+fe.protection.trample.minecraft.furnace.*                          # (default: true) PLACE Furnace
+fe.protection.trample.minecraft.glass.*                            # (default: true) PLACE Glass
+fe.protection.trample.minecraft.glass_pane.*                       # (default: true) PLACE Glass Pane
+fe.protection.trample.minecraft.glowstone.*                        # (default: true) PLACE Glowstone
+fe.protection.trample.minecraft.gold_block.*                       # (default: true) PLACE Block of Gold
+fe.protection.trample.minecraft.gold_ore.*                         # (default: true) PLACE Gold Ore
+fe.protection.trample.minecraft.golden_rail.*                      # (default: true) PLACE Powered Rail
+fe.protection.trample.minecraft.grass.*                            # (default: true) PLACE Grass Block
+fe.protection.trample.minecraft.gravel.*                           # (default: true) PLACE Gravel
+fe.protection.trample.minecraft.hardened_clay.*                    # (default: true) PLACE Hardened Clay
+fe.protection.trample.minecraft.hay_block.*                        # (default: true) PLACE Hay Bale
+fe.protection.trample.minecraft.heavy_weighted_pressure_plate.*    # (default: true) PLACE Weighted Pressure Plate (Heavy)
+fe.protection.trample.minecraft.hopper.*                           # (default: true) PLACE Hopper
+fe.protection.trample.minecraft.ice.*                              # (default: true) PLACE Ice
+fe.protection.trample.minecraft.iron_bars.*                        # (default: true) PLACE Iron Bars
+fe.protection.trample.minecraft.iron_block.*                       # (default: true) PLACE Block of Iron
+fe.protection.trample.minecraft.iron_door.*                        # (default: true) PLACE Iron Door
+fe.protection.trample.minecraft.iron_ore.*                         # (default: true) PLACE Iron Ore
+fe.protection.trample.minecraft.jukebox.*                          # (default: true) PLACE Jukebox
+fe.protection.trample.minecraft.jungle_stairs.*                    # (default: true) PLACE Jungle Wood Stairs
+fe.protection.trample.minecraft.ladder.*                           # (default: true) PLACE Ladder
+fe.protection.trample.minecraft.lapis_block.*                      # (default: true) PLACE Lapis Lazuli Block
+fe.protection.trample.minecraft.lapis_ore.*                        # (default: true) PLACE Lapis Lazuli Ore
+fe.protection.trample.minecraft.lava.*                             # (default: true) PLACE Lava
+fe.protection.trample.minecraft.leaves.*                           # (default: true) PLACE Leaves
+fe.protection.trample.minecraft.leaves2.*                          # (default: true) PLACE Leaves
+fe.protection.trample.minecraft.lever.*                            # (default: true) PLACE Lever
+fe.protection.trample.minecraft.light_weighted_pressure_plate.*    # (default: true) PLACE Weighted Pressure Plate (Light)
+fe.protection.trample.minecraft.lit_furnace.*                      # (default: true) PLACE Furnace
+fe.protection.trample.minecraft.lit_pumpkin.*                      # (default: true) PLACE Jack o'Lantern
+fe.protection.trample.minecraft.lit_redstone_lamp.*                # (default: true) PLACE Redstone Lamp
+fe.protection.trample.minecraft.lit_redstone_ore.*                 # (default: true) PLACE Redstone Ore
+fe.protection.trample.minecraft.log.*                              # (default: true) PLACE Wood
+fe.protection.trample.minecraft.log2.*                             # (default: true) PLACE Wood
+fe.protection.trample.minecraft.melon_block.*                      # (default: true) PLACE Melon
+fe.protection.trample.minecraft.melon_stem.*                       # (default: true) PLACE tile.pumpkinStem.name
+fe.protection.trample.minecraft.mob_spawner.*                      # (default: true) PLACE Monster Spawner
+fe.protection.trample.minecraft.monster_egg.*                      # (default: true) PLACE tile.monsterStoneEgg.name
+fe.protection.trample.minecraft.mossy_cobblestone.*                # (default: true) PLACE Moss Stone
+fe.protection.trample.minecraft.mycelium.*                         # (default: true) PLACE Mycelium
+fe.protection.trample.minecraft.nether_brick.*                     # (default: true) PLACE Nether Brick
+fe.protection.trample.minecraft.nether_brick_fence.*               # (default: true) PLACE Nether Brick Fence
+fe.protection.trample.minecraft.nether_brick_stairs.*              # (default: true) PLACE Nether Brick Stairs
+fe.protection.trample.minecraft.nether_wart.*                      # (default: true) PLACE Nether Wart
+fe.protection.trample.minecraft.netherrack.*                       # (default: true) PLACE Netherrack
+fe.protection.trample.minecraft.noteblock.*                        # (default: true) PLACE Note Block
+fe.protection.trample.minecraft.oak_stairs.*                       # (default: true) PLACE Oak Wood Stairs
+fe.protection.trample.minecraft.obsidian.*                         # (default: true) PLACE Obsidian
+fe.protection.trample.minecraft.packed_ice.*                       # (default: true) PLACE Packed Ice
+fe.protection.trample.minecraft.piston.*                           # (default: true) PLACE Piston
+fe.protection.trample.minecraft.piston_extension.*                 # (default: true) PLACE tile.null.name
+fe.protection.trample.minecraft.piston_head.*                      # (default: true) PLACE tile.null.name
+fe.protection.trample.minecraft.planks.*                           # (default: true) PLACE Wooden Planks
+fe.protection.trample.minecraft.portal.*                           # (default: true) PLACE Portal
+fe.protection.trample.minecraft.potatoes.*                         # (default: true) PLACE Potatoes
+fe.protection.trample.minecraft.powered_comparator.*               # (default: true) PLACE tile.comparator.name
+fe.protection.trample.minecraft.powered_repeater.*                 # (default: true) PLACE tile.diode.name
+fe.protection.trample.minecraft.pumpkin.*                          # (default: true) PLACE Pumpkin
+fe.protection.trample.minecraft.pumpkin_stem.*                     # (default: true) PLACE tile.pumpkinStem.name
+fe.protection.trample.minecraft.quartz_block.*                     # (default: true) PLACE tile.quartzBlock.name
+fe.protection.trample.minecraft.quartz_ore.*                       # (default: true) PLACE Nether Quartz Ore
+fe.protection.trample.minecraft.quartz_stairs.*                    # (default: true) PLACE Quartz Stairs
+fe.protection.trample.minecraft.rail.*                             # (default: true) PLACE Rail
+fe.protection.trample.minecraft.red_flower.*                       # (default: true) PLACE tile.flower2.name
+fe.protection.trample.minecraft.red_mushroom.*                     # (default: true) PLACE Mushroom
+fe.protection.trample.minecraft.red_mushroom_block.*               # (default: true) PLACE Mushroom
+fe.protection.trample.minecraft.redstone_block.*                   # (default: true) PLACE Block of Redstone
+fe.protection.trample.minecraft.redstone_lamp.*                    # (default: true) PLACE Redstone Lamp
+fe.protection.trample.minecraft.redstone_ore.*                     # (default: true) PLACE Redstone Ore
+fe.protection.trample.minecraft.redstone_torch.*                   # (default: true) PLACE Redstone Torch
+fe.protection.trample.minecraft.redstone_wire.*                    # (default: true) PLACE Redstone Dust
+fe.protection.trample.minecraft.reeds.*                            # (default: true) PLACE Sugar cane
+fe.protection.trample.minecraft.sand.*                             # (default: true) PLACE tile.sand.name
+fe.protection.trample.minecraft.sandstone.*                        # (default: true) PLACE Sandstone
+fe.protection.trample.minecraft.sandstone_stairs.*                 # (default: true) PLACE Sandstone Stairs
+fe.protection.trample.minecraft.sapling.*                          # (default: true) PLACE tile.sapling.name
+fe.protection.trample.minecraft.skull.*                            # (default: true) PLACE tile.skull.name
+fe.protection.trample.minecraft.snow.*                             # (default: true) PLACE Snow
+fe.protection.trample.minecraft.snow_layer.*                       # (default: true) PLACE Snow
+fe.protection.trample.minecraft.soul_sand.*                        # (default: true) PLACE Soul Sand
+fe.protection.trample.minecraft.sponge.*                           # (default: true) PLACE Sponge
+fe.protection.trample.minecraft.spruce_stairs.*                    # (default: true) PLACE Spruce Wood Stairs
+fe.protection.trample.minecraft.stained_glass.*                    # (default: true) PLACE Stained Glass
+fe.protection.trample.minecraft.stained_glass_pane.*               # (default: true) PLACE Stained Glass Pane
+fe.protection.trample.minecraft.stained_hardened_clay.*            # (default: true) PLACE tile.clayHardenedStained.name
+fe.protection.trample.minecraft.standing_sign.*                    # (default: true) PLACE Sign
+fe.protection.trample.minecraft.sticky_piston.*                    # (default: true) PLACE Sticky Piston
+fe.protection.trample.minecraft.stone.*                            # (default: true) PLACE Stone
+fe.protection.trample.minecraft.stone_brick_stairs.*               # (default: true) PLACE Stone Brick Stairs
+fe.protection.trample.minecraft.stone_button.*                     # (default: true) PLACE Button
+fe.protection.trample.minecraft.stone_pressure_plate.*             # (default: true) PLACE Pressure Plate
+fe.protection.trample.minecraft.stone_slab.*                       # (default: true) PLACE tile.stoneSlab.name
+fe.protection.trample.minecraft.stone_stairs.*                     # (default: true) PLACE Stone Stairs
+fe.protection.trample.minecraft.stonebrick.*                       # (default: true) PLACE Stone Bricks
+fe.protection.trample.minecraft.tallgrass.*                        # (default: true) PLACE Grass
+fe.protection.trample.minecraft.tnt.*                              # (default: true) PLACE TNT
+fe.protection.trample.minecraft.torch.*                            # (default: true) PLACE Torch
+fe.protection.trample.minecraft.trapdoor.*                         # (default: true) PLACE Trapdoor
+fe.protection.trample.minecraft.trapped_chest.*                    # (default: true) PLACE Trapped Chest
+fe.protection.trample.minecraft.tripwire.*                         # (default: true) PLACE Tripwire
+fe.protection.trample.minecraft.tripwire_hook.*                    # (default: true) PLACE Tripwire Hook
+fe.protection.trample.minecraft.unlit_redstone_torch.*             # (default: true) PLACE Redstone Torch
+fe.protection.trample.minecraft.unpowered_comparator.*             # (default: true) PLACE tile.comparator.name
+fe.protection.trample.minecraft.unpowered_repeater.*               # (default: true) PLACE tile.diode.name
+fe.protection.trample.minecraft.vine.*                             # (default: true) PLACE Vines
+fe.protection.trample.minecraft.wall_sign.*                        # (default: true) PLACE Sign
+fe.protection.trample.minecraft.water.*                            # (default: true) PLACE Water
+fe.protection.trample.minecraft.waterlily.*                        # (default: true) PLACE Lily Pad
+fe.protection.trample.minecraft.web.*                              # (default: true) PLACE Cobweb
+fe.protection.trample.minecraft.wheat.*                            # (default: true) PLACE Crops
+fe.protection.trample.minecraft.wooden_button.*                    # (default: true) PLACE Button
+fe.protection.trample.minecraft.wooden_door.*                      # (default: true) PLACE Wooden Door
+fe.protection.trample.minecraft.wooden_pressure_plate.*            # (default: true) PLACE Pressure Plate
+fe.protection.trample.minecraft.wooden_slab.*                      # (default: true) PLACE tile.woodSlab.name
+fe.protection.trample.minecraft.wool.*                             # (default: true) PLACE Wool
+fe.protection.trample.minecraft.yellow_flower.*                    # (default: true) PLACE tile.flower1.name
