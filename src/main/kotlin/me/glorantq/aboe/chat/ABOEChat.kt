@@ -9,6 +9,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent
 import cpw.mods.fml.common.network.NetworkRegistry
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
 import cpw.mods.fml.relauncher.Side
+import me.glorantq.aboe.chat.client.backport.PlayerProfileManager
 import me.glorantq.aboe.chat.client.channels.ClientChannelManager
 import me.glorantq.aboe.chat.client.chat.ChatGUIInjector
 import me.glorantq.aboe.chat.client.chat.ModifiedGuiNewChat
@@ -26,7 +27,9 @@ import net.minecraft.server.MinecraftServer
 import net.minecraftforge.common.config.Configuration
 import org.apache.logging.log4j.LogManager
 
-@Mod(modid = "aboe-chat", name = "ABOE Chat", version = ABOEChat.MOD_VERSION, canBeDeactivated = true)
+const val modID: String = "aboe-chat"
+
+@Mod(modid = modID, name = "ABOE Chat", version = ABOEChat.MOD_VERSION, canBeDeactivated = true)
 class ABOEChat {
     companion object {
         const val MOD_VERSION = "2.0.0"
@@ -54,6 +57,9 @@ class ABOEChat {
     var simpleNetworkWrapper: SimpleNetworkWrapper? = null
         private set
 
+    var playerSkinManager: PlayerProfileManager? = null
+        private set
+
     lateinit var configuration: Configuration
         private set
 
@@ -71,6 +77,7 @@ class ABOEChat {
             chatGUIInjector = ChatGUIInjector()
             emoteHandler = EmoteHandler()
             clientChannelManager = ClientChannelManager()
+            playerSkinManager = PlayerProfileManager()
         }
 
         if (FMLCommonHandler.instance().side == Side.SERVER) {

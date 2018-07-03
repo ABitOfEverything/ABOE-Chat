@@ -35,7 +35,7 @@ class WindowsToastNotifier : INotifier {
 
         System.load(tempFile.absolutePath)
 
-        val logoResourceStream: InputStream = this::class.java.classLoader.getResourceAsStream("aboe.png")
+        val logoResourceStream: InputStream = this::class.java.classLoader.getResourceAsStream("assets/aboe.png")
         val tempLogoFile: File = File.createTempFile("aboe-logo", ".png")
         val tempLogoOutputStream: OutputStream = FileOutputStream(tempLogoFile)
 

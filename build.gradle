@@ -37,6 +37,7 @@ ext {
     st4_version = "4.0.8"
     jsonio_version = "4.10.0"
     fe_version = "1.4.4-SNAPSHOT"
+    okhttp_version = "3.10.0"
 }
 
 repositories {
@@ -57,6 +58,7 @@ dependencies {
     embed "com.googlecode.json-simple:json-simple:$json_version"
     embed "org.antlr:ST4:$st4_version"
     embed "com.cedarsoftware:json-io:$jsonio_version"
+    embed "com.squareup.okhttp3:okhttp:$okhttp_version"
 
     compile "com.forgeessentials:forgeessentials:$fe_version:dev"
 }
@@ -87,4 +89,9 @@ compileKotlin {
 
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+sourceSets {
+    kotlin { output.resourcesDir = output.classesDir }
+    java { output.resourcesDir = output.classesDir }
 }

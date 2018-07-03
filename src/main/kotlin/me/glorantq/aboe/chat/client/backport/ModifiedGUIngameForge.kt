@@ -2,13 +2,12 @@ package me.glorantq.aboe.chat.client.backport
 
 import me.glorantq.aboe.chat.ABOEChat
 import net.minecraft.client.Minecraft
-import net.minecraft.client.entity.AbstractClientPlayer
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiPlayerInfo
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.client.GuiIngameForge
 import org.lwjgl.opengl.GL11
 import net.minecraft.client.renderer.Tessellator
+import net.minecraft.util.ResourceLocation
 
 class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
     override fun renderPlayerList(width: Int, height: Int) {
@@ -55,13 +54,14 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
 
             val entryHeight: Int = 9
             val totalMargin: Int = (columns - 1) * 5
+            val borderWidth: Int = 1
 
-            val columnWidth = (Math.min(columns * (maxNameWidth + /*13*/ 23), width - 50) / columns)
+            val columnWidth = (Math.min(columns * (maxNameWidth + 23), width - 50) / columns)
             val listStartX = (width / 2 - (columnWidth * columns + totalMargin) / 2)
             val listStartY = 10
             val listWidth = (columnWidth * columns + totalMargin)
 
-            Gui.drawRect(width / 2 - listWidth / 2 - 1, listStartY - 1, width / 2 + listWidth / 2 + 1, listStartY + usersInColumn * entryHeight, Integer.MIN_VALUE)
+            Gui.drawRect(width / 2 - listWidth / 2 - borderWidth, listStartY - borderWidth, width / 2 + listWidth / 2 + borderWidth, listStartY + usersInColumn * entryHeight, Integer.MIN_VALUE)
 
             for (playerIndex in 0 until onlinePlayerCount) {
                 val playerColumn = playerIndex / usersInColumn
@@ -79,13 +79,15 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
                     val playerInfo: GuiPlayerInfo = players[playerIndex] as GuiPlayerInfo
                     val playerName: String = playerInfo.name
 
-                    val player: EntityPlayer? = this.mc.theWorld.getPlayerEntityByName(playerName)
-                    if(player != null) {
-                        this.mc.textureManager.bindTexture((player as AbstractClientPlayer).locationSkin)
-                        drawScaledCustomSizeModalRect(entryX, entryY, 8.0f, 16.0f, 8, 8, 8, 8, 64.0f, 64.0f)
-                    } else {
-                        println("player == null")
+                    val skinManager: PlayerProfileManager = ABOEChat.instance.playerSkinManager!!
+                    if(!skinManager.hasSkinLoaded(playerName)) {
+                        skinManager.loadSkinForUser(playerName)
                     }
+
+                    val skinLocation: ResourceLocation = skinManager.getSkinLocation(playerName)
+                    this.mc.textureManager.bindTexture(skinLocation)
+                    drawScaledCustomSizeModalRect(entryX, entryY, 8.0f, 16.0f, 8, 16, 8, 8, 64.0f, 64.0f)
+                    drawScaledCustomSizeModalRect(entryX, entryY, 40.0f, 16.0f, 8, 16, 8, 8, 64.0f, 64.0f)
 
                     this.mc.fontRenderer.drawStringWithShadow(playerName, entryX + 10, entryY, -1)
 
@@ -95,11 +97,11 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
         }
     }
 
-    private fun drawPing(p_175245_1_: Int, p_175245_2_: Int, p_175245_3_: Int, playerInfo: GuiPlayerInfo) {
+    private fun drawPing(columnWidth: Int, x: Int, y: Int, playerInfo: GuiPlayerInfo) {
         GL11.glColor4f(1f, 1f, 1f, 1f)
         this.mc.textureManager.bindTexture(Gui.icons)
 
-        val b2: Byte = when {
+        val iconOffset: Byte = when {
             playerInfo.responseTime < 0 -> 5
             playerInfo.responseTime < 150 -> 0
             playerInfo.responseTime < 300 -> 1
@@ -109,19 +111,20 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
         }
 
         this.zLevel += 100.0f
-        this.drawTexturedModalRect(p_175245_2_ + p_175245_1_ - 11, p_175245_3_, 0, 176 + b2 * 8, 10, 8)
+        this.drawTexturedModalRect(x + columnWidth - 11, y, 0, 176 + iconOffset * 8, 10, 8)
         this.zLevel -= 100.0f
     }
 
     private fun drawScaledCustomSizeModalRect(x: Int, y: Int, u: Float, v: Float, uWidth: Int, vHeight: Int, width: Int, height: Int, tileWidth: Float, tileHeight: Float) {
-        val f = 1.0f / tileWidth
-        val f1 = 1.0f / tileHeight
+        val scaleU = 1.0f / tileWidth
+        val scaleV = 1.0f / tileHeight
+
         val tessellator: Tessellator = Tessellator.instance
         tessellator.startDrawingQuads()
-        tessellator.addVertexWithUV(x.toDouble(), (y + height).toDouble(), 0.0, (u * f).toDouble(), ((v + vHeight.toDouble()) * f1))
-        tessellator.addVertexWithUV((x + width).toDouble(), (y + height).toDouble(), 0.0, ((u + uWidth.toFloat()) * f).toDouble(), ((v + vHeight.toFloat()) * f1).toDouble())
-        tessellator.addVertexWithUV((x + width).toDouble(), y.toDouble(), 0.0, ((u + uWidth.toFloat()) * f).toDouble(), (v * f1).toDouble())
-        tessellator.addVertexWithUV(x.toDouble(), y.toDouble(), 0.0, (u * f).toDouble(), (v * f1).toDouble())
+        tessellator.addVertexWithUV(x.toDouble(), (y + height).toDouble(), 0.0, (u * scaleU).toDouble(), ((v + vHeight.toDouble()) * scaleV))
+        tessellator.addVertexWithUV((x + width).toDouble(), (y + height).toDouble(), 0.0, ((u + uWidth.toFloat()) * scaleU).toDouble(), ((v + vHeight.toFloat()) * scaleV).toDouble())
+        tessellator.addVertexWithUV((x + width).toDouble(), y.toDouble(), 0.0, ((u + uWidth.toFloat()) * scaleU).toDouble(), (v * scaleV).toDouble())
+        tessellator.addVertexWithUV(x.toDouble(), y.toDouble(), 0.0, (u * scaleU).toDouble(), (v * scaleV).toDouble())
         tessellator.draw()
     }
 }
