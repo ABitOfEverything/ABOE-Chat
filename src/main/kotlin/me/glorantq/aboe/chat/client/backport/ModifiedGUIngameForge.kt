@@ -2,14 +2,17 @@ package me.glorantq.aboe.chat.client.backport
 
 import me.glorantq.aboe.chat.ABOEChat
 import net.minecraft.client.Minecraft
+import net.minecraft.client.entity.AbstractClientPlayer
 import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiPlayerInfo
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.client.GuiIngameForge
 import org.lwjgl.opengl.GL11
+import net.minecraft.client.renderer.Tessellator
 
 class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
     override fun renderPlayerList(width: Int, height: Int) {
-        val scoreobjective = this.mc.theWorld.scoreboard.func_96539_a(0)
+        val scoreObjective = this.mc.theWorld.scoreboard.func_96539_a(0)
 
         val chatChannels = ABOEChat.instance.clientChannelManager!!.availableChannels
         var largestSize = -1
@@ -27,57 +30,66 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
             index++
         }
 
-        if (this.mc.gameSettings.keyBindPlayerList.isKeyPressed && (!this.mc.isIntegratedServerRunning || this.mc.thePlayer.sendQueue.playerInfoList.size > 1 || scoreobjective != null)) {
+        if (this.mc.gameSettings.keyBindPlayerList.isKeyPressed && (!this.mc.isIntegratedServerRunning || this.mc.thePlayer.sendQueue.playerInfoList.size > 1 || scoreObjective != null)) {
             this.mc.mcProfiler.startSection("playerList")
-            val nethandlerplayclient = this.mc.thePlayer.sendQueue
-            var list: List<*> = nethandlerplayclient.playerInfoList
+            val netHandlerPlayClient = this.mc.thePlayer.sendQueue
+            var players: List<*> = netHandlerPlayClient.playerInfoList
 
-            var i = 0
+            var maxNameWidth = 0
 
-            for (networkplayerinfo in list) {
-                val playerInfo = networkplayerinfo as GuiPlayerInfo
-                val k = this.mc.fontRenderer.getStringWidth(playerInfo.name)
-                i = Math.max(i, k)
+            for (guiPlayerInfo in players) {
+                val playerInfo = guiPlayerInfo as GuiPlayerInfo
+                val nameWidth = this.mc.fontRenderer.getStringWidth(playerInfo.name)
+                maxNameWidth = Math.max(maxNameWidth, nameWidth)
             }
 
-            list = list.subList(0, Math.min(list.size, 80))
-            val l3 = list.size
-            var i4 = l3
-            var j4: Int = 1
+            players = players.subList(0, Math.min(players.size, 80))
+            val onlinePlayerCount = players.size
+            var usersInColumn = onlinePlayerCount
+            var columns: Int = 1
 
-            while (i4 > 20) {
-                ++j4
-                i4 = (l3 + j4 - 1) / j4
+            while (usersInColumn > 20) {
+                ++columns
+                usersInColumn = (onlinePlayerCount + columns - 1) / columns
             }
 
-            val l = 0
+            val entryHeight: Int = 9
+            val totalMargin: Int = (columns - 1) * 5
 
-            val i1 = Math.min(j4 * (i + l + 13), width - 50) / j4
-            val j1 = width / 2 - (i1 * j4 + (j4 - 1) * 5) / 2
-            val k1 = 10
-            val l1 = i1 * j4 + (j4 - 1) * 5
+            val columnWidth = (Math.min(columns * (maxNameWidth + /*13*/ 23), width - 50) / columns)
+            val listStartX = (width / 2 - (columnWidth * columns + totalMargin) / 2)
+            val listStartY = 10
+            val listWidth = (columnWidth * columns + totalMargin)
 
-            Gui.drawRect(width / 2 - l1 / 2 - 1, k1 - 1, width / 2 + l1 / 2 + 1, k1 + i4 * 9, Integer.MIN_VALUE)
+            Gui.drawRect(width / 2 - listWidth / 2 - 1, listStartY - 1, width / 2 + listWidth / 2 + 1, listStartY + usersInColumn * entryHeight, Integer.MIN_VALUE)
 
-            for (k4 in 0 until l3) {
-                val l4 = k4 / i4
-                val i5 = k4 % i4
-                val j2 = j1 + l4 * i1 + l4 * 5
-                val k2 = k1 + i5 * 9
-                Gui.drawRect(j2, k2, j2 + i1, k2 + 8, 553648127)
+            for (playerIndex in 0 until onlinePlayerCount) {
+                val playerColumn = playerIndex / usersInColumn
+                val additionalUsers = playerIndex % usersInColumn
+                val entryMargin: Int = playerColumn * 5
+                val entryX = listStartX + playerColumn * columnWidth + entryMargin
+                val entryY = listStartY + additionalUsers * entryHeight
+                Gui.drawRect(entryX, entryY, entryX + columnWidth, entryY + 8, 553648127)
                 GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f)
                 GL11.glEnable(GL11.GL_ALPHA)
                 GL11.glEnable(GL11.GL_BLEND)
                 GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA)
 
-                if (k4 < list.size) {
-                    val networkplayerinfo1 = list[k4] as GuiPlayerInfo
+                if (playerIndex < players.size) {
+                    val playerInfo: GuiPlayerInfo = players[playerIndex] as GuiPlayerInfo
+                    val playerName: String = playerInfo.name
 
-                    val s4 = networkplayerinfo1.name
+                    val player: EntityPlayer? = this.mc.theWorld.getPlayerEntityByName(playerName)
+                    if(player != null) {
+                        this.mc.textureManager.bindTexture((player as AbstractClientPlayer).locationSkin)
+                        drawScaledCustomSizeModalRect(entryX, entryY, 8.0f, 16.0f, 8, 8, 8, 8, 64.0f, 64.0f)
+                    } else {
+                        println("player == null")
+                    }
 
-                    this.mc.fontRenderer.drawStringWithShadow(s4, j2, k2, -1)
+                    this.mc.fontRenderer.drawStringWithShadow(playerName, entryX + 10, entryY, -1)
 
-                    this.drawPing(i1, j2, k2, networkplayerinfo1)
+                    this.drawPing(columnWidth, entryX, entryY, playerInfo)
                 }
             }
         }
@@ -86,24 +98,30 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
     private fun drawPing(p_175245_1_: Int, p_175245_2_: Int, p_175245_3_: Int, playerInfo: GuiPlayerInfo) {
         GL11.glColor4f(1f, 1f, 1f, 1f)
         this.mc.textureManager.bindTexture(Gui.icons)
-        val b2: Byte
 
-        if (playerInfo.responseTime < 0) {
-            b2 = 5
-        } else if (playerInfo.responseTime < 150) {
-            b2 = 0
-        } else if (playerInfo.responseTime < 300) {
-            b2 = 1
-        } else if (playerInfo.responseTime < 600) {
-            b2 = 2
-        } else if (playerInfo.responseTime < 1000) {
-            b2 = 3
-        } else {
-            b2 = 4
+        val b2: Byte = when {
+            playerInfo.responseTime < 0 -> 5
+            playerInfo.responseTime < 150 -> 0
+            playerInfo.responseTime < 300 -> 1
+            playerInfo.responseTime < 600 -> 2
+            playerInfo.responseTime < 1000 -> 3
+            else -> 4
         }
 
         this.zLevel += 100.0f
         this.drawTexturedModalRect(p_175245_2_ + p_175245_1_ - 11, p_175245_3_, 0, 176 + b2 * 8, 10, 8)
         this.zLevel -= 100.0f
+    }
+
+    private fun drawScaledCustomSizeModalRect(x: Int, y: Int, u: Float, v: Float, uWidth: Int, vHeight: Int, width: Int, height: Int, tileWidth: Float, tileHeight: Float) {
+        val f = 1.0f / tileWidth
+        val f1 = 1.0f / tileHeight
+        val tessellator: Tessellator = Tessellator.instance
+        tessellator.startDrawingQuads()
+        tessellator.addVertexWithUV(x.toDouble(), (y + height).toDouble(), 0.0, (u * f).toDouble(), ((v + vHeight.toDouble()) * f1))
+        tessellator.addVertexWithUV((x + width).toDouble(), (y + height).toDouble(), 0.0, ((u + uWidth.toFloat()) * f).toDouble(), ((v + vHeight.toFloat()) * f1).toDouble())
+        tessellator.addVertexWithUV((x + width).toDouble(), y.toDouble(), 0.0, ((u + uWidth.toFloat()) * f).toDouble(), (v * f1).toDouble())
+        tessellator.addVertexWithUV(x.toDouble(), y.toDouble(), 0.0, (u * f).toDouble(), (v * f1).toDouble())
+        tessellator.draw()
     }
 }

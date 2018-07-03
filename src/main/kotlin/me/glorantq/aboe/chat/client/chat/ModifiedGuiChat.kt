@@ -3,6 +3,7 @@ package me.glorantq.aboe.chat.client.chat
 import cpw.mods.fml.relauncher.Side
 import cpw.mods.fml.relauncher.SideOnly
 import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.Gui
 import net.minecraft.client.gui.GuiChat
 import net.minecraft.client.gui.GuiPlayerInfo
 import org.apache.logging.log4j.LogManager
@@ -50,7 +51,7 @@ class ModifiedGuiChat internal constructor(defaultText: String) : GuiChat(defaul
                 currentPlayerName = chatText.substring(substringStart, substringEnd).trim { it <= ' ' }
 
                 bestNameMatch = ""
-                if (currentPlayerName.isNotEmpty()) {
+                if (currentPlayerName.isNotBlank()) {
                     for (playerInfo in onlinePlayers) {
                         if (currentPlayerName.length > playerInfo.name.length) {
                             continue
@@ -60,19 +61,29 @@ class ModifiedGuiChat internal constructor(defaultText: String) : GuiChat(defaul
 
                         if (playerNameSubstring.equals(currentPlayerName, ignoreCase = true)) {
                             bestNameMatch = playerInfo.name
+                            break
                         }
                     }
+
+                    if(bestNameMatch.isBlank()) {
+                        if("everyone".substring(0, Math.min(currentPlayerName.length, 8)).equals(currentPlayerName, ignoreCase = true)) {
+                            bestNameMatch = "everyone"
+                        }
+                    }
+                } else {
+                    bestNameMatch = onlinePlayers[0].name
                 }
             }
         }
     }
 
     override fun drawScreen(p_73863_1_: Int, p_73863_2_: Int, p_73863_3_: Float) {
-        drawPlayerTooltip = inputField.text.isNotEmpty() &&
+        drawPlayerTooltip =
+                inputField.text.isNotEmpty() &&
                 inputField.text[inputField.getNthWordFromCursor(-1)] == '@' &&
                 inputField.text[inputField.cursorPosition - 1] != ' '
 
-        if (drawPlayerTooltip) {
+        if (drawPlayerTooltip && bestNameMatch.isNotEmpty() && currentPlayerName.isNotEmpty()) {
             var cursorX = inputField.xPosition + fontRendererObj.getStringWidth(inputField.text.substring(0, inputField.cursorPosition)) - fontRendererObj.getStringWidth("_")
             cursorX = Math.min(cursorX, inputField.xPosition + inputField.width + fontRendererObj.getStringWidth("_"))
 
@@ -83,8 +94,12 @@ class ModifiedGuiChat internal constructor(defaultText: String) : GuiChat(defaul
                         bestNameMatch
                     }
 
-            func_146283_a(listOf(renderedName), cursorX, inputField.yPosition - inputField.height / 2)
+            val baseY: Int = inputField.yPosition - inputField.height - mc.fontRenderer.FONT_HEIGHT - 5
+
+            Gui.drawRect(cursorX, baseY, cursorX + mc.fontRenderer.getStringWidth(bestNameMatch) + 10, 10 + mc.fontRenderer.FONT_HEIGHT + baseY, 0xDD000000.toInt())
+            drawString(mc.fontRenderer, renderedName, cursorX + 5, baseY + 5, 0x000000)
         }
+
         super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_)
     }
 }

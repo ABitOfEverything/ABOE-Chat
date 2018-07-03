@@ -16,7 +16,7 @@ class ClientChannelManager {
     private val logger = LogManager.getLogger("ClientChannelManager")
 
     private val aboeChat: ABOEChat = ABOEChat.instance
-    var currentChannel = "#unknown"
+    var currentChannel = "unknown"
         private set
     val availableChannels: ClientChannelList = ArrayList()
 

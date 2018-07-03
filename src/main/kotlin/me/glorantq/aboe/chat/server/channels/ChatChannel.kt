@@ -5,6 +5,7 @@ import me.glorantq.aboe.chat.ABOEChat
 import me.glorantq.aboe.chat.common.PacketChannelChanged
 import me.glorantq.aboe.chat.common.PacketChannelList
 import me.glorantq.aboe.chat.common.PacketUserMentioned
+import me.glorantq.aboe.chat.convertColours
 import me.glorantq.aboe.chat.getKeyOrSetDefault
 import me.glorantq.aboe.chat.server.permissions.IPermissionProvider
 import net.minecraft.entity.player.EntityPlayer
@@ -25,7 +26,7 @@ open class ChatChannel internal constructor(val channelId: String, val channelNa
         private const val CATEGORY_CHAT_SETTINGS: String = "Chat"
         internal const val NBT_KEY_CHANNEL_DATA: String = "current_chat_channel"
 
-        private var chatFormat: String = "&8<channel> &r<<display_name>\\> <message>"
+        private var chatFormat: String = "&8<channel> &r<display_name> <message>"
         private var joinNotificationFormat: String = "&2<display_name> &ahas joined the channel!"
         private var leaveNotificationFormat: String = "&4<display_name> &chas left the channel!"
 
@@ -67,9 +68,9 @@ open class ChatChannel internal constructor(val channelId: String, val channelNa
         renderedMessage = renderedMessage.replace(" +".toRegex(), " ").trim { it <= ' ' }
         var matcher: Matcher = colourCodeCleanPattern.matcher(renderedMessage)
 
-        cleaner@ do {
+        do {
             if (!matcher.find()) {
-                return@cleaner
+                break
             }
 
             val code1: String = matcher.group("code1")
@@ -118,7 +119,9 @@ open class ChatChannel internal constructor(val channelId: String, val channelNa
         logger.info("[CHAT] {}: {}", player.gameProfile.name, message.replace(Regex("&[0-9a-fk-or]"), ""))
     }
 
-    fun join(player: EntityPlayer): Boolean = if (!canJoin(player)) { false } else forceJoin(player)
+    fun join(player: EntityPlayer): Boolean = if (!canJoin(player)) {
+        false
+    } else forceJoin(player)
 
     fun forceJoin(player: EntityPlayer): Boolean {
         val entityData: NBTTagCompound = player.entityData
@@ -262,6 +265,6 @@ open class ChatChannel internal constructor(val channelId: String, val channelNa
     }
 
     open fun canJoin(entityPlayer: EntityPlayer): Boolean = chatMod.permissionProvider!!.hasPermission(entityPlayer, "aboechat.channels.$channelId")
-    private fun formatChatString(message: String): String = message.replace("&".toRegex(), "\u00A7")
+    private fun formatChatString(message: String): String = message.convertColours()
     private inner class PlayerMention(val index: Int)
 }

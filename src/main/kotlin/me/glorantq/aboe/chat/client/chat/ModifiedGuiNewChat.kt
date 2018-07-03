@@ -6,6 +6,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext
 import cpw.mods.fml.relauncher.Side
 import cpw.mods.fml.relauncher.SideOnly
 import me.glorantq.aboe.chat.ABOEChat
+import me.glorantq.aboe.chat.client.notification.NotificationHandler
 import me.glorantq.aboe.chat.common.PacketUserMentioned
 import me.glorantq.aboe.chat.convertColours
 import net.minecraft.client.Minecraft
@@ -18,9 +19,14 @@ import net.minecraft.util.IChatComponent
 import net.minecraft.util.MathHelper
 import org.apache.logging.log4j.LogManager
 import org.lwjgl.opengl.GL11
+import java.awt.Image
+import java.awt.SystemTray
+import java.awt.Toolkit
+import java.awt.TrayIcon
 import java.lang.reflect.Field
+import java.net.URL
 import java.util.*
-import javax.swing.JOptionPane
+import javax.imageio.ImageIO
 
 @SideOnly(Side.CLIENT)
 class ModifiedGuiNewChat(private val mc: Minecraft) : GuiNewChat(mc) {
@@ -260,9 +266,7 @@ class ModifiedGuiNewChat(private val mc: Minecraft) : GuiNewChat(mc) {
             return
         }
 
-        Thread(Runnable { JOptionPane.showMessageDialog(null, "Mention by @$mentioningPlayer: $message", "New Mention", JOptionPane.INFORMATION_MESSAGE) }).start()
-
-        println(message)
+        NotificationHandler.notifier.showNotification("$mentioningPlayer - #${ABOEChat.instance.clientChannelManager!!.currentChannel}", message)
     }
 
     class PacketUserMentionedHandler : IMessageHandler<PacketUserMentioned, IMessage> {

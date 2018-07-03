@@ -1,6 +1,7 @@
 package me.glorantq.aboe.chat.client.commands.emotes
 
 import me.glorantq.aboe.chat.client.commands.ABOEClientCommand
+import me.glorantq.aboe.chat.convertColours
 import net.minecraft.command.ICommandSender
 import net.minecraft.util.ChatComponentText
 import net.minecraftforge.client.ClientCommandHandler
@@ -36,9 +37,9 @@ class EmoteHandler {
             override fun addTabCompletionOptions(p_71516_1_: ICommandSender, p_71516_2_: Array<String>): List<*> = arrayListOf<Any>()
 
             override fun processCommand(p_71515_1_: ICommandSender, p_71515_2_: Array<String>) {
-                p_71515_1_.addChatMessage(ChatComponentText("\u00A7aRefreshing emotes..."))
+                p_71515_1_.addChatMessage(ChatComponentText("&aRefreshing emotes...".convertColours()))
                 refreshEmoteList()
-                p_71515_1_.addChatMessage(ChatComponentText("\u00A7aLoaded \u00A72" + registeredEmotes.size + "\u00A7a emotes!"))
+                p_71515_1_.addChatMessage(ChatComponentText("&aLoaded &2${registeredEmotes.size}&a emotes!".convertColours()))
             }
         })
     }

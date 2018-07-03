@@ -13,7 +13,7 @@ class MentionLevelCommand : ABOEClientCommand() {
     override fun processCommand(sender: ICommandSender, args: Array<String>) {
         if (args.isEmpty()) {
             val mentionLevel: ChatGUIInjector.MentionLevel = ABOEChat.instance.chatGUIInjector!!.mentionLevel
-            sendMessage(sender, "&aYour mentions settings are set to \"&2" + mentionLevel.name + "&a\"!")
+            sendMessage(sender, "&aYour mentions settings are set to \"&2${mentionLevel.name}&a\"!")
 
             return
         }

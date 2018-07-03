@@ -12,12 +12,10 @@ buildscript {
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
+
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        dependencies {
-            classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
-        }
+        classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
     }
 }
 
@@ -55,6 +53,7 @@ configurations {
 
 dependencies {
     embed "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    embed "org.jetbrains.kotlin:kotlin-reflect"
     embed "com.googlecode.json-simple:json-simple:$json_version"
     embed "org.antlr:ST4:$st4_version"
     embed "com.cedarsoftware:json-io:$jsonio_version"
@@ -64,6 +63,7 @@ dependencies {
 
 jar {
     from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
+    appendix = "${minecraft.version}"
 }
 
 processResources {

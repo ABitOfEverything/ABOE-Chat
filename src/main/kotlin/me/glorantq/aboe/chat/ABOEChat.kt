@@ -26,7 +26,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraftforge.common.config.Configuration
 import org.apache.logging.log4j.LogManager
 
-@Mod(modid = "aboe-chat", name = "ABOE Chat", version = ABOEChat.MOD_VERSION, canBeDeactivated = true, acceptableRemoteVersions = "*")
+@Mod(modid = "aboe-chat", name = "ABOE Chat", version = ABOEChat.MOD_VERSION, canBeDeactivated = true)
 class ABOEChat {
     companion object {
         const val MOD_VERSION = "2.0.0"
