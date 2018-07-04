@@ -48,8 +48,6 @@ class ChatGUIInjector {
             mentionLevel = MentionLevel.values()[mentionLevel0]
         }
 
-        ClientCommandHandler.instance.registerCommand(MentionLevelCommand())
-
         logger.info("Initialised!")
     }
 

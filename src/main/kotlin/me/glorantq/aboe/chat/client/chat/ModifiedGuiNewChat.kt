@@ -1,5 +1,7 @@
 package me.glorantq.aboe.chat.client.chat
 
+import com.google.common.base.Splitter
+import com.vdurmont.emoji.EmojiParser
 import cpw.mods.fml.common.network.simpleimpl.IMessage
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler
 import cpw.mods.fml.common.network.simpleimpl.MessageContext
@@ -19,14 +21,10 @@ import net.minecraft.util.IChatComponent
 import net.minecraft.util.MathHelper
 import org.apache.logging.log4j.LogManager
 import org.lwjgl.opengl.GL11
-import java.awt.Image
-import java.awt.SystemTray
-import java.awt.Toolkit
-import java.awt.TrayIcon
 import java.lang.reflect.Field
-import java.net.URL
 import java.util.*
-import javax.imageio.ImageIO
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 @SideOnly(Side.CLIENT)
 class ModifiedGuiNewChat(private val mc: Minecraft) : GuiNewChat(mc) {
@@ -35,6 +33,9 @@ class ModifiedGuiNewChat(private val mc: Minecraft) : GuiNewChat(mc) {
     private var field_146253_i: Field? = null
     private var field_146250_j: Field? = null
     private var field_146251_k: Field? = null
+
+    private val emojiFinderRegex: Pattern = Pattern.compile("(?<encoded>(?>[&§]#x[a-f0-9]{5};){1,2})")
+    private val hexExtractPattern: Pattern = Pattern.compile("[&§]#x(?<hex>[a-f0-9]{5})")
 
     init {
         try {
@@ -216,7 +217,7 @@ class ModifiedGuiNewChat(private val mc: Minecraft) : GuiNewChat(mc) {
                             val j2 = -j1 * 9
                             Gui.drawRect(b0.toInt(), j2 - 9, b0.toInt() + i1 + 4, j2, (if (isMentioned(chatline.func_151461_a()) > 0) 0xF9A825 else 0x000000) + (opacity / 2 shl 24)) // @glorantq
                             GL11.glEnable(GL11.GL_BLEND) // FORGE: BugFix MC-36812 Chat Opacity Broken in 1.7.x
-                            val s = chatline.func_151461_a().formattedText.replace("\ufeff".toRegex(), "")
+                            val s = chatline.func_151461_a().formattedText.replace('\ufeff', '\u0000')
                             mc.fontRenderer.drawStringWithShadow(s, b0.toInt(), j2 - 8, 0xFFFFFF + (opacity shl 24))
                             GL11.glDisable(GL11.GL_ALPHA_TEST)
                         }
@@ -266,7 +267,7 @@ class ModifiedGuiNewChat(private val mc: Minecraft) : GuiNewChat(mc) {
             return
         }
 
-        NotificationHandler.notifier.showNotification("$mentioningPlayer - #${ABOEChat.instance.clientChannelManager!!.currentChannel}", message)
+        NotificationHandler.showMessage("$mentioningPlayer - #${ABOEChat.instance.clientChannelManager!!.currentChannel}", message)
     }
 
     class PacketUserMentionedHandler : IMessageHandler<PacketUserMentioned, IMessage> {

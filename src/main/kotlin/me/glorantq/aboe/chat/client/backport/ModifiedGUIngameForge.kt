@@ -29,7 +29,7 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
             index++
         }
 
-        if (this.mc.gameSettings.keyBindPlayerList.isKeyPressed && (!this.mc.isIntegratedServerRunning || this.mc.thePlayer.sendQueue.playerInfoList.size > 1 || scoreObjective != null)) {
+        if (this.mc.gameSettings.keyBindPlayerList.isKeyPressed/* && (!this.mc.isIntegratedServerRunning || this.mc.thePlayer.sendQueue.playerInfoList.size > 1 || scoreObjective != null)*/) {
             this.mc.mcProfiler.startSection("playerList")
             val netHandlerPlayClient = this.mc.thePlayer.sendQueue
             var players: List<*> = netHandlerPlayClient.playerInfoList

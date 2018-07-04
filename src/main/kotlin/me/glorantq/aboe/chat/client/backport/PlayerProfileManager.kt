@@ -22,7 +22,7 @@ class PlayerProfileManager {
 
     private val httpClient: OkHttpClient = OkHttpClient.Builder().build()
 
-    private val missingSkinLocation: ResourceLocation = ResourceLocation(modID, "skins/default_skin.png")
+    val missingSkinLocation: ResourceLocation = ResourceLocation(modID, "skins/default_skin.png")
 
     private val skinMappings: HashMap<String, ResourceLocation> = hashMapOf()
     private val uuidMappings: HashMap<String, String> = hashMapOf()

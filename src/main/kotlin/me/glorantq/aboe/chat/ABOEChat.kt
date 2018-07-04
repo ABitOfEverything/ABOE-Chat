@@ -13,6 +13,8 @@ import me.glorantq.aboe.chat.client.backport.PlayerProfileManager
 import me.glorantq.aboe.chat.client.channels.ClientChannelManager
 import me.glorantq.aboe.chat.client.chat.ChatGUIInjector
 import me.glorantq.aboe.chat.client.chat.ModifiedGuiNewChat
+import me.glorantq.aboe.chat.client.commands.MentionLevelCommand
+import me.glorantq.aboe.chat.client.commands.NotificationsCommand
 import me.glorantq.aboe.chat.client.commands.emotes.EmoteHandler
 import me.glorantq.aboe.chat.common.*
 import me.glorantq.aboe.chat.server.channels.ChatChannelManager
@@ -24,6 +26,7 @@ import me.glorantq.aboe.chat.server.permissions.ForgeEssentialsPermissionProvide
 import me.glorantq.aboe.chat.server.permissions.IPermissionProvider
 import net.minecraft.command.ServerCommandManager
 import net.minecraft.server.MinecraftServer
+import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.config.Configuration
 import org.apache.logging.log4j.LogManager
 
@@ -78,6 +81,9 @@ class ABOEChat {
             emoteHandler = EmoteHandler()
             clientChannelManager = ClientChannelManager()
             playerSkinManager = PlayerProfileManager()
+
+            ClientCommandHandler.instance.registerCommand(MentionLevelCommand())
+            ClientCommandHandler.instance.registerCommand(NotificationsCommand())
         }
 
         if (FMLCommonHandler.instance().side == Side.SERVER) {

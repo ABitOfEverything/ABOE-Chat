@@ -11,16 +11,17 @@ import java.io.OutputStream
 class WindowsToastNotifier : INotifier {
     private val initialised: Boolean
 
-    private external fun initialise(logoPath: String): Boolean
-    private external fun showNotificationNative(header: String, message: String)
+    private external fun initialise(): Boolean
+    private external fun showNotificationNative(logoPath: String, header: String, message: String)
+
+    private val logoPath: String
 
     init {
         val logger: Logger = LogManager.getLogger(this::class.qualifiedName)
 
         logger.warn("Running on Java {}", System.getProperty("java.version"))
 
-        val arch: String = if(System.getProperty("os.arch") == "amd64") { "64" } else { "86" }
-        val fileName: String = "WindowsToastNotifier-Native-x$arch.dll"
+        val fileName: String = "WindowsToastNotifier-Native.dll"
 
         logger.info("Loading library: {}", fileName)
 
@@ -35,7 +36,7 @@ class WindowsToastNotifier : INotifier {
 
         System.load(tempFile.absolutePath)
 
-        val logoResourceStream: InputStream = this::class.java.classLoader.getResourceAsStream("assets/aboe.png")
+        val logoResourceStream: InputStream = this::class.java.classLoader.getResourceAsStream("assets/aboe_logo.png")
         val tempLogoFile: File = File.createTempFile("aboe-logo", ".png")
         val tempLogoOutputStream: OutputStream = FileOutputStream(tempLogoFile)
 
@@ -44,9 +45,11 @@ class WindowsToastNotifier : INotifier {
         logoResourceStream.close()
         tempLogoOutputStream.close()
 
+        logoPath = tempLogoFile.absolutePath
+
         logger.info("Initialising native library...")
 
-        initialised = initialise(tempLogoFile.absolutePath)
+        initialised = initialise()
 
         if(!initialised) {
             logger.error("Failed to initialise native library!")
@@ -60,6 +63,6 @@ class WindowsToastNotifier : INotifier {
             return
         }
 
-        showNotificationNative(header, message)
+        showNotificationNative(logoPath, header, message)
     }
 }
