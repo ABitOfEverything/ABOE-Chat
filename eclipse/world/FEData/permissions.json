@@ -65,7 +65,9 @@
       "*": "true",
       "fe.internal.player.known": "true"
     },
-    "(e0b801b1-6b73-363a-a46f-105be4f0f90f|Player530)": {},
+    "(e0b801b1-6b73-363a-a46f-105be4f0f90f|Player530)": {
+      "fe.internal.player.known": "true"
+    },
     "(fefefefe-fefe-fefe-fefe-fefefefefeec|$FE_ECONOMY)": {
       "fe.economy.command.wallet.*": "true",
       "command.give": "true",
@@ -222,10 +224,19 @@
     "(25d814e7-4101-3c44-9bf7-65f7d6c6dd55|Player44)": {
       "fe.internal.player.known": "true"
     },
-    "(27f672db-5c9e-3ce8-93b4-33462c942256|Player954)": {},
-    "(8ae78072-72e2-3cd6-8b52-ce78919d5a75|Player56)": {},
-    "(c5f2027d-c05b-3ad0-bbf1-20e3f4a553c8|Player207)": {},
-    "(62902853-7a10-3bb0-a496-11410998cbd4|Player365)": {}
+    "(27f672db-5c9e-3ce8-93b4-33462c942256|Player954)": {
+      "fe.internal.player.known": "true"
+    },
+    "(8ae78072-72e2-3cd6-8b52-ce78919d5a75|Player56)": {
+      "fe.internal.player.known": "true"
+    },
+    "(c5f2027d-c05b-3ad0-bbf1-20e3f4a553c8|Player207)": {
+      "fe.internal.player.known": "true"
+    },
+    "(62902853-7a10-3bb0-a496-11410998cbd4|Player365)": {
+      "fe.internal.player.known": "true"
+    },
+    "(1fce3ed9-59fe-3f9d-981b-b49b6d7fd97e|glorantv)": {}
   },
   "groupPermissions": {
     "_PLAYERS_": {
@@ -250,7 +261,7 @@
     },
     "_ALL_": {
       "fe.remote.chat.send": "false",
-      "some.test.permission": "false",
+      "some.test.permission": "true",
       "fe.internal.group.name": "players",
       "fe.internal.group.priority": "0",
       "fe.internal.group": "true"

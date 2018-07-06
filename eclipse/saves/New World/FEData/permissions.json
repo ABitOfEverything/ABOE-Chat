@@ -288,7 +288,10 @@
     "(eb08048d-a3b9-3008-984c-fcc8bb7d8893|Player504)": {
       "fe.internal.player.known": "true"
     },
-    "(5f4ed3be-2938-3b6b-81a5-bfd57bf6a88f|Player575)": {}
+    "(5f4ed3be-2938-3b6b-81a5-bfd57bf6a88f|Player575)": {
+      "fe.internal.player.known": "true"
+    },
+    "(87ddd03f-c282-3297-9821-6edc7430635f|glorantq)": {}
   },
   "groupPermissions": {
     "_PLAYERS_": {

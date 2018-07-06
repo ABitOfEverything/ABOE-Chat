@@ -1,6 +1,6 @@
 #// -------- PERMISSIONS LIST BLOCKS ------- \\#
-#// --------------- 02.07 20:42 ------------ \\#
-#// ----------- Total amount: 2146 --------- \\#
+#// --------------- 05.07 20:00 ------------ \\#
+#// ----------- Total amount: 2174 --------- \\#
 #// ---------------------------------------- \\#
 fe.protection.break.*                                              # (default: true) Allow breaking blocks
 fe.protection.break.minecraft.acacia_stairs.*                      # (default: true) BREAK Acacia Wood Stairs

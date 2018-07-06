@@ -20,6 +20,7 @@ import me.glorantq.aboe.chat.common.*
 import me.glorantq.aboe.chat.server.channels.ChatChannelManager
 import me.glorantq.aboe.chat.server.commands.ChannelAdminCommand
 import me.glorantq.aboe.chat.server.commands.ChannelInfoCommand
+import me.glorantq.aboe.chat.server.commands.PingListCommand
 import me.glorantq.aboe.chat.server.commands.ReloadCommand
 import me.glorantq.aboe.chat.server.permissions.DefaultPermissionProvider
 import me.glorantq.aboe.chat.server.permissions.ForgeEssentialsPermissionProvider
@@ -131,5 +132,6 @@ class ABOEChat {
         commandManager.registerCommand(ChannelInfoCommand())
         commandManager.registerCommand(ChannelAdminCommand())
         commandManager.registerCommand(ReloadCommand())
+        commandManager.registerCommand(PingListCommand())
     }
 }

@@ -17,7 +17,15 @@ abstract class ABOECommand internal constructor() : CommandBase() {
         ABOEChat.instance.permissionProvider!!.registerPermission(permission, IPermissionProvider.PermissionLevel.OP)
     }
 
-    internal fun sendMessage(sender: ICommandSender, message: String) = sender.addChatMessage(ChatComponentText(message.convertColours()))
+    internal fun sendMessage(sender: ICommandSender, message: String) {
+        var message0: String = message
+        if(sender !is EntityPlayer) {
+            message0 = message0.replace("[&§][0-9a-fl-or]".toRegex(), "")
+        }
+
+        sender.addChatMessage(ChatComponentText(message0.convertColours()))
+    }
+
     override fun getRequiredPermissionLevel(): Int = 0
 
     override fun canCommandSenderUseCommand(p_71519_1_: ICommandSender): Boolean =

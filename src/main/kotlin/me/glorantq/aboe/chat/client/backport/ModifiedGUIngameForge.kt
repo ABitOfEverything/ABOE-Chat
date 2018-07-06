@@ -35,12 +35,16 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
             var players: List<*> = netHandlerPlayClient.playerInfoList
 
             var maxNameWidth = 0
+            var maxPing: Int = 0
 
             for (guiPlayerInfo in players) {
                 val playerInfo = guiPlayerInfo as GuiPlayerInfo
                 val nameWidth = this.mc.fontRenderer.getStringWidth(playerInfo.name)
                 maxNameWidth = Math.max(maxNameWidth, nameWidth)
+                maxPing = Math.max(maxPing, playerInfo.responseTime)
             }
+
+            val maxPingWidth = this.mc.fontRenderer.getStringWidth("${maxPing}ms")
 
             players = players.subList(0, Math.min(players.size, 80))
             val onlinePlayerCount = players.size
@@ -53,10 +57,10 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
             }
 
             val entryHeight: Int = 9
-            val totalMargin: Int = (columns - 1) * 5
+            val totalMargin: Int = (columns - 1) * 5 + 1
             val borderWidth: Int = 1
 
-            val columnWidth = (Math.min(columns * (maxNameWidth + 23), width - 50) / columns)
+            val columnWidth = (Math.min(columns * (maxNameWidth + maxPingWidth + 25), width - 50) / columns)
             val listStartX = (width / 2 - (columnWidth * columns + totalMargin) / 2)
             val listStartY = 10
             val listWidth = (columnWidth * columns + totalMargin)
@@ -91,13 +95,13 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
 
                     this.mc.fontRenderer.drawStringWithShadow(playerName, entryX + 10, entryY, -1)
 
-                    this.drawPing(columnWidth, entryX, entryY, playerInfo)
+                    this.drawPing(columnWidth, entryX, entryY, maxPingWidth, playerInfo)
                 }
             }
         }
     }
 
-    private fun drawPing(columnWidth: Int, x: Int, y: Int, playerInfo: GuiPlayerInfo) {
+    private fun drawPing(columnWidth: Int, x: Int, y: Int, largestPingWidth: Int, playerInfo: GuiPlayerInfo) {
         GL11.glColor4f(1f, 1f, 1f, 1f)
         this.mc.textureManager.bindTexture(Gui.icons)
 
@@ -110,8 +114,22 @@ class ModifiedGUIngameForge(mc: Minecraft) : GuiIngameForge(mc) {
             else -> 4
         }
 
+        val pingColour: String = when(iconOffset.toInt()) {
+            5 -> "4"
+            0 -> "2"
+            1 -> "a"
+            2 -> "e"
+            3 -> "c"
+            else -> "4"
+        }
+
         this.zLevel += 100.0f
-        this.drawTexturedModalRect(x + columnWidth - 11, y, 0, 176 + iconOffset * 8, 10, 8)
+        this.drawTexturedModalRect(x + columnWidth - largestPingWidth - 11, y, 0, 176 + iconOffset * 8, 10, 8)
+
+        val ping: String = "§$pingColour${playerInfo.responseTime}ms"
+        val pingWidth: Int = this.mc.fontRenderer.getStringWidth(ping)
+
+        this.mc.fontRenderer.drawStringWithShadow(ping, x + columnWidth - pingWidth, y, -1)
         this.zLevel -= 100.0f
     }
 
